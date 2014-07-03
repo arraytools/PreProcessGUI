@@ -1,82 +1,353 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Preprocessguibt by arraytools</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 
-  </head>
-  <body>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8">
+<title>Welcome to PreProcessGUI</title>
 
-      <header>
-        <h1>Preprocessguibt</h1>
-        <p></p>
-      </header>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/user.css" rel="stylesheet" media="screen">
 
-      <div id="banner">
-        <span id="logo"></span>
+</head>
+<body data-spy="scroll" data-target=".sidebar" data-offset="50">
 
-        <a href="https://github.com/arraytools/PreProcessGUIbt" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/arraytools/PreProcessGUIbt/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/arraytools/PreProcessGUIbt/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
+	<div id="wrap">
 
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+		<header class="subhead" id="topheader">
+			<div class="container">
+				<h1>PreProcessGUI</h1>
+				<p class="lead">
+					A simplified RNA-Seq preprocessing tool for gene expression analysis for all users
+				</p>
+			</div>
+		</header>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+		<div class="container">
+			<div class="row">
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+				<div class="span3 sidebar">
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+					<div class="affixdiv" data-spy="affix" data-offset-top="400" data-clampedwidth=".sidebar">
+						<div class="well" style="padding: 8px 0;">
+							<ul class="nav nav-list usermenu">
+								<li class="nav-header">Contents</li>
+								<li class="active"><a href="#welcome"><i class="icon-bullhorn  icon-white"></i> Welcome </a></li>
+								<li><a href="#requirement"><i class="icon-info-sign"></i> OS Requirement</a></li>
+								<li><a href="#download"><i class="icon-star"></i> Download</a></li>
+								<li><a href="#pp101"><i class="icon-calendar"></i> Preprocessing 101</a></li>
+								<li><a href="#setuprequire"><i class="icon-th-list"></i> Setup for Requirement Software</a></li>
+								<li><a href="#tutorial"><i class="icon-th-list"></i> Tutorial</a></li>
+								<li><a href="#cli"><i class="icon-th-list"></i> Command Line Interface</a></li>
+								<li><a href="#timing"><i class="icon-th-list"></i> Timing </a></li>
+								<li><a href="#faq"><i class="icon-th-list"></i> FAQ</a></li>
+								<!--<li><a href="#accommodation"><i class="icon-info-sign"></i> Accommodation</a></li>-->
+							</ul>
+						</div>
+					</div>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+				</div>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+				<div class="span9 content">
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+					<section id="welcome">
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+						<div class="page-header">
+							<h1>Welcome to RNA-Seq PreProcessor Page</h1>
+						</div>
+								
+						<p class="lead">
+							This tool is to help you with RNA-Seq data preprocessing for downstream gene expression analysis. It takes RNA sequence data in FASTQ format as an input and outputs the raw count data. It is designed to be easy to use. A screenshot of the tool is given below:
+						</p>
+					
+						<div class="text-center">
+							<a href="images/PreProcessGUI_Finished.png"><img class="img-polaroid" src="images/PreProcessGUI_Finished.png"></a>
+						</div>						
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+					</section>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+					<section id="requirement">
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/arraytools">arraytools</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+						<div class="page-header">
+							<h1>OS Requirement</h1>
+						</div>
+
+						<p class="lead">
+           			Ubuntu 64-bit OS (>= 12.04). Since this program is primarily used in a GUI environment, you need to have
+            		a graphical environment in your Ubuntu OS. If you choose the desktop one of Ubuntu, you are fine. If you choose/already have a 
+            		server version of Ubuntu, you can still install various 
+            		<a href="http://www.howtogeek.com/163154/linux-users-have-a-choice-8-linux-desktop-environments/">desktop environments</a>
+            		on your Ubuntu on top of it.</p>
+            
+            		<p class="lead">The Ubuntu ISO file can be downloaded from 
+            		<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a> page. If you don't know what is ISO file
+            		or need an instruction to install Ubuntu OS, check out 
+            		<a href="http://howtoubuntu.org/how-to-install-ubuntu-12-04-precise-pangolin">this page</a>.
+            		It contains an instruction with step-by-step screenshots to help you to install it. The whole process of installing Ubuntu
+            		will be 10-20 minutes depending on your hardware.</p>						
+
+					</section>
+
+
+					<section id="download">
+
+						<div class="page-header">
+							<h1>Download</h1>
+						</div>
+
+            <p class="lead">The program can be downloaded from <a href="http://example.com/files/PreProcessGUI.tar.gz">here</a>. </p>
+            <p class="lead">After downloading, extract it to the desktop by using the file manager (called Nautilus) in Ubuntu 
+               OR opening a terminal (keyboard shortcut is 'Ctrl+Alt+t') and extract the tar ball by</p>
+            <pre><code>tar -xzvf PreProcessGUI.tar.gz</code></pre>
+            <p class="lead"> This will create a binary file called <strong>PreProcessGUI</strong> in the current directory.
+            There is no need to run an installer (such as on Windows OS).
+            </p> 
+            <p class="lead">To launch the application, you can do one of the followings
+            <ul class="lead">
+               <li>Open the File Manager and go to the directory containing <strong>PreProcessGUI</strong> program. Double clicking on it to launch.</li>
+               <li>
+                  Open a terminal and go to the directory contanining <strong>PreProcessGUI</strong>. 
+                  Type 
+                  <pre><code></code>./PreProcessGUI</code></pre>
+                  <p class="lead">to launch. Don't forget the dot and forward slash!</p>
+               </li>
+<!--                <div class="thumbnail">
+							<a href="images/RSPPdesk.png"><img src="images/RSPPdesk.png"></a>
+						</div> -->
+               <li>Double click the PreProcessGUI icon <a href="images/RSPP_icon.png"><img src="images/RSPP_iconSmall.png"></a>
+               on the Ubuntu desktop. 
+               </li>
+            </ul>
+            </p>
+
+					</section>
+
+					<section id="pp101">
+
+						<div class="page-header">
+							<h1>Preprocessing 101</h1>
+						</div>
+
+            <p class="lead">The workflow can be explained by the following plot</p>
+            <a href="images/PreprocessFlow.png"><img src="images/PreprocessFlow.png" width="600px"></a>
+            <p class="lead">The application will automatically run the following programs one by one</p>
+            <ol>
+            <li><a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a></li>
+            <li><a href="http://samtools.sourceforge.net/">Samtools</a></li>
+            <li><a href="http://www-huber.embl.de/users/anders/HTSeq/">HTSeq-count</a></li>
+            </ol>
+            <p class="lead">
+            based on the experiment design from user's input in a tab-delimited text file <strong>samples.txt</strong>. 
+            More information about <strong>samples.txt</strong> can be found in <a href="#tutorial">Tutorial</a> section.
+            </p>       
+            <p class="lead">Before running the alignment, users are welcomed to run quality control and trimming by using the 
+            <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> and 
+            <a href="http://hannonlab.cshl.edu/fastx_toolkit/">Fastx_trimmer</a> tools. 
+            Both tools are available under the 'Tools' menu.</p>
+            <h4>Input/Output</h4>
+            <p class="lead">The following files are required as an input (see also <a href="#tutorial">Tutorial</a> section)</p>
+            <ol>
+				<li>Fastq - sequence data</li>
+				<li>Reference genome file in bt2 format</li>
+				<li>Gene annotation file in gtf format</li>
+				<li>samples.txt</li>
+            </ol>
+            <p class="lead">The output of the program is a zip file "counts.zip" which contains a count table in a text format (*.count) for each sample.
+            These count table can be opened by any text editor on any platform.
+            Users can use for example <code>newCountDataSetFromHTSeqCount()</code> function from <code>DESeq</code> package or
+            <code>readDGE()</code> function from <code>edgeR</code> package to load COUNT files data into an 
+            <a href="http://cran.r-project.org">R</a> environment.</p>
+            
+
+					</section>
+
+					<section id="setuprequire">
+
+						<div class="page-header">
+							<h1>Setup for Requirement Software</h1>
+						</div>
+
+		<!--				<p><b><span class="text-error">Update: We are pleased to announce that registration is now full for this Conference. Late registration and lodging requests will be available on site ONLY as space allows.</span></b></p> -->
+
+           <p class="lead">There are two ways to set up for required software (such as Bowtie, Tophat, SAMTools, et al): 
+            automatic and manual. For novice users, it is recommended to use the automatic setup method.
+            For either way, users first open a dialog by clicking Settings > Tools Manager.</p>
+            <a href="images/automaticSetup.png"><img src="images/automaticSetup.png"></a>            
+            <h4>Automatic method</h4> 
+            <p class="lead">For aumatical setup method, users only need to click <strong>Automatic setup</strong> button. A new terminal window will open up. 
+            After you type sudo password the application will start to download and install required software. By default, all the
+            required software is installed under <code>/opt/RNA-Seq/bin</code> directory.</p>
+            <h4>Manaul method</h4>
+            <p class="lead">If users have already installed required software by themselves, they can click <strong>Browse</strong> button to select the 
+            directory for each software. After that, they can click OK button to enable their selections.</p>            
+            <p class="lead">Note that the setup is only needed to be run once. The paths for each required software will be remembered by <strong>PreProcessGUI</strong>.</p> 
+            <p class="lead">After the installation is finished, users can close the <strong>Tools Manager</strong> dialog and go to the main dialog to preprocess their data.</p>
+ 
+					</section>
+
+					<section id="tutorial">
+
+						<div class="page-header">
+							<h1>Tutorial</h1>
+						</div>
+
+           <p class="lead">A small test data can be downloaded from <a href="http://example.com/files/testData.tar.gz">here</a>.</p>
+            <p class="lead">To run the preprocessing, it is assumed the working directory contains the following files</p>
+            <ol class="lead"> 
+				<li>FastQ file (*.fastq) - raw data</li>
+				<li>Reference genome sequence (*.bt2) - reference index used for alignment</li>
+				<li>Genome transcript annotation file (*.gtf) - gene model annotation</li>
+				<li>samples.txt </li>
+			</ol>
+			<p class="lead">The genome reference file and genome annotation file can be downloaded from Tophat reference genome download page
+			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">here</a>. If you have NIH helix/biowulf acccount, you can access the iGenomes at
+			/fdb/igenomes/ directory according to <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
+			<p class="lead">Consider, for example, the Homo sapiens genome GRCh37.
+			After downloading the file <strong>Homo_sapiens_Ensembl_GRCh37.tar.gz</strong> (17GB), the reference genome files (<strong>genome.*.bt2</strong>) are 
+			located under <code>Homo_sapiens/Ensembl/GrCh37/Sequence/Bowtie2Index</code> directory and gene annotation file (<strong>genes.gtf</strong>) is located under
+			<code>Home_sapiens/Ensembl/GrCh37/Annotation/Archives/</code> directory. 
+			<u>Please copy these bt2 and gtf file to the same directory as the Fastq data files</u>.
+			</p>
+			<p class="lead">Before starting to run preprocessing, users need to construct a table of experiment design in a tab-delimited file <strong>samples.txt</strong>.
+			Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
+			'fastq1' column contains the fastq filename. Multiple file can be concatenated by comma sign. If the library is paired-end, 'fastq2' column should be
+			specified with a format the same as 'fastq1' column. An example of the <strong>samples.txt</strong> file
+            is given below.
+            <a href="images/samples.png"><img src="images/samples.png" height="150px"></a>  
+			</p>
+			
+					</section>
+
+					<section id="cli">
+
+						<div class="page-header">
+							<h1>Command Line Interface</h1>
+						</div>
+						
+			<p class="lead">If you like to run the program in a 'headless' way (without bothering the graphical interface or cannot access the graphical desktop from a remote PC), 
+			you can run the program with a simple command from the terminal</p>
+			<pre><code>./PreProcessCLI DIRECTORY-NAME</code></pre>
+			<p class="lead">where <code>DIRECTORY-NAME</code> is the directory name that contains all of your data and related files. 
+			A full list of arguments can be found by issuing <strong>./PreProcessCLI -h</strong>.</p>
+			<p class="lead">Like the GUI version,
+			the output of the program will be a zip file containing the count table for each sample.</p>
+			<p class="lead">This program was built using GCC. The executable file should be able to run on most x64 Linux distributions.</p>
+			<p class="lead">If you only want to generate shell scripts without running them immediately, you can use the
+			<strong>-createScriptOnly</strong> parameter in <strong>PreProcessCLI</strong>. This can be useful
+			where the preprocessing should not be run directly; eg users should run scripts by using the
+			<strong>qsub</strong> command in a batch system.</p>
+						
+					</section>
+
+					<section id="timing">
+
+						<div class="page-header">
+							<h1>Timing</h1>
+						</div>
+						<table class="table table-hover">
+							<thead>
+								<tr><th>Data</th><th>Organism</th><th># samples</th><th># fastq/total size GB</th><th>Coverage</th><th>Time</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><th>GSE11209 </th><td>Yeast</td><td>6</td> <td>6/4.4</td> <td> 6.77</td> <td>58m</td></tr>
+								<tr><th>GSE18508 </th><td>Drosophila<br>Melanogaster</td><td>7</td><td>30/37</td><td>47.9</td><td>11h12m</td></tr>
+								<tr><th>GSE30786</th><td>Human<br>(colon cancer) </td><td>4</td><td>4/16</td><td>16.09</td><td>11h25m</td></tr>
+								<tr><th>GSE36968</th><td>Human</td><td>55</td><td></td><td></td><td></td></tr>
+								<tr><th>GSE37211</th><td>Human</td><td>23</td><td></td><td></td><td></td></tr>
+								<tr><th>GSE37918</th><td>Human<br>(breast cancer)</td><td>4</td><td>8/40</td><td>43.00</td><td>10h23m</td></tr>
+								<tr><th>GSE39509</th><td>Mouse</td><td>34</td><td></td><td></td><td></td></tr>
+								<tr><th>GSE45419</th><td>Human</td><td>32</td><td></td><td></td><td></td></tr>
+								<tr><th>GSE50491</th><td>Human<br>(prostate)</td><td>4</td><td>6/83</td><td></td><td>???</td></tr>
+								<tr><th>GSE51403</th><td>Human<br>(MCF-7)</td><td>14</td><td>38/116</td><td>60.45</td><td>1d13h30m</td></tr>
+								<tr><th>GSE52194</th><td>Human<br>(breast cancer)</td><td>20</td><td></td><td></td><td></td></tr>
+								<tr><th>GSE52202</th><td>Human<br>(ALS)</td><td>8</td><td>16/61</td><td>20.65</td><td>18h31m</td></tr>
+								<tr><th>GSE52623</th><td>Mouse<br>(leukemia)</td><td>21</td><td>40/131</td><td>93.58</td><td>9d23h15m</td></tr>
+							</tbody>
+						</table>
+
+						<ol class="lead">
+							<li>The test machine is Dell T3500 with Xeon W3690 @ 3.47Ghz (6 cores) and 12GB memory running on Ubuntu 12.04. Five threads was used
+							in tophat program.</li>			
+							<li>When the number of threads is increased, the memory requirement is increased too. It is possible tophat cannot be finished
+							because there is not enough memory when a large number of threads was used.</li>
+							<li>The coverage is computed by randomly picking one sample.</li>
+							<li>The relation of Tophat execution time and number of threads is not linear. For example, running Tophat on sample
+							Serum_1 from GSE30786 takes 2h35m using 5 threads and 3h51m using 1 thread. Running Tophat on sample dT_bio from GSE11209
+							takes 5m using 5 threads and 6m using 1 thread.</li>
+							<li>Total fastq size can be checked by the linux command: <code>du -ch *.fastq | tail -n 1</code> .</li>
+							<li>In GSE50491, the max fastq file size is 20GB or 40GB for the RNK4_KO_BRD4 sample (paired end).
+							It run out of physical memory and used swap. Waiting for 10 hours cannot even processes one sample.</li>
+							<li>The total space after running preprocessing can be 2 to 4 times of the total fastq file size.</li>
+							<li>The fastq file created by <code>fastq-dump</code> from SRA file may have a significantly different (larger) file size 
+							than the one we directly download from ftp (17GB vs 12GB).</li>
+						</ol>
+						
+					</section>
+
+					<section id="faq">
+
+						<div class="page-header">
+							<h1>FAQ</h1>
+						</div>
+						
+		           <ol class="lead">
+		               <li><strong>How about other Linux distribution or Mac OS:</strong> Sorry, only <strong>PreProcessCLI</strong> is supported. 
+		                  Even the code of PreProcessGUI can be re-built to work on other OS/Linux distributions, 
+		                  we currently have no hardware resource/time to support other OS/Linux distributions. If you are interested in building one for other
+		                  people, please let me know.
+		               </li>
+		               <li><strong>How about more advanced options:</strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
+		               for their need. A screenshot of the dialog is 
+		               <p>
+		               <a href="images/ToolsOption.png"><img src="images/ToolsOption.png" height="200px"></a>
+		               </p>   
+		               </li>
+		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>:</strong> 
+		               Galaxy is a much complicated system. There may be a learning curve for general users not to mention unexpected issues
+		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
+		               PreprocessGUI is a simple application so everyone can start to run it without a need of a 
+		               'system administrator'.</li>
+		               <li><strong>Is the program running in parallel:</strong> The sequence alignment part in Tophat is most time consuming. 
+		               So we design to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
+		               on the system minus one. Since running Tophat with multi-thread requires a significant increase of memory, sometimes
+		               the execution may be very slow or running into the problem of out of memory. In such a case, users can specify '-p' 
+		               parameter in Tophat program to decrease the number of threads.</li>
+							<li><strong>Can the program run on amazon cloud:</strong> You bet. Make sure the amazon machine image (AMI) used to 
+							create machines is based on 64-bit Ubuntu 12.04 and up.</li>               
+		               <li><strong>Can the program run on clustering environment:</strong> Yes. We have tested to run the program on 
+		               <a href="http://biowulf.nih.gov/">NIH Biowulf clustering</a> and 
+		               also <a href="http://aws.amazon.com/ec2/">Amazon Elastic Computing Cloud (EC2)</a>. With basic knowledge of batching system (NIH Biowulf) or
+		               Sun Grid Engine queuing system (Amazon Cloud), users can submit multiple jobs to run in parallel on clusters. 
+		               See <a href="cluster.html">Running PreProcessCLI in Clusters of Computers</a> for more information.</li>
+		               <li><strong>Can we use fasta as the reference genome file instead of bt2 format:</strong> It is possible, of course. But we have not implemented
+		               that. There is a price to pay when we use fasta format since it requires running bowtie2-build program to generate bowtie2 index files (bt2) that
+		               tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
+		               the index files directly.</li>
+		               <li><strong>I still need a HELP:</strong> Email me.</li>
+		            </ol>
+            						
+					</section>
+
+				</div>
+			</div>
+		</div>
+		<!-- <div id="emptyness"></div> -->
+
+	</div>
+
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@gmail.com?subject=PreProcessGUI question"><code>arraytools [at] gmail.com</code></a> using the subject heading <code>PreProcessGUI question</code>. </p>
+		</div>
+	</div>
+
+	<script src="bootstrap/javascript/jquery-1.10.1.min.js"></script>
+	<script src="bootstrap/javascript/bootstrap.min.js"></script>
+	<script src="bootstrap/javascript/user.js"></script>
+
+</body>
 </html>

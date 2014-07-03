@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8">
+<title>Welcome to PreProcessGUI</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/user.css" rel="stylesheet" media="screen">
+
+</head>
+<body data-spy="scroll" data-target=".sidebar" data-offset="50">
+
+	<div id="wrap">
+
+		<header class="subhead" id="topheader">
+			<div class="container">
+				<h1>PreProcessCLI</h1>
+				<p class="lead">
+					Running PreProcessCLI in Clusters of Computers
+				</p>
+			</div>
+		</header>
+
+
+		<div class="container">
+			<div class="row">
+
+				<div class="span3 sidebar">
+
+					<div class="affixdiv" data-spy="affix" data-offset-top="400" data-clampedwidth=".sidebar">
+						<div class="well" style="padding: 8px 0;">
+							<ul class="nav nav-list usermenu">
+								<li class="nav-header">Contents</li>
+								<li class="active"><a href="#biowulf"><i class="icon-bullhorn  icon-white"></i> NIH Biowulf </a></li>
+								  <ul  class="nav nav-list usermenu">
+								     <li><a href="#qsub"><i class="icon-bullhorn  icon-white"></i> qsub </a></li>
+								     <li><a href="#swarm"><i class="icon-bullhorn  icon-white"></i> swarm </a></li>
+								  </ul>
+								<li><a href="#amazon"><i class="icon-info-sign"></i> Amazon Elastic Compute Cloud</a></li>
+								  <ul  class="nav nav-list usermenu">
+								     <li><a href="#instance"><i class="icon-bullhorn  icon-white"></i> Create an Instance </a></li>
+								     <li><a href="#starcluster"><i class="icon-bullhorn  icon-white"></i> Create a Cluster </a></li>
+								     <li><a href="#ebs"><i class="icon-bullhorn  icon-white"></i> Create EBS Storage </a></li>
+								     <li><a href="#launchcluster"><i class="icon-bullhorn  icon-white"></i> Launch Cluster </a></li>
+								     <li><a href="#required"><i class="icon-bullhorn  icon-white"></i> Install Required Programs </a></li>
+								     <li><a href="#copyfile"><i class="icon-bullhorn  icon-white"></i> Transfer Files </a></li>
+								     <li><a href="#runtophat"><i class="icon-bullhorn  icon-white"></i> Run Tophat </a></li>								     
+								  </ul>
+								
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+
+      <!-- MAIN CONTENT -->
+      <div class="span9 content">
+         <section id="main_content" class="inner">
+            <p>This is a general guide of running multiple independent jobs in parallel in a clustering environment. A job
+            is defined by a script file here. We give an instruction to run PreProcessCLI program on NIH Biowulf and Amazon Elastic Cloud Computing
+            environments.</p>
+         </section>
+
+			<section id="biowulf">
+            <h3>NIH Biowulf</h3>
+            <p>Users are encouraged to check the <a href="http://biowulf.nih.gov/user_guide.html">NIH Biowulf User Guide</a> if they run into any problems.</p>
+            
+            <p>First of all, users should use /data/USERNAME directory to work on their data. This directory has a default quota size 100GB.
+            It is likely users need to request a larger quota to work with RNA-Seq data. The NIH Biowulf User Guide has a web interface
+            for users to fill out a form to request a larger quota.</p>
+            
+				<h4><a id="qsub">qsub</a></h4>
+				To run a single job, users can use <code>qsub</code> command. Since normally we will want to run multiple jobs, we will 
+				not discuss qsub command here. The NIH Biwoulf User Guide tells users how to create a script file and how to run it.            
+            
+            <h4><a id="swarm">swarm</a></h4>
+            In the following example, I assume the working directory <code>/data/USERNAME/GSE11209</code> contains sequence files and the necessary files 
+            (*.gtf and *.bt2) to run the RNA-Seq preprocessing. 
+            
+            <pre>
+$ cd GSE11209				
+$ cat run_tophat_swarm.sh
+cd /data/USERNAME/GSE11209; tophat2 -p 8 -o dT_bio genome SRR002062.fastq
+cd /data/USERNAME/GSE11209; tophat2 -p 8 -o dT_tech genome SRR002064.fastq
+cd /data/USERNAME/GSE11209; tophat2 -p 8 -o dT_ori genome SRR002051.fastq
+cd /data/USERNAME/GSE11209; tophat2 -p 8 -o RH_bio genome SRR002058.fastq
+cd /data/USERNAME/GSE11209; tophat2 -p 8 -o RH_tech genome SRR002061.fastq
+cd /data/USERNAME/GSE11209; tophat2 -p 8 -o RH_ori genome SRR002059.fastq
+$ freen
+$ swarm -t 8 -g 12 --module tophat -f run_tophat_swarm.sh
+$ jobload -m $USER
+</pre>
+            <p>The <a href="http://biowulf.nih.gov/apps/swarm.html">swarm</a> utility was created by NIH Biowulf team. It was designed to 
+             simplify submitting a group of commands to the Biowulf cluster. To run the command,
+            users need to specify some parameters and one command file. The swarm utility contains a lot of command line options.
+            For example, the parameter <strong>-t</strong> specifies the number
+            of threads per process and <strong>-g</strong> denotes gigabytes per process. The <strong>--module</strong> tells what module
+            needs to be loaded. The <strong>-f</strong> parameter specifies the script file. 
+            Note that Biowulf provides several combinations of processor, memory. It is wise to use <strong>freen</strong> command 
+            to see a list of available nodes before running swarm.</p>
+            
+            <p>In the command file, one command occupies one line. In the above example, we have 6 samples and tophat2 program will be run 
+            6 times (one for each sample). When tophat is executed, we specify the number of threads by <strong>-p</strong> parameter.</p>
+            
+            <p>After issuing <strong>swarm</strong> command, users can use <strong>jobload</strong> command 
+            to monitor their jobs.</p>
+            
+            <p>In the above example, swarm will allocate 3 nodes to run 6 jobs. Note that each process created from 
+            swarm command will output 2 files; for example, sw3n16199.o (STDOUT) and sw3n16199.e (STDERR). Users can open the STDOUT file
+            to know how much memory and cpupercent were used.</p>
+            <pre>
+$ cat sw3n16199.o
+...
+
+Show some job stats:
+
+6675561.biobos elapsed time:          358 seconds
+6675561.biobos walltime:         00:05:26 hh:mm:ss
+6675561.biobos memory limit:        22.06 GB
+6675561.biobos memory used:          1.08 GB
+6675561.biobos cpupercent used:    339.00 %
+
+housekeeping: p2407
+------------- done PBS epilogue script -------------
+</pre>
+				</section>
+
+
+				<section id="amazon">
+            <h3>Amazon Elastic Compute Cloud</h3>
+            <p><a href="http://aws.amazon.com/ec2">Amazon Elastic Compute Cloud (Amazon EC2)</a> is a web service that provides 
+            resizable compute capacity in the cloud. It is designed to make web-scale computing easier for developers.
+            For new customers to Amazon Web Service, Amazon provides
+            750 hours of Linux and Windows Micro Instances each month for one year. </p>
+            <h4><a id="instance">Create a Micro Instance</a></h4>
+            <p>After creating AWS account, go to AWS console to view all Amazon Web Services. Click EC2 to go to EC2 Dashboard page.
+            Now follow the next few steps to create an <strong>instance</strong></p>
+            <ul>
+				<li>Click INSTANCES - Instances. Click blue 'Launch instance' button.</li>
+				<li>Step 1: Choose an Amazon Machine Image (AMI). Click 'Select' button on Ubuntu Server 14.04</li>
+				<li>Step 2: Choose an instance type. Select Micro instance and click 'Review and Launch' button. </li>
+				<li>We will be asked about key pair. Create a key pair name (eg amazonCluster) and click 'Download Key Pair'.
+				You will get the file 'amazonCluster.pem'. </li>
+            </ul>
+            <p>The micro instance has only 613 MB memory and 8GB storage but it is good enough for us to play around. 
+            The ECPU indicates the CPU performance
+            (one ECPU is approximately cpu of 1.0-1.2GHz 2007 Opteron or 2007 Xeon processor) and vCPU means the # of virtual CPUs. 
+            But we don't use it to run computing. We use it to create cluster of 
+            computers. Write down the DNS or IP addresss of the new instance and use SSH/Putty to connect to the instance. </p>
+            <code>
+ssh -i ~/Downloads/amazonCluster.pem ubuntu@ec2-XX-XX-XX-XX.compute-1.amazonaws.com
+</code>
+            <p>Now don't log out. We are now ready to create a cluster of computers.</p>
+            <h4><a id="starcluster">Create a Cluster by using starcluster</a></h4>
+            <p>Issue the following commands.</p>
+            <pre>
+$ sudo apt-get install python-setuptools
+$ sudo apt-get update
+$ sudo easy_install StartCluster
+$ starcluster createkey mykey -o ~/.ssh/mykey.rsa
+$ starcluster help
+</pre>
+            <p>The screen will show up 3 options. You want to choose the 2nd one. At the end, it will create a configuration file under
+            <strong>/home/ubuntu/.starcluster/config</strong>. Run the following command to edit this configuration file.</p>
+            <pre>
+$ nano ~/.starcluster/config            </pre>
+            <p>In this configuration file, we want to change a few places. <strong>Don't do anything extra unless you know what you do</strong>. 
+            </p>
+            <ul>
+				<li>AWS_ACCESS_KEY</li>
+				<li>AWS_SECRET_KEY</li>
+				<li>AWS_USER_ID</li>
+				<li>KEY_LOCATION=~/.ssh/mykey.rsa</li>
+				<li>keyname = mykey </li>
+				<li>CLUSTER_SIZE = 2 </li>
+				<li>CLUSTER_USER = sgeadmin</li>
+				<li>NODE_IMAGE_ID =  ami-3393a45a</li>
+				<li>NODE_INSTANCE_TYPE = t1.micro </li>
+				<li>DISABLE_QUEUE=False</li>
+            </ul>
+            <p>To create AWS_SECRETE_KEY, go to <a href="http://aws.amazon.com/iam/">AWS Identity and Access Management (IAM)</a> page. 
+            Click Manage Users on the left panel. Create a new group of users. Use the group name 'clusterUser'. Click 'continue' and create
+            new users. Check the box of 'Generate an access key for each user'. Type a user name and click Continue. Make sure the user has EC2 or
+            adminstrator privilege. Now click 'Download Credentials' button. The screen will show the new user's <strong>Access Key ID</strong> and 
+            <strong>Secret Access Key</strong>. Both keys will be used in the configuration file.</p>
+            
+            <p>The AWS user/account ID is a 12-digit number, such as 1234-5678-9012. 
+            It can be retrieved from <a href="http://aws.amazon.com/iam/">IAM</a> page as well.</p>            
+            
+            <p>Click Ctrl+o to save changes and Ctrl+x to exit the editor.</p>
+            <p>The above configuration will create one master virtual machine and one node. The files on each machine cannot be seen on the other.
+            The next step is to create EBS storage and attach it to each cluster computers.</p>
+            <h4><a id="ebs">Create EBS Storage</a></h4>
+            <p>There are two ways to create EBS volume. One is go to EC2 web site. Click on 'Volumes' and then click on 'Create Volume'. 
+            You can also use command line to create volume. Below is a command to create a 20GB volume. </p>
+            <code>
+ubuntu@ip-172-31-16-93:~$ starcluster createvolume --name=data 20 us-east-1c            
+</code>
+            <p>Now open the configuration file again and add</p>
+            <pre>
+MOUNT_PATH = /data            </pre>
+            <p>This EBS volume will be automatically available to all the nodes. So if you create a file in one node, it will be available
+            from other nodes. Note that '/data' is not accessible except on clustering master/nodes. </p>
+            <h4><a id="launchcluster">Launch Cluster</a></h4>
+            <pre>
+ubuntu@ip-172-31-16-93:~$ starcluster start mycluster
+ubuntu@ip-172-31-16-93:~$ starcluster listclusters
+ubuntu@ip-172-31-16-93:~$ starcluster sshmaster mycluster     
+ </pre>
+            <h4><a id="required">Install Required Programs for Running Tophat</a></h4>
+            <p>First, we download a bash script from Github. This script is used to install all necessary programs for 
+            running RNA-Seq preprocessing.</p>
+            <pre>
+root@master:~# wget https://raw.githubusercontent.com/arraytools/PreProcessGUI/master/install_rnaseq.sh            
+root@master:~# ./install_rnaseq.sh</pre>
+            <p>The location of tophat, bowtie, et al is /opt/RNA-Seq/ which is not shared across nodes. So
+            we should repeat the above two lines on each node (Use <strong>ssh node001</strong> to ssh to node001).</p>
+            <h4><a id="copyfile">Transfer Files to and from EC2</a></h4>
+            <p>We first use winscp or rsync to transfer files from local to t1 micro instance. Assuming
+            we have transfer the folder called 'Anders2013medium' to the t1 micro instalce, we can
+            issue the following command to copy files to the EBS volume.</p>
+            <pre>
+ubuntu@ip-172-31-16-93:~$ starcluster put  mycluster Anders2013medium/*.fastq /data/Anders2013medium/
+ubuntu@ip-172-31-16-93:~$ starcluster put  mycluster Anders2013medium/*.bt2 /data/Anders2013medium/
+ubuntu@ip-172-31-16-93:~$ starcluster put  mycluster Anders2013medium/*.gtf /data/Anders2013medium/
+ubuntu@ip-172-31-16-93:~$ starcluster put  mycluster Anders2013medium/*.sh /data/Anders2013medium/            </pre>
+            <h4><a id="runtophat">Run Tophat</a></h4>
+            <p>Now the tophat and required programs are ready and the sequence data including reference genome files are ready,
+            we are almost ready to run tophat in the cluster. </p>
+            <p>The startcluster includes 
+            <a href="http://web.mit.edu/Star/cluster/docs/latest/guides/sge.html">Sun Grid Engine (SGE)</a> queuing system if we 
+            set DISABLE_QUEUE=False in the configuration file. The SGE includes several queuing commands like qsub, qstat, qhost.
+            The <strong>qsub</strong> command can be used to launch one job in queue. We follow their instruction to create job scripts.</p>
+            <pre>
+#!/bin/bash
+export PATH=$PATH:/opt/RNA-Seq/bin/bowtie2-2.2.1
+export PATH=$PATH:/opt/RNA-Seq/bin/tophat-2.0.11.Linux_x86_64
+export PATH=$PATH:/opt/RNA-Seq/bin/samtools-0.1.19:/opt/RNA-Seq/bin/samtools-0.$
+cd /data/Anders2013medium
+tophat2 -p 1 -o Untreated-3 Dme1_BDGP5_70 file_1.fastq file_2.fastq
+</pre>
+			<p>Note that we specify 1 thread to run tophat (-p 1) because the t1 micro machine has only 1 CPU. We can 
+			choose an instance with up to 32 CPUs according to the 
+			<a href="http://aws.amazon.com/ec2/instance-types/">instance type matrix</a> list.</p>
+            <p>Since we have 7 samples, we create 7 job scripts. Then we use qsub to assign jobs.</p>
+            <pre>
+root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat1.sh            
+root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat2.sh
+root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat3.sh
+root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat4.sh
+root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat5.sh
+root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat6.sh
+root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat7.sh</pre>
+             <p>We can use <strong>qstat</strong> command to monitor the job status. 
+             The job status includes job ID, state, submit time and queue node name. 
+             When <strong>qstat</strong> command does not give
+             any output, it means all jobs are finished. When qsub is used, any errors will be saved
+             to SCRIPTNAME.eXX and SCRIPTNAME.oXX will save the standard output. For tophat program, 
+             it saves its output to STDERR. So if we see a lot of things in SCRIPTNAME.eXX, we can
+             safely ignore them. In other cases, we can use these files to debug.</p>
+             <p>Is Amazon Cloud easy? You decide.</p>
+        </section>      
+      </div>
+     </div>
+   </div>
+  </div>
+
+   <!-- FOOTER  -->
+   <div id="footer">
+		<div class="container">
+			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@gmail.com?subject=PreProcessCLI question"><code>arraytools [at] gmail.com</code></a> using the subject heading <code>PreProcessCLI question</code>. </p>
+		</div>
+	</div>
+
+	<script src="bootstrap/javascript/jquery-1.10.1.min.js"></script>
+	<script src="bootstrap/javascript/bootstrap.min.js"></script>
+	<script src="bootstrap/javascript/user.js"></script>
+
+   </body>
+</html>
