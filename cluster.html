@@ -147,7 +147,7 @@ housekeeping: p2407
 				<li>We will be asked about key pair. Create a key pair name (eg amazonCluster) and click 'Download Key Pair'.
 				You will get the file 'amazonCluster.pem'. </li>
             </ul>
-            <p>The micro instance has only 613 MB memory and 8GB storage but it is good enough for us to play around. 
+            <p>The t1 micro instance has only 613 MB memory and 8GB storage but it is free (for 1 year) and good enough for us to play around. 
             The ECPU indicates the CPU performance
             (one ECPU is approximately cpu of 1.0-1.2GHz 2007 Opteron or 2007 Xeon processor) and vCPU means the # of virtual CPUs. 
             But we don't use it to run computing. We use it to create cluster of 
@@ -221,8 +221,10 @@ root@master:~# ./install_rnaseq.sh</pre>
             <p>The location of tophat, bowtie, et al is /opt/RNA-Seq/ which is not shared across nodes. So
             we should repeat the above two lines on each node (Use <strong>ssh node001</strong> to ssh to node001).</p>
             <h4><a id="copyfile">Transfer Files to and from EC2</a></h4>
-            <p>We first use winscp or rsync to transfer files from local to t1 micro instance. Assuming
-            we have transfer the folder called 'Anders2013medium' to the t1 micro instalce, we can
+            <p>We first use winscp or rsync to transfer files from local to t1 micro instance. The transfer speed depends on the network bandwidth
+            on your current location and the amazon machines location.</p>
+            <a href="images/Transfer2AmazonSpeed.png"><img src="images/Transfer2AmazonSpeed.png" height="400px"></a>
+            <p>Assuming we have transfer the folder called 'Anders2013medium' to the t1 micro instalce, we can
             issue the following command to copy files to the EBS volume.</p>
             <pre>
 ubuntu@ip-172-31-16-93:~$ starcluster put  mycluster Anders2013medium/*.fastq /data/Anders2013medium/
