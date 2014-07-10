@@ -49,6 +49,7 @@
 								     <li><a href="#required"><i class="icon-bullhorn  icon-white"></i> Install Required Programs </a></li>
 								     <li><a href="#copyfile"><i class="icon-bullhorn  icon-white"></i> Transfer Files </a></li>
 								     <li><a href="#runtophat"><i class="icon-bullhorn  icon-white"></i> Run Tophat </a></li>								     
+								     <li><a href="#cost"><i class="icon-bullhorn  icon-white"></i> Cost </a></li>
 								  </ul>
 								
 							</ul>
@@ -141,16 +142,19 @@ housekeeping: p2407
             <p>After creating AWS account, go to AWS console to view all Amazon Web Services. Click EC2 to go to EC2 Dashboard page.
             Now follow the next few steps to create an <strong>instance</strong></p>
             <ul>
-				<li>Click INSTANCES - Instances. Click blue 'Launch instance' button.</li>
-				<li>Step 1: Choose an Amazon Machine Image (AMI). Click 'Select' button on Ubuntu Server 14.04</li>
-				<li>Step 2: Choose an instance type. Select Micro instance and click 'Review and Launch' button. </li>
-				<li>We will be asked about key pair. Create a key pair name (eg amazonCluster) and click 'Download Key Pair'.
-				You will get the file 'amazonCluster.pem'. </li>
+				<li>Step 1: Click INSTANCES - Instances. Click blue 'Launch instance' button.</li>
+				<li>Step 2: Choose an Amazon Machine Image (AMI). Click 'Select' button on Ubuntu Server 14.04</li>
+				<li>Step 3: Choose an instance type. Select Micro instance and click 'Review and Launch' button. </li>
+				<li>Step 4: We will be asked about key pair. Create a key pair name (eg amazonCluster) and click 'Download Key Pair'.
+				Use <code>chmod</code> on command line to change the permission of this file to 400 or 600. The browser will automatically download
+				the file 'amazonCluster.pem' to your $HOME/Downloads directory. This file is needed when we use <code>ssh</code> command to connect
+				from our local machine to Amazon cloud machine. For more information about the EC2 key pair, check out
+				<a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon' instruction</a>.</li>
             </ul>
-            <p>The t1 micro instance has only 613 MB memory and 8GB storage but it is free (for 1 year) and good enough for us to play around. 
-            The ECPU indicates the CPU performance
-            (one ECPU is approximately cpu of 1.0-1.2GHz 2007 Opteron or 2007 Xeon processor) and vCPU means the # of virtual CPUs. 
-            But we don't use it to run computing. We use it to create cluster of 
+            <p>The t1 micro instance has only 613 MB memory and 8GB (up to 30GB) storage but it is free (for 1 year) and good enough for us to play around. 
+            The term <strong>ECPU</strong> indicates the CPU performance
+            (one ECPU is approximately cpu of 1.0-1.2GHz 2007 Opteron or 2007 Xeon processor) and <strong>vCPU</strong> means the # of virtual CPUs. 
+            But we don't use this t1 micro instance to run computing. We use this machine to create cluster of 
             computers. Write down the DNS or IP addresss of the new instance and use SSH/Putty to connect to the instance. </p>
             <code>
 ssh -i ~/Downloads/amazonCluster.pem ubuntu@ec2-XX-XX-XX-XX.compute-1.amazonaws.com
@@ -265,7 +269,12 @@ root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat7.sh</pre>
              to SCRIPTNAME.eXX and SCRIPTNAME.oXX will save the standard output. For tophat program, 
              it saves its output to STDERR. So if we see a lot of things in SCRIPTNAME.eXX, we can
              safely ignore them. In other cases, we can use these files to debug.</p>
-             <p>Is Amazon Cloud easy? You decide.</p>
+             
+             <h4><a id="cost">Cost</a></h4>
+            <p>The <a href="http://aws.amazon.com/ec2/pricing/">Amazon web page</a> contains several tables of prices for different platforms, hardware 
+            requirement, and instance types. Note that the EC2 is not the only source of billing. The EBS storage used, data I/O are also part of monthly billing.</p>
+            <p>If we want to avoid being billed from EC2, we can <strong>stop</strong> the EC2 instance. If we don't need the instances anymore, we can 
+            <strong>terminate</strong> instances.</p> 
         </section>      
       </div>
      </div>
