@@ -92,7 +92,9 @@ $ qstat -u $USER
 </pre>
 				where the PBS directive <strong>-m</strong> will send an mail when the job begins ("b") and when it ends ("e"). 
 				You probably don't want to use <strong>-k</strong> option which will keep the STDOUT ("o")
-				and STDERR ("e") files in the user's home directory. The directive <strong>-N</strong> means the name of the batch job.           
+				and STDERR ("e") files (eg tophat.e123456 and tophat.o123456) )in the user's home directory and we will have no idea where the batch script come from. 
+				The directive <strong>-N</strong> means the name of the batch job. Note that the total 
+				memory use will be emailed to user if <strong>-m e</strong> has been used.           
             
             <h4><a id="swarm">swarm</a></h4>
             In the following example, I assume the working directory <code>/data/USERNAME/GSE11209</code> contains sequence files and the necessary files 
