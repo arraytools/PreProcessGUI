@@ -271,10 +271,16 @@ root@master:/data/Anders2013medium# qsub -V -b n -cwd run_tophat7.sh</pre>
              safely ignore them. In other cases, we can use these files to debug.</p>
              
              <h4><a id="cost">Cost</a></h4>
-            <p>The <a href="http://aws.amazon.com/ec2/pricing/">Amazon web page</a> contains several tables of prices for different platforms, hardware 
+             <h5>Free Tier</h5>
+             <p>Amazon provides <a href="http://aws.amazon.com/free/">one year of free tier</a> to use several Amazon web services. There 
+              are several limitations however. For example, the EBS service allows 30GB storage space, 2 million I/O (not many actually) and EC2 service
+              allows micro instance with 1GB memory on certain operation systems. Data transfer has a 15GB of bandwidth out aggregated across all AWS services. </p>
+             <h5>After Free Tier</h5>
+            <p>The <a href="http://aws.amazon.com/ec2/pricing/">Amazon EC2 web page</a> contains several tables of prices for different platforms, hardware 
             requirement, and instance types. Note that the EC2 is not the only source of billing. The EBS storage used, data I/O are also part of monthly billing.</p>
             <p>If we want to avoid being billed from EC2, we can <strong>stop</strong> the EC2 instance. If we don't need the instances anymore, we can 
-            <strong>terminate</strong> instances.</p> 
+            <strong>terminate</strong> instances.</p>  
+            <p>The price of <strong>EBS</strong> service can be found on <a href="http://aws.amazon.com/ebs/pricing/">this page</a> (region depending).</p>           
         </section>      
       </div>
      </div>
