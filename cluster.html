@@ -76,8 +76,23 @@
             for users to fill out a form to request a larger quota.</p>
             
 				<h4><a id="qsub">qsub</a></h4>
-				To run a single job, users can use <code>qsub</code> command. Since normally we will want to run multiple jobs, we will 
-				not discuss qsub command here. The NIH Biwoulf User Guide tells users how to create a script file and how to run it.            
+				<p>To run a single job, users can use <code>qsub</code> command. The NIH Biwoulf User Guide tells users how to create a script file and how to run it.
+				Below we give a simple example to run tophat on one node.</p>
+				<pre>
+$ freen
+$ cat run_tophat.sh 
+#!/bin/bash
+#PBS -N tophat
+#PBS -m be
+module load tophat
+cd /data/USERNAME/GSE50491
+tophat -p 6 -o RNA4_KO_BRD4 genome SRR960412_1.fastq SRR960412_2.fastq
+$ qsub -l nodes=1:x2800 run_tophat.sh
+$ qstat -u $USER				
+</pre>
+				where the PBS directive <strong>-m</strong> will send an mail when the job begins ("b") and when it ends ("e"). 
+				You probably don't want to use <strong>-k</strong> option which will keep the STDOUT ("o")
+				and STDERR ("e") files in the user's home directory. The directive <strong>-N</strong> means the name of the batch job.           
             
             <h4><a id="swarm">swarm</a></h4>
             In the following example, I assume the working directory <code>/data/USERNAME/GSE11209</code> contains sequence files and the necessary files 
