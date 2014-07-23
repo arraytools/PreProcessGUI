@@ -56,7 +56,8 @@ cd ..
 wget -N $HTSEQ_URL -O HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
 cd HTSeq-*
-python setup.py install --user
+python setup.py build
+sudo python setup.py install
 cd ..
 
 # fastqc
