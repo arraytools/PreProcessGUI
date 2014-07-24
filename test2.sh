@@ -15,4 +15,4 @@ FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_
 
 set -e
 # update repository
-sleep 6
+sudo mkdir /opt/RNA-Seq/
