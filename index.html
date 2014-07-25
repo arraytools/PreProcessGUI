@@ -339,6 +339,18 @@
 		               that. There is a price to pay when we use fasta format since it requires running bowtie2-build program to generate bowtie2 index files (bt2) that
 		               tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
 		               the index files directly.</li>
+		               <li><strong>How to find out Tophat (and others) software version?</strong> Assume required software is installed under the default directory
+		               <code>/opt/RNA-Seq/bin</code>, we can use command line to find out each software version
+		               <pre>
+/opt/RNA-Seq/bin/bowtie2-2.2.1/bowtie2 --version  # 2.2.1
+/opt/RNA-Seq/bin/tophat-2.0.11.Linux_x86_64/tophat2 --version # 2.0.11
+/opt/RNA-Seq/bin/samtools-0.1.19/samtools # 0.1.19-44428cd
+cat /opt/RNA-Seq/bin/HTSeq-0.6.1/VERSION # 0.6.1
+/opt/RNA-Seq/bin/sratoolkit.2.3.5-2-ubuntu64/bin/fastq-dump --version # 2.3.5
+/opt/RNA-Seq/bin/FastQC/fastqc -v # 0.10.1
+/opt/RNA-Seq/bin/fastx/bin/fastx_trimmer -h # 0.0.13
+</pre>
+		               </li>
 		               <li><strong>I still need a HELP:</strong> Email me.</li>
 		            </ol>
             						
