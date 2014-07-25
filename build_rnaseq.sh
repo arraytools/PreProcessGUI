@@ -14,55 +14,48 @@ FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 
 set -e
+# enable universe for python-matplotlib
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
+# update repository
+sudo apt-get update
 
-# create a new directory; /tmp/pp20140729
+# download packages for samtools
+sudo apt-get -y install zlib1g-dev
+sudo apt-get -y install libncurses5-dev
+# download packages for htseq-count
+sudo apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
+# download package for FastQC
+sudo apt-get -y install openjdk-6-jdk
+
+# create a new directory
 NOW=$(date +"%Y%m%d")
 OUTDIR=/tmp/pp$NOW
 
 if [ ! -d OUTDIR ]; then
-  mkdir -p OUTDIR
+  exit
 fi
-cd OUTDIR
-
-# sratoolkit
-wget -N $SRATOOLKIT_URL -O sratoolkit.tar.gz
-tar xzvf sratoolkit.tar.gz
-
-# bowtie
-if [ -f bowtie2.zip ]; then
-  rm bowtie2.zip
-fi
-wget $BOWTIE2_URL -O bowtie2.zip
-unzip -o bowtie2.zip
-
-# tophat
-wget -N $TOPHAT_URL -O tophat.tar.gz
-tar xzvf tophat.tar.gz
+if [ ! -d /opt/RNA-Seq/bin ]; then
+  sudo mkdir -p /opt/RNA-Seq/bin
+fi  
+sudo mv OUTDIR /opt/RNA-Seq/bin
+cd /opt/RNA-Seq/bin
 
 # samtools (needs to compile)
-wget $SAMTOOLS_URL -O samtools.tar.bz2
-tar xjvf samtools.tar.bz2
+cd samtools-*
+make
+cd ..
 
 # htseq-count (needs to compile)
-wget -N $HTSEQ_URL -O HTSeq.tar.gz
-tar xzvf HTSeq.tar.gz
+cd HTSeq-*
+python setup.py build
+sudo python setup.py install
+cd ..
 
-# fastqc
-if [ -f fastqc.zip ]; then
-  rm fastqc.zip
-fi
-wget -N $FASTQC_URL -O fastqc.zip
-unzip -o fastqc.zip
+sudo chown root:root -R /opt/RNA-Seq/*
+sudo chmod +xr /opt/RNA-Seq/bin/samtools-0.1.19
+sudo chmod +xr /opt/RNA-Seq/bin/samtools-0.1.19/bcftools
+sudo chmod +xr /opt/RNA-Seq/bin/samtools-0.1.19/misc
+sudo chmod +x /opt/RNA-Seq/bin/FastQC/fastqc
 
-# fastx
-wget $FASTX_URL -O fastx.tar.bz2
-if [ ! -d fastx ]; then
-mkdir fastx
-fi
-tar -xjvf fastx.tar.bz2 -C fastx
-
-# clean up
-rm *.zip *.tar.gz *.tar.bz2
-
-echo finish_install_rnaseq > /tmp/install.log
-
+echo finish_build_rnaseq >> /tmp/install.log
+read -p "Press [Enter] key to quit."
