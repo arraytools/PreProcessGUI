@@ -14,15 +14,24 @@ FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 
 set -e
+# enable universe for python-matplotlib
+add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
+# update repository
+apt-get update
 
-# create a new directory; /tmp/pp20140729
-NOW=$(date +"%Y%m%d")
-OUTDIR=/tmp/pp$NOW
+# download packages for samtools
+apt-get -y install zlib1g-dev
+apt-get -y install libncurses5-dev
+# download packages for htseq-count
+apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
+# download package for FastQC
+apt-get -y install openjdk-6-jdk
 
-if [ ! -d OUTDIR ]; then
-  mkdir -p OUTDIR
+# create a new directory
+if [ ! -d /opt/RNA-Seq/bin ]; then
+  mkdir -p /opt/RNA-Seq/bin
 fi
-cd OUTDIR
+cd /opt/RNA-Seq/bin
 
 # sratoolkit
 wget -N $SRATOOLKIT_URL -O sratoolkit.tar.gz
@@ -42,10 +51,17 @@ tar xzvf tophat.tar.gz
 # samtools (needs to compile)
 wget $SAMTOOLS_URL -O samtools.tar.bz2
 tar xjvf samtools.tar.bz2
+cd samtools-*
+make
+cd ..
 
 # htseq-count (needs to compile)
 wget -N $HTSEQ_URL -O HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
+cd HTSeq-*
+python setup.py build
+sudo python setup.py install
+cd ..
 
 # fastqc
 if [ -f fastqc.zip ]; then
@@ -64,5 +80,11 @@ tar -xjvf fastx.tar.bz2 -C fastx
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
 
-echo finish_install_rnaseq > /tmp/install.log
+chown root:root -R /opt/RNA-Seq/*
+chmod +xr /opt/RNA-Seq/bin/samtools-0.1.19
+chmod +xr /opt/RNA-Seq/bin/samtools-0.1.19/bcftools
+chmod +xr /opt/RNA-Seq/bin/samtools-0.1.19/misc
+chmod +x /opt/RNA-Seq/bin/FastQC/fastqc
 
+echo
+read -p "Press [Enter] key to quit."
