@@ -14,6 +14,31 @@ FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 
 set -e
+# enable universe for python-matplotlib
+sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 # update repository
-sudo mkdir /opt/RNA-Seq/
-sleep 6
+sudo apt-get update
+
+# download packages for samtools
+sudo apt-get -y install zlib1g-dev
+sudo apt-get -y install libncurses5-dev
+# download packages for htseq-count
+sudo apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
+# download package for FastQC
+sudo apt-get -y install openjdk-6-jdk
+
+# create a new directory
+NOW=$(date +"%Y%m%d")
+OUTDIR=/tmp/pp$NOW
+
+if [ ! -d OUTDIR ]; then
+  exit
+fi
+if [ ! -d /opt/RNA-Seq/bin ]; then
+  sudo mkdir -p /opt/RNA-Seq/bin
+fi  
+sudo mv OUTDIR /opt/RNA-Seq/bin
+cd /opt/RNA-Seq/bin
+
+echo finish_build_rnaseq >> /tmp/install.log
+read -p "Press [Enter] key to quit."

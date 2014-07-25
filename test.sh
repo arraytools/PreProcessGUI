@@ -14,30 +14,25 @@ FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 
 set -e
-# update repository
-sudo apt-get update
 
-# create a new directory
-if [ ! -d /opt/RNA-Seq/bin ]; then
-  mkdir -p /opt/RNA-Seq/bin
+# create a new directory; /tmp/pp20140729
+NOW=$(date +"%Y%m%d")
+OUTDIR=/tmp/pp$NOW
+
+if [ ! -d OUTDIR ]; then
+  mkdir -p OUTDIR
 fi
-cd /opt/RNA-Seq/bin
+cd OUTDIR
 
-# bowtie
-if [ -f bowtie2.zip ]; then
-  rm bowtie2.zip
-fi
-wget $BOWTIE2_URL -O bowtie2.zip
-unzip -o bowtie2.zip
-
+# fastx
+wget $FASTX_URL -O fastx.tar.bz2
+if [ ! -d fastx ]; then
 mkdir fastx
-mkdir samtools-0.1.19
-mkdir FastQC
-mkdir sratoolkit.2.3.5-2-ubuntu64
-mkdir tophat-2.0.11.Linux_x86_64
+fi
+tar -xjvf fastx.tar.bz2 -C fastx
 
 # clean up
-rm *.zip *.tar.gz *.tar.bz2
+rm *.tar.bz2
 
-echo
-read -p "Press [Enter] key to quit."
+echo finish_install_rnaseq > /tmp/install.log
+
