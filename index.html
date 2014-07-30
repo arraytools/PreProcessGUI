@@ -104,14 +104,22 @@
             <p class="lead">After downloading, extract it to the desktop by using the file manager (called Nautilus) in Ubuntu 
                OR opening a terminal (keyboard shortcut is 'Ctrl+Alt+t') and extract the tar ball by</p>
             <pre><code>tar -xzvf PreProcessGUI.tar.gz</code></pre>
-            <p class="lead"> This will create a binary file called <strong>PreProcessGUI</strong> in the current directory.
-            There is no need to run an installer (such as on Windows OS).
-            </p> 
-            <p class="lead">To launch the application, you can do one of the followings
+            <p class="lead"> This will create a new directory called <strong>PreProcessGUI-dl</strong>. This new directory contains the following files</p>
             <ul class="lead">
-               <li>Open the File Manager and go to the directory containing <strong>PreProcessGUI</strong> program. Double clicking on it to launch.</li>
+            <li><code>PreProcessGUI</code>: GUI version of the application</li>
+            <li><code>PreProcessCLI</code>: CLI version of the application</li>
+            <li><code>install.sh</code>: script to 'install' application icons to the right places</li>
+            <li><code>icons</code>: folder containing application icons</li>            
+            </ul>
+            <p class="lead"> Although it is optional, it is recommended to to open a terminal and run <code>./install.sh</code> as a user to 
+            create a desktop shortcut with the application icon.
+            </p> 
+            <p class="lead">To launch the GUI application, you can do one of the followings
+            <ul class="lead">
+               <li>Open the File Manager (called Nautilus in Ubuntu) and go to the directory <strong>PreProcessGUI-dl</strong>. 
+               Double clicking <code>PreProcessGUI</code> file to launch.</li>
                <li>
-                  Open a terminal and go to the directory contanining <strong>PreProcessGUI</strong>. 
+                  Open a terminal and go to the directory containing <strong>PreProcessGUI</strong>. 
                   Type 
                   <pre><code></code>./PreProcessGUI</code></pre>
                   <p class="lead">to launch. Don't forget the dot and forward slash!</p>
@@ -120,7 +128,7 @@
 							<a href="images/RSPPdesk.png"><img src="images/RSPPdesk.png"></a>
 						</div> -->
                <li>Double click the PreProcessGUI icon <a href="images/RSPP_icon.png"><img src="images/RSPP_iconSmall.png"></a>
-               on the Ubuntu desktop. 
+               on the Ubuntu desktop (assume ./install.sh has be run once). 
                </li>
             </ul>
             </p>
