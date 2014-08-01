@@ -102,7 +102,7 @@
 						</div>
 
             <p>The program can be downloaded from <a href="http://example.com/files/PreProcessGUI.tar.gz">here</a>. </p>
-            <p>After downloading, extract it to the desktop by using the file manager (called Nautilus) in Ubuntu 
+            <p>After downloading, extract it to the desktop by using the file manager (called Nautilus in Ubuntu) 
                OR opening a terminal (keyboard shortcut is 'Ctrl+Alt+t') and extract the tar ball by</p>
             <pre><code>tar -xzvf PreProcessGUI-dl.tar.gz</code></pre>
             <p> This will create a new directory called <strong>PreProcessGUI-dl</strong>. This new directory contains the following files</p>
@@ -150,7 +150,7 @@
             <li><a href="http://www-huber.embl.de/users/anders/HTSeq/">HTSeq-count</a></li>
             </ol>
             <p>
-            based on the experiment design from user's input in a tab-delimited text file <strong>samples.txt</strong>. 
+            based on the experiment design defined in a tab-delimited text file <strong>samples.txt</strong>. 
             More information about <strong>samples.txt</strong> can be found in <a href="#tutorial">Tutorial</a> section.
             </p>       
             <p>Before running the alignment, users are welcomed to run quality control and trimming by using the 
@@ -218,7 +218,8 @@
 			<u>Please copy these bt2 and gtf file to the same directory as the Fastq data files</u>.
 			</p>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a tab-delimited file <strong>samples.txt</strong>.
-			Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
+			This file can be created using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu. </p>
+			<p>The header of the file consists of <strong>LibraryName, LibraryLayout, fastq1</strong> and <strong>fastq2</strong>. Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
 			'fastq1' column contains the fastq filename. Multiple file can be concatenated by comma sign. If the library is paired-end, 'fastq2' column should be
 			specified with a format the same as 'fastq1' column. An example of the <strong>samples.txt</strong> file
             is given below.
