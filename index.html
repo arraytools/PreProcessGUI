@@ -114,7 +114,7 @@
             <p> This will create a new directory called <strong>bdge-dl</strong>. This new directory contains the following files</p>
             <ul>
             <li><code>BDGE</code>: GUI version of the application</li>
-            <li><code>BDGE_CLI</code>: CLI version of the application</li>
+            <li><code>BDGECLI</code>: CLI version of the application</li>
             <li><code>install.sh</code>: script to 'install' application icons to the right places</li>
             <li><code>icon</code>: folder containing application icons</li>            
             </ul>
@@ -242,14 +242,14 @@
 						
 			<p >If you need to run the program in a 'headless' way (without a graphical interface), 
 			you can run the command line interface (CLI) version of the program from the terminal</p>
-			<pre><code>./BDGE_CLI DIRECTORY-NAME</code></pre>
+			<pre><code>./BDGECLI DIRECTORY-NAME</code></pre>
 			<p >where <code>DIRECTORY-NAME</code> is the directory name that contains all of your data and related files. 
-			A full list of arguments can be found by issuing <strong>./BDGE_CLI -h</strong>.</p>
+			A full list of arguments can be found by issuing <strong>./BDGECLI -h</strong>.</p>
 			<p >Like the GUI version,
 			the output of the program is a zip file containing the count table for each sample (just like the GUI version).</p>
 			<p >This program was built using GCC. The executable file should be able to run on most x64 Linux distributions.</p>
 			<p >If you only want to generate shell scripts without running them immediately, you can use the
-			<strong>--createScriptOnly</strong> parameter in <strong>BDGE_CLI</strong>. This can be useful
+			<strong>--createScriptOnly</strong> parameter in <strong>BDGECLI</strong>. This can be useful
 			where the preprocessing should not be run directly; eg users should run scripts by using the
 			<strong>qsub</strong> command in a batch system.</p>
 						
@@ -310,7 +310,7 @@
 						</div>
 						
 		           <ol >
-		               <li><strong>How about other Linux distribution or Mac OS:</strong> Sorry, only <strong>BDGE_CLI</strong> is supported. 
+		               <li><strong>How about other Linux distribution or Mac OS:</strong> Sorry, only <strong>BDGECLI</strong> is supported. 
 		                  Even the code of BDGE can be re-built to work on other OS/Linux distributions, 
 		                  we currently have no hardware resource/time to support other OS/Linux distributions. If you are interested in building one for other
 		                  people, please let me know.
@@ -347,7 +347,7 @@
 		               <a href="http://biowulf.nih.gov/">NIH Biowulf clustering</a> and 
 		               also <a href="http://aws.amazon.com/ec2/">Amazon Elastic Computing Cloud (EC2)</a>. With basic knowledge of batching system (NIH Biowulf) or
 		               Sun Grid Engine queuing system (Amazon Cloud), users can submit multiple jobs to run in parallel on clusters. 
-		               See <a href="cluster.html">Running BDGE_CLI in Clusters of Computers</a> for more information.</li>
+		               See <a href="cluster.html">Running BDGECLI in Clusters of Computers</a> for more information.</li>
 		               <li><strong>Can we use fasta as the reference genome file instead of bt2 format:</strong> It is possible, of course. But we have not implemented
 		               that. There is a price to pay when we use fasta format since it requires running bowtie2-build program to generate bowtie2 index files (bt2) that
 		               tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
