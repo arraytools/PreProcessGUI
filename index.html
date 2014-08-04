@@ -174,7 +174,8 @@
             <p>The output of the program is a zip file "counts.zip" which contains as many files as the number of samples.
             Each file contains a count table. The file name is determined by the sample name with an extension 'count'.
             These count table can be opened by any text editor.
-            Users can use for example <code>newCountDataSetFromHTSeqCount()</code> function from <code>DESeq</code> package or
+            Users can use <code>DESeqDataSetFromHTSeqCount()</code> function from <code>DESeq2</code> package 
+            in <a href="http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html">Bioconductor</a> or
             <code>readDGE()</code> function from <code>edgeR</code> package to load COUNT files data into an 
             <a href="http://cran.r-project.org">R</a> environment.</p>
             </section>
@@ -207,7 +208,8 @@
 							<h1>Tutorial</h1>
 						</div>
 
-           <p >A small test data can be downloaded from <a href="http://example.com/files/testData.tar.gz">here</a>.</p>
+            <!--  <p >A small test data can be downloaded from <a href="http://example.com/files/testData.tar.gz">here</a>.</p> -->
+           
             <p >To run the preprocessing, it is assumed the working directory contains the following files</p>
             <ol > 
 				<li>FastQ file (*.fastq) - raw data</li>
@@ -215,6 +217,13 @@
 				<li>Genome transcript annotation file (*.gtf) - gene model annotation</li>
 				<li>samples.txt </li>
 			</ol>
+			<p>The fastq files can be generated from sequencer or from public repositories like Sequence Read Archive (SRA). If data is obtained from
+			SRA, the data format is in *.sra which cannot be processed in Tophat program. So the first step is to run a program called fastq-dump to
+			convert the data format from sra to fastq. An example of the command is</p>
+			<pre>
+fastq-dump --split-3 SRRxxxx.sra</pre>
+         <p>This will create a new file SRRxxxx.fastq for single-end data or SRRXXXX_1.fastq and SRRXXXX_2.fastq for paired-end data.</p>
+
 			<p >The genome reference file and genome annotation file can be downloaded from Tophat reference genome download page
 			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">here</a>. If you have NIH helix/biowulf acccount, you can access the iGenomes at
 			/fdb/igenomes/ directory according to <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
@@ -225,13 +234,16 @@
 			<u>Please copy these bt2 and gtf file to the same directory as the Fastq data files</u>.
 			</p>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a tab-delimited file <strong>samples.txt</strong>.
-			This file can be created using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu. </p>
-			<p>The header of the file consists of <strong>LibraryName, LibraryLayout, fastq1</strong> and <strong>fastq2</strong>. Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
+			This file can be created using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu. You can launch Calc by clicking
+			its icon on the Ubuntu launcher located on the left hand side of the desktop or enter 'Calc' on the Dash on top-left corner to get it. </p>
+			<p>The header of <strong>samples.txt</strong> consists of <strong>LibraryName, LibraryLayout, fastq1</strong> and <strong>fastq2</strong>. Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
 			'fastq1' column contains the fastq filename. Multiple file can be concatenated by comma sign. If the library is paired-end, 'fastq2' column should be
 			specified with a format the same as 'fastq1' column. An example of the <strong>samples.txt</strong> file
             is given below.
             <a href="images/samples.png"><img src="images/samples.png" width="800px"></a>  
 			</p>
+			When the necessary files are prepared and the <a href="#setuprequire">required software</a>  have been installed, your are ready to run processing 
+			by clicking the big 'Run Preprocessing' button.
 			</section>
 
 					<section id="cli">
