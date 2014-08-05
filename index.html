@@ -64,11 +64,13 @@
 							<strong>BRB Digital Gene Expression (BDGE)</strong> is a new tool to help scientists with RNA-Seq data preprocessing for downstream 
 							gene expression analysis. It takes RNA sequence 
 							data files in a FASTQ format as an input and outputs raw count data in a text format. 
-							The raw count data can be used in <a href="http://linus.nci.nih.gov/BRB-ArrayTools.html">BRB-ArrayTools</a> for gene expression analysis. 
+							The raw count data can be read by <a href="http://linus.nci.nih.gov/BRB-ArrayTools.html">BRB-ArrayTools</a> for gene expression analysis. 
 							The tool is designed to be run on a Linux (we currently only support Ubuntu) environment 
-							which includes local physical/virtual machines or remote servers like Amazon clustering. The tool is developed to
-							run RNA-Seq preprocessing based on well-know RNA-Seq tools (Tophat, SAMTools and HTSeq). So
-							rather than inventing a new preprocessing or analysis tool, it is designed to hopefully make RNA-Seq preprocessing more accessible to
+							which includes local physical/virtual machines or remote servers like Amazon cloud. The tool is developed to
+							run RNA-Seq preprocessing based on well-know RNA-Seq tools (<a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a>,
+                     <a href="http://samtools.sourceforge.net/">Samtools</a> and 
+                     <a href="http://www-huber.embl.de/users/anders/HTSeq/">HTSeq</a>). So
+							rather than inventing a new preprocessing or analysis tool, it is designed to make RNA-Seq preprocessing more accessible to
 							general scientists. 
 						</p>
 					
@@ -92,13 +94,32 @@
             		on your Ubuntu on top of it.</p>
             
             		<p>The Ubuntu ISO file can be downloaded from 
-            		<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a> page. Installing Ubuntu is very easy. 
+            		<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a> page. Installing Ubuntu on a new machine is very easy. 
             		After a few simple questions (installation type, select drive, where are you/region, keyboard layout and who are you) 
             		have been answered, Ubuntu will start to install it to your computer. If you don't know what is ISO file
             		or need an instruction to install Ubuntu OS, check out 
             		<a href="http://howtoubuntu.org/how-to-install-ubuntu-12-04-precise-pangolin">this page</a>.
             		It contains an instruction with step-by-step screenshots to help you to install it. The whole process of installing Ubuntu
-            		takes about 10-20 minutes depending on your hardware.</p>						
+            		takes about 10-20 minutes depending on your hardware.</p>
+            		
+            		<p>If you want to install Ubuntu on a machine with an operation system (such as Windows OS) already on it, you have several
+            		choices to install Ubuntu. The first one is to install Ubuntu by overwriting the current OS. This approach is most straightforward
+            		by will destroy the curent OS. The second choice is to install
+            		Ubuntu on a new <strong>partition</strong> so the current OS can co-exist with Ubuntu OS. Users have a choice to boot into either Ubuntu 
+            		OS or current OS when the machine is restarted. This approach has an advantage of keeping the current OS but it has to be done carefully. 
+            		The third choice is to create a virtual machine using software called <a href="https://www.virtualbox.org/">Oracle VirtualBox</a> (open-source) or 
+            		<a href="http://www.vmware.com/">VMWARE</a> (commercial) inside current OS. The approach will not erase the current OS. It
+            		is good for testing purpose and can be very useful if the virtual machine is configured with good specifications.</p>
+            		
+            		<p>If you like to install BDGE on Amazon cloud to take advantage of clustering power, please consider the command line interface 
+            		program <a href="#cli">BDGECLI</a>. See FAQ #5 and #6 below for more information. </p>
+            		
+            		<p>If you already installed <strong>BDGE</strong> and want to use it remotely from another machine running on Windows OS, the Windows OS
+            		needs to have an X11 display server program in order to use <strong>BDGE</strong>. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a>
+            		and <a href="http://sourceforge.net/projects/xming/">Xming X server</a> are 
+            		two standard programs for Windows user to remotely run GUI programs located on Linux machines. If you are not familiar with these two programs, google
+            		with keywords PuTTy and Xming to find more information. </p> 			
+            					
 					</section>
 
 					<section id="download">
@@ -107,8 +128,8 @@
 							<h1>Download</h1>
 						</div>
 
-            <p>The program can be downloaded from <a href="http://example.com/files/BDGE.tar.gz">here</a>. </p>
-            <p>After downloading, extract it to the desktop by using the file manager (called Nautilus in Ubuntu) 
+            <p>The program can be downloaded from <a href="http://example.com/bdge-dl.tar.gz">here</a>. </p>
+            <p>After downloading, extract it to the desktop by using the file manager (called <strong>Nautilus</strong> in Ubuntu) 
                OR opening a terminal (keyboard shortcut is 'Ctrl+Alt+t') and extract the tar ball by</p>
             <pre><code>tar -xzvf bdge-dl.tar.gz</code></pre>
             <p> This will create a new directory called <strong>bdge-dl</strong>. This new directory contains the following files</p>
@@ -123,13 +144,13 @@
             </p> 
             <p>To launch the GUI application, you can do one of the followings
             <ul>
-               <li>Open the File Manager (called Nautilus in Ubuntu) and go to the directory <strong>BDGE-dl</strong>. 
+               <li>Open the File Manager and go to the directory <strong>BDGE-dl</strong>. 
                Double clicking <code>BDGE</code> file to launch.</li>
                <li>
                   Open a terminal and go to the directory containing <strong>BDGE</strong>. 
                   Type 
                   <pre><code></code>./BDGE</code></pre>
-                  <p>to launch. Don't forget the dot and forward slash!</p>
+                  <p>to launch. Don't forget the dot and the forward slash!</p>
                </li>
 <!--                <div class="thumbnail">
 							<a href="images/RSPPdesk.png"><img src="images/RSPPdesk.png"></a>
@@ -199,7 +220,7 @@
             <p >If users have already installed required software by themselves, they can click <strong>Browse</strong> button to select the 
             directory for each software (It is assumed HTSeq is available under a global environment so there is no entry for it).
             After that, they can click OK button to enable their selections.</p>            
-            <p >Note that the setup is only needed to be run once. The paths for each required software will be remembered by <strong>BDGE</strong>.</p>             
+            <p >Note that the setup is only needed to be run once. The path for each required software will be remembered by <strong>BDGE</strong>.</p>             
  					</section>
 
 					<section id="tutorial">
@@ -225,8 +246,8 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
          <p>This will create a new file SRRxxxx.fastq for single-end data or SRRXXXX_1.fastq and SRRXXXX_2.fastq for paired-end data.</p>
 
 			<p >The genome reference file and genome annotation file can be downloaded from Tophat reference genome download page
-			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">here</a>. If you have NIH helix/biowulf acccount, you can access the iGenomes at
-			/fdb/igenomes/ directory according to <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
+			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">here</a>. If you have <a href="http://biowulf.nih.gov/">NIH helix/biowulf</a> acccount, 
+			you can access the iGenomes at /fdb/igenomes/ directory according to <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
 			<p >Consider, for example, the Homo sapiens genome GRCh37.
 			After downloading the file <strong>Homo_sapiens_Ensembl_GRCh37.tar.gz</strong> (17GB), the reference genome files (<strong>genome.*.bt2</strong>) are 
 			located under <code>Homo_sapiens/Ensembl/GrCh37/Sequence/Bowtie2Index</code> directory and gene annotation file (<strong>genes.gtf</strong>) is located under
@@ -261,8 +282,8 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 			the output of the program is a zip file containing the count table for each sample (just like the GUI version).</p>
 			<p >This program was built using GCC. The executable file should be able to run on most x64 Linux distributions.</p>
 			<p >If you only want to generate shell scripts without running them immediately, you can use the
-			<strong>--createScriptOnly</strong> parameter in <strong>BDGECLI</strong>. This can be useful
-			where the preprocessing should not be run directly; eg users should run scripts by using the
+			<strong>--createScriptOnly</strong> parameter in <strong>BDGECLI</strong>. This can be useful in a situation
+			that the scripts should be treaked before being used; e.g. users want to run scripts through the
 			<strong>qsub</strong> command in a batch system.</p>
 						
 					</section>
