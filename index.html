@@ -343,12 +343,12 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 						</div>
 						
 		           <ol >
-		               <li><strong>How about other Linux distribution or Mac OS:</strong> Sorry, only <strong>BDGECLI</strong> is supported. 
+		               <li><strong>How about other Linux distribution or Mac OS? </strong> Sorry, only <strong>BDGECLI</strong> is supported. 
 		                  Even the code of BDGE can be re-built to work on other OS/Linux distributions, 
 		                  we currently have no hardware resource/time to support other OS/Linux distributions. If you are interested in building one for other
 		                  people, please let me know.
 		               </li>
-		               <li><strong>How about more advanced options:</strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
+		               <li><strong>How about more advanced options? </strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
 		               for their need. A screenshot of the dialog (default options are shown) is 
 		               <p>
 		               <a href="images/ToolsOption.png"><img src="images/ToolsOption.png" height="200px"></a>
@@ -364,28 +364,28 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 		               the -a option specifies a minimum score for the alignment quality (ie all reads with alignment quality lower than the given
 		               minimum value will be skipped). The default is 0 for minimum score.
 		               </li>
-		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>:</strong> 
+		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>? </strong> 
 		               Galaxy is a much complicated system. There may be a learning curve for general users not to mention unexpected issues
 		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
 		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application so everyone who has some experience with Unix/Linux can start to run it without a need of a 
 		               'system administrator'.</li>
-		               <li><strong>Is the program running in parallel:</strong> The sequence alignment part in Tophat is most time consuming. 
+		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
 		               So we design to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
 		               on the system minus one. Since running Tophat with multi-thread requires a significant increase of memory, sometimes
 		               the execution may be very slow or running into the problem of out of memory. In such a case, users can specify '-p' 
 		               parameter in Tophat program to decrease the number of threads.</li>
-							<li><strong>Can the program run on amazon cloud:</strong> You bet. Make sure the amazon machine image (AMI) used to 
+							<li><strong>Can the program run on amazon cloud? </strong> You bet. Make sure the amazon machine image (AMI) used to 
 							create machines is based on 64-bit Ubuntu 12.04 and up.</li>               
-		               <li><strong>Can the program run in clustering environment:</strong> Yes. We have tested the program to run the program in 
+		               <li><strong>Can the program run in clustering environment? </strong> Yes. We have tested the program to run the program in 
 		               <a href="http://biowulf.nih.gov/">NIH Biowulf clustering</a> and 
 		               also <a href="http://aws.amazon.com/ec2/">Amazon Elastic Computing Cloud (EC2)</a>. With basic knowledge of batching system (NIH Biowulf) or
 		               Sun Grid Engine queuing system (Amazon Cloud), users can submit multiple jobs to run in parallel on clusters. 
 		               See <a href="cluster.html">Running BDGECLI in Clusters of Computers</a> for more information.</li>
-		               <li><strong>Can we use fasta as the reference genome file instead of bt2 format:</strong> It is possible, of course. But we have not implemented
+		               <li><strong>Can we use fasta as the reference genome file instead of bt2 format? </strong> It is possible, of course. But we have not implemented
 		               that. There is a price to pay when we use fasta format since it requires running bowtie2-build program to generate bowtie2 index files (bt2) that
 		               tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
 		               the index files directly.</li>
-		               <li><strong>How to find the Tophat (and other) software version?</strong> Assume required software is installed under the default directory
+		               <li><strong>How to find the Tophat (and other) software version? </strong> Assume required software is installed under the default directory
 		               <code>/opt/RNA-Seq/bin</code>, we can use command line to find out each software version
 		               <pre>
 /opt/RNA-Seq/bin/bowtie2-2.2.1/bowtie2 --version  # 2.2.1
@@ -397,10 +397,21 @@ cat /opt/RNA-Seq/bin/HTSeq-0.6.1/VERSION # 0.6.1
 /opt/RNA-Seq/bin/fastx/bin/fastx_trimmer -h # 0.0.13
 </pre>
 		               </li>
-		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used </strong> BDGE works on virtual machine too but
+		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used? </strong> BDGE works on virtual machine too but
 		               it does not work under a Ubuntu live mode. Live session differs from a regular operation system. It has a very limited file system space and 
 		               you will get an error when software (tophat et al) are being installed. So please use 'Install Ubuntu' instead of 'Try Ubuntu'.</li>
-		               <li><strong>I still need a HELP:</strong> Email me.</li>
+		               <li><strong>OK, I got the count table successfully from BDGE. How do I transfer the count table files to Windows for BRB-ArrayTools? </strong>
+		               One simple solution is to use a flash drive to copy the zip file from working directory in Ubuntu to a Windows machine. 
+		               If you like a more elegant way to transfer the file, you can download a program called <a href="http://winscp.net/eng/index.php">WinSCP</a> 
+		               on Windows machines and use it to transfer files between Ubuntu and Windows machines. Before you use WinSCP, you need to know the IP for the
+		               Ubuntu machine. You can easily find out the information by using the <strong>ifconfig</strong> command on a terminal
+		               <pre>ifconfig eth0</pre>
+		               where the 'eth0' argument represents the first ethernet adapter. The IP address should have a format XXX.XXX.XXX.XXX. You need to enter the 
+		               IP address in the 'Host name' entry of a dialog when you create a new connection session on WinSCP. 
+		               </li>		       
+		               <li><strong>It is the first time for me to use Ubuntu OS. Is there a guide of using Ubuntu OS? </strong>One excellent website is 
+		               <a href="ubuntuguide.org/wiki/"> Ubuntuguide.org</a> although there are a lot of information on internet.</li>        
+		               <li><strong>I still need a HELP: </strong> Email me.</li>
 		            </ol>
             						
 					</section>
