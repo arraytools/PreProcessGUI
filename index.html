@@ -227,7 +227,7 @@
             </ol>
             <p>
             based on the experiment design defined in a tab-delimited text file <strong>samples.txt</strong>. 
-            More information about <strong>samples.txt</strong> can be found in <a href="#tutorial">Tutorial</a> section.
+            More information about <strong>samples.txt</strong> can be found in the <a href="#tutorial">Tutorial</a> section.
             </p>       
             <p>Before running the alignment, users are welcomed to run quality control and trimming by using the 
             <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> and 
@@ -243,7 +243,7 @@
             </ol>
             <p>The output of the program is a zip file "counts.zip" which contains as many files as the number of samples.
             Each file contains a count table with each row represens one gene and each column represents one sample. The file name is determined by the sample name with an extension 'count'.
-            These count table can be opened by any text editor.
+            These count table files can be opened by any text editor.
             Users can use <code>DESeqDataSetFromHTSeqCount()</code> function from <code>DESeq2</code> package 
             in <a href="http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html">Bioconductor</a> or
             <code>readDGE()</code> function from <code>edgeR</code> package to load COUNT files data into an 
@@ -260,17 +260,19 @@
             For either way, users first open a dialog by clicking Settings > Tools Manager.</p>
             <a href="images/automaticSetup.png"><img src="images/automaticSetup.png" width="600"></a>            
             <h4><a id="automatic">Automatic method</a></h4> 
-            <p >For aumatical setup method, users only need to click <strong>Automatic setup</strong> button. A new terminal window will open up. 
-            After you type the <strong>sudo</strong> password the application will start to download an installation script (which is kept updated) and install required software. 
+            <p >Automatical setup method provides an easy way to install required software. 
+            When users click the <strong>Automatic setup</strong> button, a new terminal window will be opened immediately. 
+            After the <strong>sudo</strong> password was entered the application will start to download an installation script 
+            from an internet (which is kept updated) and install required software. 
             All the required software is installed under <code>/opt/RNA-Seq/bin</code> directory. Note that if you do not have sudo password, you need to ask your
-            system adminstrator for help. Check out <a href="#installErr">here</a> in FAQ on how to allow an existing user to have root privileges.</p>
+            system administrator for help. Check out <a href="#installErr">here</a> in FAQ on how to allow an existing user to have root privileges.</p>
             <p >After the installation is finished, users will be asked to hit ENTER key to close the terminal. Now they can go to the main dialog to 
             continue to preprocess their data.</p>
             <h4><a id="manual">Manual method</a></h4>
-            <p >If users have already installed required software by themselves, they can click <strong>Browse</strong> button to select the 
+            <p >If users have required software installed before, they can click <strong>Browse</strong> button to select the 
             directory for each software (It is assumed HTSeq is available under a global environment so there is no entry for it).
-            After that, they can click OK button to enable their selections.</p>            
-            <p >Note that the setup is only needed to be run once. The path for each required software will be remembered by <strong>BDGE</strong>.</p>             
+            After the path of each software has been specified, users can click 'OK' button to proceed processing.</p>            
+            <p >Note that the setup is only needed to be run once. The path of each required software will be remembered by <strong>BDGE</strong>.</p>             
  					</section>
 
 					<section id="tutorial">
@@ -283,7 +285,7 @@
            
             <p >To run the preprocessing, it is assumed the working directory contains the following files</p>
             <ol > 
-				<li>FastQ file (*.fastq) - raw data</li>
+				<li>Fastq file (*.fastq) - raw data</li>
 				<li>Reference genome sequence (*.bt2) - reference index used for alignment</li>
 				<li>Genome transcript annotation file (*.gtf) - gene model annotation</li>
 				<li>samples.txt </li>
@@ -305,8 +307,12 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 			<u>Please copy these bt2 and gtf file to the same directory as the Fastq data files</u>.
 			</p>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a tab-delimited file <strong>samples.txt</strong>.
-			This file can be created using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu. You can launch Calc by clicking
-			its icon on the Ubuntu launcher located on the left hand side of the desktop or enter 'Calc' on the Dash on top-left corner to get it. </p>
+			This file can be created using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu. 
+			You can launch Calc by clicking
+			its icon on the Ubuntu launcher located on the left hand side of the desktop or enter 'Calc' on the Dash on top-left corner to get it. Note that
+			we have included a template of samples.txt in the <code>bdge-dl</code> folder. Users are encouraged to copy this file to their working
+			directory and then modify it for their need.</p>
+			
 			<p>The header of <strong>samples.txt</strong> consists of <strong>LibraryName, LibraryLayout, fastq1</strong> and <strong>fastq2</strong>. Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
 			'fastq1' column contains the fastq filename. Multiple file can be concatenated by comma sign. If the library is paired-end, 'fastq2' column should be
 			specified with a format the same as 'fastq1' column. An example of the <strong>samples.txt</strong> file
@@ -327,7 +333,9 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 			you can run the command line interface (CLI) version of the program from the terminal</p>
 			<pre><code>./BDGECLI DIRECTORY-NAME</code></pre>
 			<p >where <code>DIRECTORY-NAME</code> is the directory name that contains all of your data and related files. 
-			A full list of arguments can be found by issuing <strong>./BDGECLI -h</strong>.</p>
+			A full list of arguments can be found by adding '-h' argument after the command:  
+			<pre><code>./BDGECLI -h</code></pre>
+			</p>
 			<p >Like the GUI version,
 			the output of the program is a zip file containing the count table for each sample (just like the GUI version).</p>
 			<p >This program was built using GCC. The executable file should be able to run on most x64 Linux distributions.</p>
@@ -367,16 +375,18 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 
 						<ol >
 							<li>The test machine is Dell T3500 with Xeon W3690 @ 3.47Ghz (6 cores) and 12GB memory running on Ubuntu 12.04. Five threads were used
-							in tophat program.</li>			
-							<li>When the number of threads is increased, the memory requirement is increased too. It is possible tophat cannot be finished
-							because there is not enough memory when a large number of threads was used.</li>
+							in the Tophat program.</li>			
+							<li>When the number of threads is increased, the memory requirement is increased too. It is possible Tophat program execution 
+							cannot be finished
+							because there is not enough memory when a large number of threads was used. In such a case, users can add a '-p' option 
+							in the Tophat program of the 'Tools Options' dialog. See FAQ #2.</li>
 							<li>The coverage is computed by randomly picking one or two samples.</li>
 							<li>The relation of Tophat execution time and number of threads is not linear. For example, running Tophat on sample
 							Serum_1 from GSE30786 takes 2h35m using 5 threads and 3h51m using 1 thread. Running Tophat on sample dT_bio from GSE11209
 							takes 5m using 5 threads and 6m using 1 thread.</li>
 							<li>Total fastq size can be checked by the linux command: <code>du -ch *.fastq | tail -n 1</code> .</li>
 							<li>In GSE50491, the max fastq file size is 20GB or 40GB for the RNK4_KO_BRD4 sample (paired end).
-							It run out of physical memory and used swap. Waiting for 10 hours cannot even processes one sample.
+							All physical memory was run out. Waiting for 10 hours cannot even process one sample.
 							From 'tophat.log' file, we should adapt '--no-coverage-seach' option (this option can be entered through
 							Settings -> Tools Options dialog in BDGE)  and it works. In GSE36968 and GSE45419, I also need to turn off coverage search.</li>
 							<li>The total space after running preprocessing can be 2 to 4 times of the total fastq file size.</li>
@@ -395,7 +405,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 		           <ol >
 		               <li><strong>How about other Linux distribution or Mac OS? </strong> Sorry, only <strong>BDGECLI</strong> is supported. 
 		                  Even the code of BDGE can be re-built to work on other OS/Linux distributions, 
-		                  we currently have no hardware resource/time to support other OS/Linux distributions. If you are interested in building one for other
+		                  we currently have no hardware resource and time to support other OS/Linux distributions. If you are interested in building one for other
 		                  people, please let me know.
 		               </li>
 		               <li><strong>How about more advanced options? </strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
@@ -405,7 +415,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 		               </p>
 		               Options you may want to use include <a href="http://ccb.jhu.edu/software/tophat/manual.shtml">--no-coverage-search</a> or 
 		               <a href="http://ccb.jhu.edu/software/tophat/manual.shtml">-G</a> in tophat where --no-coverage-search can be 
-		               used if you see tophat program is working on searching for junctions via segment mapping and consumes too much memory or time 
+		               used if you see Tophat program is working on searching for junctions via segment mapping and consumes too much memory or time 
 		               (see a screenshot below) and -G option is used to specify GTF file (eg -G genes.gtf).
 		               <p>
 		               <a href="images/TophatCoverageSearch.png"><img src="images/TophatCoverageSearch.png" height="200px"></a>
@@ -417,10 +427,10 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>? </strong> 
 		               Galaxy is a much complicated system. There may be a learning curve for general users not to mention unexpected issues
 		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
-		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application so everyone who has some experience with Unix/Linux can start to run it without a need of a 
-		               'system administrator'.</li>
+		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who has some experience 
+		               with Unix/Linux can start to run it without a need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
-		               So we design to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
+		               So we design <strong>BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
 		               on the system minus one. Since running Tophat with multi-thread requires a significant increase of memory, sometimes
 		               the execution may be very slow or running into the problem of out of memory. In such a case, users can specify '-p' 
 		               parameter in Tophat program to decrease the number of threads.</li>
@@ -433,7 +443,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 		               See <a href="cluster.html">Running BDGECLI in Clusters of Computers</a> for more information.</li>
 		               <li><strong>Can we use fasta as the reference genome file instead of bt2 format? </strong> It is possible, of course. But we have not implemented
 		               that. There is a price to pay when we use fasta format since it requires running bowtie2-build program to generate bowtie2 index files (bt2) that
-		               tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
+		               Tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
 		               the index files directly.</li>
 		               <li><strong>How to find the Tophat (and other) software version? </strong> Assume required software is installed under the default directory
 		               <code>/opt/RNA-Seq/bin</code>, we can use command line to find out each software version
@@ -447,9 +457,9 @@ cat /opt/RNA-Seq/bin/HTSeq-0.6.1/VERSION # 0.6.1
 /opt/RNA-Seq/bin/fastx/bin/fastx_trimmer -h # 0.0.13
 </pre>
 		               </li>
-		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used? </strong> BDGE works on virtual machine too but
-		               it does not work under a Ubuntu live mode. Live session differs from a regular operation system. It has a very limited file system space and 
-		               you will get an error when software (tophat et al) are being installed. So please use 'Install Ubuntu' instead of 'Try Ubuntu'.</li>
+		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used? </strong> BDGE works on virtual machine but
+		               it does not work under Ubuntu live mode (default option when booting from CD). Live session differs from a regular operation system. It has a very limited file system space and 
+		               you will get an error when software (Tophat et al) are being installed. So please use 'Install Ubuntu' instead of 'Try Ubuntu'.</li>
                      <li><A NAME="installErr"><strong>I got an error when I ran install.sh</strong></A>. Running the bash script install.sh requires <strong>root</strong> privileges. 
                      If you don't have root privileges, you will get the following error when you ran <strong>install.sh</strong> script. 
 <pre>
@@ -469,8 +479,8 @@ sudo adduser brb2 sudo</pre> PS. 1. The user name is brb2 in the above example. 
 		               where the 'eth0' argument represents the first ethernet adapter. The IP address should have a format XXX.XXX.XXX.XXX. You need to enter the 
 		               IP address in the 'Host name' entry of a dialog when you create a new connection session on WinSCP. 
 		               </li>		       
-		               <li><strong>It is the first time for me to use Ubuntu OS. Is there a guide of using Ubuntu OS? </strong>One excellent website is 
-		               <a href="ubuntuguide.org/wiki/"> Ubuntuguide.org</a> although there are a lot of information on internet.</li>        
+		               <li><strong>It is the first time for me to use Ubuntu OS. Is there a guide for me to get familiar with Ubuntu OS? </strong>One excellent website is 
+		               <a href="http://ubuntuguide.org/wiki/"> Ubuntuguide.org</a> although there are many other useful resources on internet.</li>        
 		               <li><strong>I still need HELP: </strong> Email me.</li>
 		            </ol>
             						
