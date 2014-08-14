@@ -194,7 +194,40 @@
             <a href="images/ubuntu/image049.png"><img class="img-polaroid" src="images/ubuntu/image049.png"></a>
             </p>
             
-            <h4><a id="share">Share Folders</a></h4>            
+            <h4><a id="share">Share Folders</a></h4>    
+            <p>Before you can enable shared folders on the host machine, you must first install VirtualBox guest additions software on the guest machine.</p>
+            <p> When Ubuntu guest machine is on, click on Devices > Shared folders settings… 
+            <a href="images/ubuntu/image051.png"><img class="img-polaroid" src="images/ubuntu/image051.png"></a>
+            </p>     
+            
+            <p>Select <strong>Machine Folders</strong> and hit the <strong>add button</strong> (plus sign).
+            <a href="images/ubuntu/image053.png"><img class="img-polaroid" src="images/ubuntu/image053.png"></a>            
+            </p>   
+            
+            <p>Browse to the folder you wish to access from the guest machine. Check <strong>Auto-mount</strong> and 
+            <strong>Make Permanent</strong> options and click OK button.
+            <a href="images/ubuntu/image054.png"><img class="img-polaroid" src="images/ubuntu/image054.png"></a>
+            </p>
+            
+            <p>Click OK button once more.</p><p>
+            <a href="images/ubuntu/image055.png"><img class="img-polaroid" src="images/ubuntu/image055.png"></a>
+            </p>            
+            
+            <p>Now type 'terminal' in Dash to open a Terminal.
+            <a href="images/ubuntu/image056.png"><img class="img-polaroid" src="images/ubuntu/image056.png"></a>
+            </p>
+            
+            <p>Type the following line in the Terminal.
+<pre>            
+sudo adduser brb vboxsf
+</pre>
+Replace 'brb' with your account name in Ubuntu.
+When you are done, restart the Ubuntu guest machine and go to /media/ directory. 
+From Nautilus, click <strong>Computer > File System > Media</strong> folder and inside it you will see a folder 
+beginning with <strong>sf_</strong> (the folder name is sf_Downloads in our example). 
+Now you can transfer files between the Ubuntu guest machine and the Windows host machine in Nautilus.
+</p>
+            
          </section>
       
       </div>
