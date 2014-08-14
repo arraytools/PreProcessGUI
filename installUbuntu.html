@@ -167,9 +167,9 @@
             <h4><a id="guest">Guest Additions</a></h4>
             <p>After the Ubuntu guest machine is installed, you will find the Ubuntu OS screen size is not extendable 
             and you are not able to share folders between the host machine and Ubuntu. </p>
-            <p>Guest additions provide additional capability to a guest virtual machine, including mouse pointer integration, 
+            <p><strong>Guest Additions</strong> software provide additional capability to a guest virtual machine, including mouse pointer integration, 
             better video support, share folders, share clipboard, et al.</p>
-            <p>To install Guest Additions, click Devices > Insert Guest Additions CD images…
+            <p>To install <strong>Guest Additions</strong>, click <strong>Devices > Insert Guest Additions CD images…</strong>
             <a href="images/ubuntu/image038.png"><img class="img-polaroid" src="images/ubuntu/image038.png"></a>
             </p>
             
@@ -177,7 +177,7 @@
             <a href="images/ubuntu/image039.png"><img class="img-polaroid" src="images/ubuntu/image039.png"></a>
             </p>
             
-            <p>Installing Guest Additions requires root privilege. Enter user's password (assume the current user has sudo privilege).
+            <p>Installing <strong>Guest Additions</strong> requires root privilege. Enter user's password (assume the current user has sudo privilege).
             <a href="images/ubuntu/image041.png"><img class="img-polaroid" src="images/ubuntu/image041.png"></a>
             </p>
             
@@ -185,18 +185,19 @@
             <a href="images/ubuntu/image043.png"><img class="img-polaroid" src="images/ubuntu/image043.png"></a>
             </p>
             
-            <p>Now prepare to restart the system to enable the change. Click Shutdown on the menu and restart.
+            <p>Now prepare to restart the system to enable the change. Click 'Shutdown' on the menu and then the 'Restart' button.
             <a href="images/ubuntu/image045.png"><img class="img-polaroid" src="images/ubuntu/image045.png"></a>
             <a href="images/ubuntu/image047.png"><img class="img-polaroid" src="images/ubuntu/image047.png"></a>
             </p>             
             
-            <p>When Ubuntu is rebooted, you will see the screen resolution is much better.
+            <p>After rebooting Ubuntu, you will see the desktop resolution is much better.
             <a href="images/ubuntu/image049.png"><img class="img-polaroid" src="images/ubuntu/image049.png"></a>
             </p>
             
             <h4><a id="share">Share Folders</a></h4>    
-            <p>Before you can enable shared folders on the host machine, you must first install VirtualBox guest additions software on the guest machine.</p>
-            <p> When Ubuntu guest machine is on, click on Devices > Shared folders settings… 
+            <p>Before you can enable shared folders on the host machine, make sure you have installed VirtualBox <strong>Guest Additions</strong> 
+            software on the guest machine. </p>
+            <p> When Ubuntu guest machine is on, click on <strong>Devices > Shared folders settings…</strong> 
             <a href="images/ubuntu/image051.png"><img class="img-polaroid" src="images/ubuntu/image051.png"></a>
             </p>     
             
@@ -223,8 +224,8 @@ sudo adduser brb vboxsf
 </pre>
 Replace 'brb' with your account name in Ubuntu.
 When you are done, restart the Ubuntu guest machine and go to /media/ directory. 
-From Nautilus, click <strong>Computer > File System > Media</strong> folder and inside it you will see a folder 
-beginning with <strong>sf_</strong> (the folder name is sf_Downloads in our example). 
+From <strong>Nautilus</strong> (file manager in Ubuntu), click <strong>Computer > File System > Media</strong> folder and inside it you will see a folder 
+beginning with <strong>sf_</strong> (the folder name is <em>sf_Downloads</em> in our example). 
 Now you can transfer files between the Ubuntu guest machine and the Windows host machine in Nautilus.
 </p>
             
