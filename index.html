@@ -78,7 +78,7 @@
 							gene expression analysis. It takes RNA sequence 
 							data files in FASTQ format as an input and outputs raw count data in a text format. 
 							The raw count data can be read into <a href="http://linus.nci.nih.gov/BRB-ArrayTools.html">BRB-ArrayTools</a> for gene expression analysis. 
-							The tool is designed to be run in a Linux (we currently only support Ubuntu) environment 
+							The tool is designed to run in a Linux (we currently only support Ubuntu) environment 
 							which includes local physical/virtual machines or remote servers like Amazon cloud. The tool is developed to
 							run RNA-Seq preprocessing based on well-known RNA-Seq tools (<a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a>,
                      <a href="http://samtools.sourceforge.net/">Samtools</a> and 
@@ -128,13 +128,13 @@
             		If you want to install Ubuntu on a machine with an operation system (such as Windows OS) already on it, you have two
             		choices to install Ubuntu. 
                      <ul>
-                     <li><strong>Virtual Machine (for most users): </strong>
+                     <li><strong>Virtual Machine (for most users): </strong></li>
                      Using virtual machine is a great way to try/use a new OS without worrying messing up the current OS.
                      The new OS (Ubuntu) will be running at the same time as the current OS.
                      Users can create a virtual machine using software called <a href="https://www.virtualbox.org/">Oracle VirtualBox</a> (open-source) or 
-            		   <a href="http://www.vmware.com/">VMWARE</a> (commercial) under the current OS. (## More detailed instruction including
-            		   step-by-step screenshots will be given in a separate page later ###) 
-                     </li>
+            		   <a href="http://www.vmware.com/">VMWARE</a> (commercial) under the current OS. More detailed instruction including
+            		   step-by-step screenshots can be found on <a href="installUbuntu.html">this page</a>. 
+                     
                      <li><strong>Dual Boot (for advanced users): </strong>
                      </li>
                      Ubuntu OS can be installed in a way so the current OS will be left untouched. It is similar to the virtual machine method 
@@ -309,7 +309,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a tab-delimited file <strong>samples.txt</strong>.
 			This file can be created using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu. 
 			You can launch Calc by clicking
-			its icon on the Ubuntu launcher located on the left hand side of the desktop or enter 'Calc' on the Dash on top-left corner to get it. Note that
+			its <a href="images/libreofficeCalc.png">icon</a> on the Ubuntu launcher located on the left hand side of the desktop or enter 'Calc' on the Dash on top-left corner to get it. Note that
 			we have included a template of samples.txt in the <code>bdge-dl</code> folder. Users are encouraged to copy this file to their working
 			directory and then modify it for their need.</p>
 			
