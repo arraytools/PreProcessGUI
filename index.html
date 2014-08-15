@@ -306,12 +306,9 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 			<code>Home_sapiens/Ensembl/GrCh37/Annotation/Archives/</code> directory. 
 			<u>Please copy these bt2 and gtf file to the same directory as the Fastq data files</u>.
 			</p>
-			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a <strong>tab-delimited</strong> file <strong>samples.txt</strong>.
-			This file can be created using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu. 
-			You can launch Calc by clicking
-			its <a href="images/libreofficeCalc.png">icon</a> on the Ubuntu launcher located on the left hand side of the desktop or enter 'Calc' on the Dash on top-left corner to get it. Note that
-			we have included a template of samples.txt in the <code>bdge-dl</code> folder. Users are encouraged to copy this file to their working
-			directory and then modify it for their need.</p>
+			
+			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a <strong>tab-delimited</strong> 
+			file <strong>samples.txt</strong>. This file has the following requirement. </p>
 			
 			<p>The header of <strong>samples.txt</strong> consists of <strong>LibraryName, LibraryLayout, fastq1</strong> and <strong>fastq2</strong>. Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
 			'fastq1' column contains the fastq filename. Multiple file can be concatenated by comma sign. If the library is paired-end, 'fastq2' column should be
@@ -319,6 +316,21 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
             is given below.
             <a href="images/samples.png"><img src="images/samples.png" width="800px"></a>  
 			</p>
+			
+			<p>
+			This file can be edited using <strong>LibreOffice Calc</strong> (similar to Microsoft Excel on Windows) on Ubuntu by following:
+			<ol>
+			  <li>Open Nautilus (File Manager). Copy a template of samples.txt from the <code>bdge-dl</code> folder to your working directory.</li>
+			  <li>Right click <strong>samples.txt</strong> file and select 'Open with Other Application...'. </li>
+			  <li>Click 'Show other applications' and choose 'LibreOffice Calc'. Press 'Select' button. </li>
+			  <li>Check 'Tab' under 'Separated by' section in the dialog. Then click 'OK' button. </li>	
+			  <li>Go ahead and modify the file as needed (more information is given below).</li>		      
+			  <li>Click File > Save when it is done. If you see a warning message below but you can click 'Use Text CSV Format' to close the message.</li>
+			  <li>Close LibreOffice by File > Exit</li>
+			  <a href="images/CalcSaveFileWarning.png"><img src="images/CalcSaveFileWarning.png" width="400px"></a>  
+			</ol> 
+         </p>
+						
 			When the necessary files are prepared and the <a href="#setuprequire">required software</a>  have been installed, your are ready to run processing 
 			by clicking the big 'Run Preprocessing' button.
 			</section>
