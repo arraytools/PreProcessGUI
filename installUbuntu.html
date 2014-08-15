@@ -143,7 +143,8 @@
             <a href="images/ubuntu/image028.png"><img class="img-polaroid" src="images/ubuntu/image028.png"></a>
             </p>
 
-            <p>In 'Who are you?' dialog, enter your preferred name, username and password. Click 'Continue' button.
+            <p>In 'Who are you?' dialog, enter your preferred name, username and password. <strong><em>Note that
+            this user will have root/sudo privilege</em></strong>. Click 'Continue' button.
             <a href="images/ubuntu/image030.png"><img class="img-polaroid" src="images/ubuntu/image030.png"></a>
             </p>
             
@@ -173,6 +174,14 @@
             and you are not able to share folders between the host machine and Ubuntu. </p>
             <p><strong>Guest Additions</strong> software provide additional capability to a guest virtual machine, including mouse pointer integration, 
             better video support, share folders, share clipboard, et al.</p>
+            
+            <p>Before we proceed to install Guest Additions, make sure the current user has sudo/root privilege. 
+            If the current user does not have sudo/root privilege or it is not sure, run the following terminal command from an account (such as the user
+            created when Ubuntu was first created; see the screenshot of 'Who are you?' above) with root privileges
+            to enable the root privilege for the current user
+<pre>
+sudo adduser USERNAME sudo</pre> where USERNAME should be replaced by the current user's name.</p>
+
             <p>To install <strong>Guest Additions</strong>, click <strong>Devices > Insert Guest Additions CD images…</strong>
             <a href="images/ubuntu/image038.png"><img class="img-polaroid" src="images/ubuntu/image038.png"></a>
             </p>
@@ -181,7 +190,7 @@
             <a href="images/ubuntu/image039.png"><img class="img-polaroid" src="images/ubuntu/image039.png"></a>
             </p>
             
-            <p>Installing <strong>Guest Additions</strong> requires root privilege. Enter user's password (assume the current user has sudo privilege).
+            <p>Installing <strong>Guest Additions</strong> requires root privilege. Enter user's password (assume the current user has sudo privilege).            
             <a href="images/ubuntu/image041.png"><img class="img-polaroid" src="images/ubuntu/image041.png"></a>
             </p>
             
