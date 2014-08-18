@@ -290,9 +290,10 @@
 				<li>Genome transcript annotation file (*.gtf) - gene model annotation</li>
 				<li>samples.txt </li>
 			</ol>
-			<p>The fastq files can be generated from sequencer or from public repositories like Sequence Read Archive (SRA). If data is obtained from
-			SRA, the data format is in *.sra which cannot be processed in Tophat program. So the first step is to run a program called fastq-dump to
-			convert the data format from sra to fastq. An example of the command is</p>
+			<p>The fastq files can be generated from sequencer or public repositories like <a href="http://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive (SRA)</a>. 
+			If data is obtained from SRA, the data format is in <strong>sra</strong> which cannot be directly processed by Tophat program. 
+			Therefore the first step is to run a program called <strong>fastq-dump</strong> to
+			convert the data format from sra to fastq. An example of using fastq-dump command is</p>
 			<pre>
 fastq-dump --split-3 SRRxxxx.sra</pre>
          <p>This will create a new file SRRxxxx.fastq for single-end data or SRRXXXX_1.fastq and SRRXXXX_2.fastq for paired-end data.</p>
