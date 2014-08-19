@@ -62,7 +62,7 @@
                         
             <p><em>Note the instruction here is based on the latest version of the VirtualBox. If you have already installed an 
             earlier version of VirtualBox, your experience may be different. It is recommended to use the latest version of VirtualBox
-            to avoid issues.</em> </p>            
+            to avoid issues. The VirtualBox <a href="https://forums.virtualbox.org/">forum</a> is a good place to find a solution if you see any problems.</em> </p>            
                         
             <p>Go to VirtualBox website <a href="https://www.virtualbox.org/wiki/Downloads">here</a> to download 
             the binary for your current operating system. Since our host machine is running on Windows, I'll choose 'x86/amd64' 
@@ -85,6 +85,11 @@
             
             <p>The memory size depends on your host machine memory size. In my case, I have 12GB physical RAM. 
             I like to allocate as much as possible for Ubuntu but leave some for my Windows host machine. I pick 8192 MB for my Ubuntu.
+            Note that VirtualBox will create a <a href="https://help.ubuntu.com/community/SwapFaq">swap</a> partition with the same amount space as base memeory you have entered here. 
+            So later when you are selecting the size of the virtual hard drive, make sure it is large enough since the 
+            <a href="https://help.ubuntu.com/community/DiskSpace">hard drive</a> will 
+            be splitted into root (/)and swap partitions. The root partition contains by default all your system files, program settings and documents.</p>
+            <p>
             <a href="images/ubuntu/image007.png"><img class="img-polaroid" src="images/ubuntu/image007.png"></a>
             </p>
             
@@ -158,7 +163,8 @@
             <a href="images/ubuntu/image032.png"><img class="img-polaroid" src="images/ubuntu/image032.png"></a>
             </p>
 
-            <p>After installation is complete, click 'Restart Now' button. 
+            <p>After installation is complete, click 'Restart Now' button. When you see a screen with a black background 
+            saying 'Please remove installation media and close the tray (if any) then press ENTER:', just follow it. 
             <a href="images/ubuntu/image034.png"><img class="img-polaroid" src="images/ubuntu/image034.png"></a>
             </p>
             
