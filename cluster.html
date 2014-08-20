@@ -208,7 +208,7 @@ $ nano ~/.starcluster/config            </pre>
             <p>To create AWS_SECRETE_KEY, go to <a href="http://aws.amazon.com/iam/">AWS Identity and Access Management (IAM)</a> page. 
             Click Manage Users on the left panel. Create a new group of users. Use the group name 'clusterUser'. Click 'continue' and create
             new users. Check the box of 'Generate an access key for each user'. Type a user name and click Continue. Make sure the user has EC2 or
-            adminstrator privilege. Now click 'Download Credentials' button. The screen will show the new user's <strong>Access Key ID</strong> and 
+            administrator privilege. Now click 'Download Credentials' button. The screen will show the new user's <strong>Access Key ID</strong> and 
             <strong>Secret Access Key</strong>. Both keys will be used in the configuration file.</p>
             
             <p>The AWS user/account ID is a 12-digit number, such as 1234-5678-9012. 
@@ -246,7 +246,7 @@ root@master:~# ./install_rnaseq.sh</pre>
             <p>We first use winscp or rsync to transfer files from local to t1 micro instance. The transfer speed depends on the network bandwidth
             on your current location and the amazon machines location.</p>
             <a href="images/Transfer2AmazonSpeed.png"><img src="images/Transfer2AmazonSpeed.png" height="400px"></a>
-            <p>Assuming we have transfer the folder called 'Anders2013medium' to the t1 micro instalce, we can
+            <p>Assuming we have transferred the folder called 'Anders2013medium' to the t1 micro instance, we can
             issue the following command to copy files to the EBS volume.</p>
             <pre>
 ubuntu@ip-172-31-16-93:~$ starcluster put  mycluster Anders2013medium/*.fastq /data/Anders2013medium/

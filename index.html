@@ -186,7 +186,7 @@
             <li><code>samples.txt</code>: template of <strong>samples.txt</strong> file</li>
             <li><code>icon</code>: folder containing application icons</li>            
             </ul>
-            <p> Although it is optional, it is recommended to to open a terminal and run <code>./install.sh</code> as a user to 
+            <p> Although it is optional, it is recommended to open a terminal and run <code>./install.sh</code> as a user to 
             create a desktop shortcut with the application icon. Note that running install.sh requires sudo privileges; check out 
             <a href="#installErr">here</a> in FAQ.
             </p> 
@@ -261,10 +261,10 @@
             For either way, users first open a dialog by clicking Settings > Tools Manager.</p>
             <a href="images/automaticSetup.png"><img src="images/automaticSetup.png" width="600"></a>            
             <h4><a id="automatic">Automatic method</a></h4> 
-            <p >Automatical setup method provides an easy way to install required software. 
+            <p >Automatic setup method provides an easy way to install required software. 
             When users click the <strong>Automatic setup</strong> button, a new terminal window will be opened immediately. 
             After the <strong>sudo</strong> password was entered the application will start to download an installation script 
-            from an internet (which is kept updated) and install required software. 
+            from internet (which is kept updated) and install required software. 
             All the required software is installed under <code>/opt/RNA-Seq/bin</code> directory. Note that if you do not have sudo password, you need to ask your
             system administrator for help. Check out <a href="#installErr">here</a> in FAQ on how to allow an existing user to have root privileges.</p>
             <p >After the installation is finished, users will be asked to hit ENTER key to close the terminal. Now they can go to the main dialog to 
@@ -313,7 +313,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 			file <strong>samples.txt</strong>. This file has the following requirement. </p>
 			
 			<p>The header of <strong>samples.txt</strong> consists of <strong>LibraryName, LibraryLayout, fastq1</strong> and <strong>fastq2</strong>. Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
-			'fastq1' column contains the fastq filename. Multiple file can be concatenated by comma sign. If the library is paired-end, 'fastq2' column should be
+			'fastq1' column contains the fastq filename. Multiple files can be concatenated by comma sign. If the library is paired-end, 'fastq2' column should be
 			specified with a format the same as 'fastq1' column. An example of the <strong>samples.txt</strong> file
             is given below:
             <a href="images/samples.png"><img src="images/samples.png" width="800px"></a>  
@@ -393,7 +393,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 						<ol >
 							<li>The test machine is Dell T3500 with Xeon W3690 @ 3.47Ghz (6 cores) and 12GB memory running on Ubuntu 12.04. Five threads were used
 							in the Tophat program.</li>			
-							<li>When the number of threads is increased, the memory requirement is increased too. It is possible Tophat program execution 
+							<li>When the number of threads increases, the memory requirement increases too. It is possible Tophat program execution 
 							cannot be finished
 							because there is not enough memory when a large number of threads was used. In such a case, users can add a '-p' option 
 							in the Tophat program of the 'Tools Options' dialog. See FAQ #2.</li>
@@ -421,7 +421,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 						
 		           <ol >
 		               <li><strong>How about other Linux distribution or Mac OS? </strong> Sorry, only <strong>BDGECLI</strong> is supported. 
-		                  Even the code of BDGE can be re-built to work on other OS/Linux distributions, 
+		                  Even though the code of BDGE can be re-built to work on other OS/Linux distributions, 
 		                  we currently have no hardware resource and time to support other OS/Linux distributions. If you are interested in building one for other
 		                  people, please let me know.
 		               </li>
@@ -438,14 +438,14 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 		               <a href="images/TophatCoverageSearch.png"><img src="images/TophatCoverageSearch.png" height="200px"></a>
 		               </p>  
 		               The option -s signifies that the data are not from a stranded protocol (this may vary by experiment) and
-		               the -a option specifies a minimum score for the alignment quality (ie all reads with alignment quality lower than the given
+		               the -a option specifies a minimum score for the alignment quality (i.e. all reads with alignment quality lower than the given
 		               minimum value will be skipped). The default is 0 for minimum score.
 		               </li>
 		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>? </strong> 
 		               Galaxy is a much complicated system. There may be a learning curve for general users not to mention unexpected issues
 		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
-		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who has some experience 
-		               with Unix/Linux can start to run it without a need of a 'system administrator'.</li>
+		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who have some experience 
+		               with Unix/Linux can start to run it without the need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
 		               So we design <strong>BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
 		               on the system minus one. Since running Tophat with multi-thread requires a significant increase of memory, sometimes
