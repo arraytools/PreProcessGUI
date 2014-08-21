@@ -54,6 +54,10 @@
 								     <li><a href="#manual"><i class="icon-bullhorn  icon-white"></i> Manual </a></li>
 								  </ul>
 								<li><a href="#tutorial"><i class="icon-th-list"></i> Tutorial</a></li>
+								  <ul  class="nav nav-list usermenu">
+								     <li><a href="#preparefiles"><i class="icon-bullhorn  icon-white"></i> Prepare Files </a></li>
+								     <li><a href="#samples"><i class="icon-bullhorn  icon-white"></i> samples.txt </a></li>
+								  </ul>								
 								<li><a href="#cli"><i class="icon-th-list"></i> Command Line Interface</a></li>
 								<li><a href="#timing"><i class="icon-th-list"></i> Timing </a></li>
 								<li><a href="#faq"><i class="icon-th-list"></i> FAQ</a></li>
@@ -174,16 +178,17 @@
 							<h1>Download</h1>
 						</div>
 
-            <p>The program can be downloaded from <a href="http://example.com/bdge-dl.tar.gz">here</a> (not published, placeholder for now). </p>
-            <p>After downloading, extract it to the desktop by using the file manager (called <strong>Nautilus</strong> in Ubuntu) 
+            <p>The program can be downloaded from <a href="http://example.com/bdge-dl.tar.gz">here</a> (not published, placeholder for now). The downloaded file
+            would be located under ~/Downloads directory by default. It has a format &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
+            <p>After downloading, extract it to the desktop (or any place under your $HOME directory) by using the file manager (called <strong>Nautilus</strong> in Ubuntu) 
                OR opening a terminal (keyboard shortcut is 'Ctrl+Alt+t') and extract the tarball by</p>
-            <pre><code>tar -xzvf bdge-dl.tar.gz</code></pre>
-            <p> This will create a new directory called <strong>bdge-dl</strong>. This new directory contains the following files</p>
+            <pre><code>tar -xzvf bdge-dl-XXXXXXXX.tar.gz</code></pre>
+            <p>This will create a new directory called <strong>bdge-dl</strong>. This new directory contains the following files</p>
             <ul>
             <li><code>BDGE</code>: GUI version of the application</li>
             <li><code>BDGECLI</code>: CLI version of the application</li>
             <li><code>install.sh</code>: script to 'install' application icons to the right places</li>
-            <li><code>samples.txt</code>: template of <strong>samples.txt</strong> file</li>
+            <li><code>samples.txt</code>: template of <strong>samples.txt</strong> file (tab-delimited)</li>
             <li><code>icon</code>: folder containing application icons</li>            
             </ul>
             <p> Although it is optional, it is recommended to open a terminal and run <code>./install.sh</code> as a user to 
@@ -219,6 +224,9 @@
 
             <p>The workflow can be explained by the following plot</p>
             <a href="images/PreprocessFlow.png"><img src="images/PreprocessFlow.png" width="600px"></a>
+            <p></p>
+            <p>For the first-time users, they have to set up the required software (Tophat, Samtools, ...) first. 
+            BDGE provides a simple way for them to do it. Please see the instruction <a href="#setuprequire">here</a>.</p>
             <p>The application will automatically run the following programs one by one</p>
             <ol>
             <li><a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a></li>
@@ -283,7 +291,7 @@
 						</div>
 
             <!--  <p >A small test data can be downloaded from <a href="http://example.com/files/testData.tar.gz">here</a>.</p> -->
-           
+            <h4><a id="preparefiles">Prepare Files</a></h4> 
             <p >To run the preprocessing, it is assumed the working directory contains the following files</p>
             <ol > 
 				<li>Fastq file (*.fastq) - raw data</li>
@@ -308,7 +316,7 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
 			<code>Home_sapiens/Ensembl/GrCh37/Annotation/Archives/</code> directory. 
 			<u>Please copy these bt2 and gtf file to the same directory as the Fastq data files</u>.
 			</p>
-			
+			<h4><a id="samples">samples.txt</a></h4>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a <font color="red"><strong>tab-delimited</strong></font> 
 			file <strong>samples.txt</strong>. This file has the following requirement. </p>
 			
@@ -337,7 +345,9 @@ fastq-dump --split-3 SRRxxxx.sra</pre>
          <a href="http://www.libreoffice.org/">LibreOffice</a> website.</p>
 						
 			<p>When the necessary files are prepared and the <a href="#setuprequire">required software</a>  have been installed, your are ready to run processing 
-			by clicking the big 'Run Preprocessing' button.</p>
+			by clicking the big 'Run Preprocessing' button. When the preprocessing is done, you will get a dialog showing a message the preprocessing is finished.
+			You can transfer the output files to Windows machines and use BRB-ArrayTools for further gene expression analysis. See FAQ #11 for further help about
+			transferring files. </p>
 			</section>
 
 					<section id="cli">
@@ -481,12 +491,13 @@ cat /opt/RNA-Seq/bin/HTSeq-0.6.1/VERSION # 0.6.1
                      If you don't have root privileges, you will get the following error when you ran <strong>install.sh</strong> script. 
 <pre>
 $ ./install.sh
-[sudo] password for brb2:
-Sorry, user brb2 is not allowed to execute 'bin/mkdir -p /opt/RNA-Seq/bin/BDGE' 
+[sudo] password for brb:
+Sorry, user brb is not allowed to execute 'bin/mkdir -p /opt/RNA-Seq/bin/BDGE' 
 as root on brb-VirtualBox.</pre> A simple solution of adding an existing account with root privileges
 is to run the following terminal command from an account with root privileges,
 <pre>
-sudo adduser brb2 sudo</pre> PS. 1. The user name is brb2 in the above example. 2. The user needs to log out and log in again to see the effect.</li>		               
+sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user name which does not have sudo privileges yet. 
+2. The user needs to log out and log in again to see the effect.</li>		               
 		               <li><strong>OK, I got the count table successfully from BDGE. How do I transfer the count table files to Windows for BRB-ArrayTools? </strong>
 		               One simple solution is to use a flash drive to copy the zip file from working directory in Ubuntu to a Windows machine. 
 		               If you like a more elegant way to transfer the file, you can download a program called <a href="http://winscp.net/eng/index.php">WinSCP</a> 
