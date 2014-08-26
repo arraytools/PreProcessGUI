@@ -32,18 +32,21 @@ snippets_show_as_menu: 1
 bookmarks_show_mode: 0
 outputb_show_all_output: 0
 autocomplete: 1
+searchlist: tophat
 spell_lang: en
 c2e.convert_symbol: 0
 snr_escape_chars: 0
 view_blockstack: 1
-htmlbar_notebooktab: 0
+htmlbar_notebooktab: 2
 last_filefilter: 
 spell_insert_entities: 0
 spell_check_default: 1
 savedir: file:///home/brb/github/bdge
 files: /home/brb/github/bdge/cluster.html
 files: /home/brb/github/bdge/index.html
+files: /home/brb/github/bdge/installUbuntu.html
 snr_replacetype: 0
+recent_files: file:///home/brb/github/bdge/installUbuntu.html
 recent_files: file:///home/brb/github/bdge/index.html
 recent_files: file:///home/brb/github/bdge/cluster.html
 charmap_block: 1
@@ -53,6 +56,7 @@ outputb_scroll_mode: 0
 leftpanel_active_tab: 0
 c2e.IE_apos_workaround: 0
 display_right_margin: 0
+replacelist: Tophat
 editor_tab_width: 3
 view_statusbar: 1
 fb_show_hidden_f: 0
