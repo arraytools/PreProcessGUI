@@ -305,8 +305,11 @@
 			Therefore the first step is to run a program called <strong>fastq-dump</strong> to
 			convert the data format from sra to fastq. An example of using fastq-dump command is</p>
 			<pre>
-fastq-dump --split-3 SRRXXXXXX.sra</pre>
-         <p>This will create a new file SRRXXXXXX.fastq for single-end data or SRRXXXXXX_1.fastq and SRRXXXXXX_2.fastq for paired-end data.</p>
+/opt/RNA-Seq/bin/sratoolkit.2.3.5-2-ubuntu64/bin/fastq-dump --split-3 SRRXXXXXX.sra</pre>
+         <p>This will create a new file SRRXXXXXX.fastq for single-end data or SRRXXXXXX_1.fastq and SRRXXXXXX_2.fastq for paired-end data. Note that
+         the above command assumes users have run <a href="#automatic">automatic setup tool</a> to install required software. Fastq-dump program is part of
+         <a href="http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?cmd=show&f=software&m=software&s=software">SRA ToolKit</a>. 
+         The full path to the fastq-dump depends on the SRAToolKit version. See also FAQ #8.</p>
 
 			<p >The genome reference file and genome annotation file can be downloaded from Tophat reference genome download page
 			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">here</a>. If you have <a href="http://biowulf.nih.gov/">NIH helix/biowulf</a> acccount, 
