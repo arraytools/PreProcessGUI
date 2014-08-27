@@ -180,7 +180,7 @@
 
             <p><a href="http://example.com/bdge-dl.tar.gz"><button type="button" class="btn btn-success">Download BDGE</button></a>  (not published, placeholder for now) </p>
             <p>The downloaded file is saved under $HOME/Downloads directory by default. 
-            It has a format &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
+            The file name has a format &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
             <p>After downloading, extract it to the desktop (or any place under your $HOME directory) by using the file manager (called <strong>Nautilus</strong> in Ubuntu) 
                OR opening a terminal (keyboard shortcut is 'Ctrl+Alt+t') and extract the tarball by</p>
             <pre><code>tar -xzvf bdge-dl-XXXXXXXX.tar.gz</code></pre>
@@ -305,8 +305,8 @@
 			Therefore the first step is to run a program called <strong>fastq-dump</strong> to
 			convert the data format from sra to fastq. An example of using fastq-dump command is</p>
 			<pre>
-fastq-dump --split-3 SRRxxxx.sra</pre>
-         <p>This will create a new file SRRxxxx.fastq for single-end data or SRRXXXX_1.fastq and SRRXXXX_2.fastq for paired-end data.</p>
+fastq-dump --split-3 SRRXXXXXX.sra</pre>
+         <p>This will create a new file SRRXXXXXX.fastq for single-end data or SRRXXXXXX_1.fastq and SRRXXXXXX_2.fastq for paired-end data.</p>
 
 			<p >The genome reference file and genome annotation file can be downloaded from Tophat reference genome download page
 			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">here</a>. If you have <a href="http://biowulf.nih.gov/">NIH helix/biowulf</a> acccount, 
@@ -507,7 +507,12 @@ sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user nam
 		               <pre>ifconfig eth0</pre>
 		               where the 'eth0' argument represents the first ethernet adapter. The IP address should have a format XXX.XXX.XXX.XXX. You need to enter the 
 		               IP address in the 'Host name' entry of a dialog when you create a new connection session on WinSCP. 
-		               </li>		       
+		               </li>
+		               <li><strong>I got an error when running the Tophat program. What could be the cause of the error? </strong>
+                     Take a look at the tophat output directories. Look for the file <strong>tophat.log</strong>. The log file should give you a hint about the problem.
+                     For example, if the log file shows an error for fastq record SRRXXXXXX.YYYYYY, check the fastq file SRRXXXXXX.fastq. If the file
+                     was copied from another machine or downloaded from internet, use some tools like 
+                     <a href="http://en.wikipedia.org/wiki/Md5sum">md5sum</a> to find out if there is any discrepancy in md5sum values.</li>  
 		               <li><strong>It is the first time for me to use Ubuntu OS. Is there a guide for me to get familiar with Ubuntu OS? </strong>One excellent website is 
 		               <a href="http://ubuntuguide.org/wiki/"> Ubuntuguide.org</a> although there are many other useful resources on internet.</li>        
 		               <li><strong>I still need HELP: </strong> Email me.</li>
