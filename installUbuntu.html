@@ -117,18 +117,20 @@
             </p>
             
             <p>Now the virtual machine is created. We are ready to install Ubuntu in this virtual machine.
-             Select your new virtual machine and click 'Settings' button. Click 'Storage' tab and click 'Empty' in Controller:IDE. 
+             Select your new virtual machine and click 'Settings' button. Click on 'Storage' category and then 'Empty' under Controller:IDE. 
              Click "CD/DVD" icon on right hand side and select the ubuntu ISO file to mount.</p>
              <p>Note that if you have not downloaded 64-bit Ubuntu ISO file, you can check out <a href="index.html#requirement">this page</a> for more information.
              When downloading Ubuntu ISO file, make sure to selecte 64-bit version. 
              Also make sure the <strong>VT-x (Virtualization Technology)</strong> has been enabled in your computer BIOS. 
             <a href="images/ubuntu/image013.png"><img class="img-polaroid" src="images/ubuntu/image013.png"></a>
             <a href="images/ubuntu/image015.png"><img class="img-polaroid" src="images/ubuntu/image015.png"></a>             
-            </p>            
-            
-            <p>Now you can click 'OK' button to continue.
             <a href="images/ubuntu/image017.png"><img class="img-polaroid" src="images/ubuntu/image017.png"></a>
-            </p>          
+            </p>        
+            
+            <p>Since Tophat program can take an advantage of multiple processors/threads, it is a good idea to specify a large
+            number of processors in virtual machine (default value is 1). You can change this number by clicking on 'System' category. 
+            In this case, I change the number of CPUs to 4 since 4 is the largest value shown on the green bar in my case. Now you can click 'OK' button to continue. </p>
+            <a href="images/ubuntu/VBSetting_Processor.png"><img class="img-polaroid" src="images/ubuntu/VBSetting_Processor.png"></a>   
             
             <p>VirtualBox may pop up a message about 'Auto capture keyboard' option. 
             Read the message there and check 'Do not show this message again' option before clicking OK.</p>
@@ -140,7 +142,7 @@
             
 			<section id="install">
             <h3>Install Ubuntu</h3>            
-            <p>Back to Oracle VM VirtualBox Manager, click the new Ubuntu virtual machine located on left hand side and hit 'Start' button. 
+            <p>Back to Oracle VM VirtualBox Manager, click on the new Ubuntu virtual machine and hit 'Start' button. 
             Now you shall see a 'Welcome' screen. Click 'Install Ubuntu' button. 
             Note that the installation process may differ a little bit from version to version. The screenshots here are based on Ubuntu 14.04.1.
             <a href="images/ubuntu/image020.png"><img class="img-polaroid" src="images/ubuntu/image020.png"></a>
@@ -248,7 +250,7 @@ sudo adduser USERNAME sudo</pre> where USERNAME should be replaced by the curren
             <a href="images/ubuntu/image056.png"><img class="img-polaroid" src="images/ubuntu/image056.png"></a>
             </p>
             
-            <p>Type the following line in the Terminal.
+            <p>Type the following line in the Terminal to add a user to 'vboxsf' group. This step is necessary to use the VB's 'Shared Folder' feature.
 <pre>sudo adduser brb vboxsf
 </pre>
 Replace 'brb' with your account name in Ubuntu.
