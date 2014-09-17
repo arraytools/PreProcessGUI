@@ -55,6 +55,7 @@
 								  </ul>
 								<li><a href="#tutorial"><i class="icon-th-list"></i> Tutorial</a></li>
 								  <ul  class="nav nav-list usermenu">
+								     <li><a href="#tutdata"><i class="icon-bullhorn  icon-white"></i> Testing Data </a></li>
 								     <li><a href="#preparefiles"><i class="icon-bullhorn  icon-white"></i> Prepare Files </a></li>
 								     <li><a href="#samples"><i class="icon-bullhorn  icon-white"></i> samples.txt </a></li>
 								  </ul>								
@@ -78,7 +79,7 @@
 						</div>
 								
 						<p>
-							<strong>BRB Digital Gene Expression (BDGE)</strong> is a new tool to help scientists who have RNA-Seq data preprocess for downstream 
+							<strong>BRB Digital Gene Expression (BDGE)</strong> is a new tool to help scientists preprocess RNA-Seq data for downstream 
 							gene expression analysis. It takes RNA sequence 
 							data files in FASTQ format as an input and outputs raw count data in a text format. 
 							The raw count data can be read into <a href="http://linus.nci.nih.gov/BRB-ArrayTools.html">BRB-ArrayTools</a> for gene expression analysis. 
@@ -248,6 +249,7 @@
             <ol>
 				<li>Fastq - sequence data</li>
 				<li>Reference genome file in bt2 format</li>
+				<li>Reference genome file in fa format (optional but recommended)</li>
 				<li>Gene annotation file in gtf format</li>
 				<li>samples.txt</li>
             </ol>
@@ -292,13 +294,21 @@
 							<h1>Tutorial</h1>
 						</div>
 
-            <!--  <p >A small test data can be downloaded from <a href="http://example.com/files/testData.tar.gz">here</a>.</p> -->
+            <h4><a id="tutdata">Testing Data</a></h4>
+            <p >A subset of RNA sequence data files including genome reference, gene annotation and samples.txt files from GSE11209 
+            can be downloaded from <a href="https://github.com/arraytools/GSE11209/archive/master.zip">here</a>. After downloading the zip file,
+            user needs to extract it to some place (e.g. $HOME). User can access the data folder at <i>$HOME/GSE11209-master/</i>. Fastq files are 
+            located under <i>$HOME/GSE11209-master</i> directory and the annotation files are under <i>$HOME/GSE11209-master/annotation</i>.
+            This data can be used to quickly test the BDGE program. Note: be sure to click 'Browse' button for the Annotation Dir and
+            select 'annotation' directory on BDGE program.</p>
+            
             <h4><a id="preparefiles">Prepare Files</a></h4> 
-            <p >To run the preprocessing, it is assumed the working directory contains the following files</p>
+            <p >To run RNA-Seq data preprocessing, it is assumed the working directory contains the following files</p>
             <ol > 
-				<li>Fastq file (*.fastq) - raw data</li>
-				<li>Reference genome sequence (*.bt2) - reference index used for alignment</li>
-				<li>Genome transcript annotation file (*.gtf) - gene model annotation</li>
+				<li>Fastq file (*.fastq)</li>
+				<li>Reference genome sequence (*.bt2)</li>
+				<li>Reference genome sequence (*.fa) - optional but recommended</li>
+				<li>Genome transcript annotation file (*.gtf)</li>
 				<li>samples.txt </li>
 			</ol>
 			<p>The fastq files can be generated from sequencer or public repositories like <a href="http://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive (SRA)</a>. 
