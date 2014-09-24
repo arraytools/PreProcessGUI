@@ -296,7 +296,9 @@
 						<div class="page-header">
 							<h1>Tutorial</h1>
 						</div>
-
+            <p>To help first time users to quickly test BDGE program, we provide a <a href="#tutdata">testing data</a> to try. 
+            When you are ready to run the program on your own data, check out <a href="#preparefiles">Prepare Files</a> section to make sure all
+            required input files are ready.</p>
             <h4><a id="tutdata">Testing Data</a></h4>
             <p >A subset of RNA sequence data files including genome reference, gene annotation and samples.txt files from GSE11209 
             can be downloaded from <a href="https://github.com/arraytools/GSE11209/archive/master.zip">here</a>. After downloading the zip file,
@@ -326,14 +328,20 @@
          The full path to the fastq-dump depends on the SRAToolKit version. See also FAQ #8.</p>
 
 			<p >The genome reference file and genome annotation file can be downloaded from Tophat reference genome download page
-			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">here</a>. If you have <a href="http://biowulf.nih.gov/">NIH helix/biowulf</a> acccount, 
-			you can access the iGenomes at /fdb/igenomes/ directory according to <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
+			at <a href="http://ccb.jhu.edu/software/tophat/igenomes.shtml">Tophat website</a>. </p>
 			<p >Consider, for example, the Homo sapiens genome GRCh37.
 			After downloading the file <strong>Homo_sapiens_Ensembl_GRCh37.tar.gz</strong> (17GB), the reference genome files (<strong>genome.*.bt2</strong>) are 
 			located under <code>Homo_sapiens/Ensembl/GrCh37/Sequence/Bowtie2Index</code> directory and gene annotation file (<strong>genes.gtf</strong>) is located under
 			<code>Home_sapiens/Ensembl/GrCh37/Annotation/Archives/</code> directory. 
-			<u>Please copy these bt2 and gtf file to the same directory as the Fastq data files</u>.
+			Please copy these bt2 and gtf file to some directory such as ProjectDir/annotation/ and select this directory for the 'Annotation Dir' on BDGE program. 
 			</p>
+			
+			<p>If you have an <a href="http://biowulf.nih.gov/">NIH helix/biowulf</a> acccount, 
+			you can download the reference genome and annotation files individually from /fdb/igenomes/ directory; 
+			see <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
+			
+         <p>samples.txt file defines a table of metadata of experimental design. More detail about how to prepare samples.txt is given in the next section.</p>			
+			
 			<h4><a id="samples">samples.txt</a></h4>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a <font color="red"><strong>tab-delimited</strong></font> 
 			file <strong>samples.txt</strong>. This file has the following requirement. </p>
