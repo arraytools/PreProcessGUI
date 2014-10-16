@@ -60,6 +60,7 @@
 								     <li><a href="#samples"><i class="icon-bullhorn  icon-white"></i> samples.txt </a></li>
 								  </ul>								
 								<li><a href="#cli"><i class="icon-th-list"></i> Command Line Interface</a></li>
+								<li><a href="#timing"><i class="icon-th-list"></i> Timing </a></li>
 								<li><a href="#faq"><i class="icon-th-list"></i> FAQ</a></li>
 								<!--<li><a href="#accommodation"><i class="icon-info-sign"></i> Accommodation</a></li>-->
 							</ul>
@@ -398,6 +399,56 @@
 						
 					</section>
 
+					<section id="timing">
+
+						<div class="page-header">
+							<h1>Timing</h1>
+						</div>
+						<table class="table table-hover">
+							<thead>
+								<tr><th>Data</th><th>Organism</th><th># samples</th><th># fastq/total size GB</th><th>Coverage</th><th>Time</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><th>GSE11209 </th><td>Yeast</td><td>6</td> <td>6/4.4</td> <td> 6.77</td> <td>58m</td></tr>
+								<tr><th>GSE18508 </th><td>Drosophila<br>Melanogaster</td><td>7</td><td>30/37</td><td>47.9</td><td>11h12m</td></tr>
+								<tr><th>GSE30786</th><td>Human<br>(colon cancer) </td><td>4</td><td>4/16</td><td>16.09</td><td>11h25m</td></tr>
+								<tr><th>GSE36968</th><td>Human<br>(gastric cancer)</td><td>55</td><td>55/~725</td><td>1.0</td><td>~55*1h10m</td></tr>
+								<tr><th>GSE37211</th><td>Human<br>(parathyroid a.)</td><td>23</td><td>54/~54x6.5</td><td>43.9</td><td>~23*2h47m</td></tr>
+								<tr><th>GSE37918</th><td>Human<br>(breast cancer)</td><td>4</td><td>8/40</td><td>43.00</td><td>10h23m</td></tr>
+								<tr><th>GSE39509</th><td>Mouse</td><td>34</td><td>34/~204</td><td>30.91</td><td>~34*55m</td></tr>
+								<tr><th>GSE45419</th><td>Human<br>(breast cancer)</td><td>32</td><td>64</td><td>40.46</td><td>~32*1h49m</td></tr>
+								<tr><th>GSE50491</th><td>Human<br>(prostate)</td><td>4</td><td>6/83</td><td>22.40</td><td>17h29m</td></tr>
+								<tr><th>GSE51403</th><td>Human<br>(MCF-7)</td><td>14</td><td>38/116</td><td>60.45</td><td>1d13h30m</td></tr>
+								<tr><th>GSE52194</th><td>Human<br>(breast cancer)</td><td>20</td><td>40/477</td><td>13.96</td><td>~20*6h51m</td></tr>
+								<tr><th>GSE52202</th><td>Human<br>(ALS)</td><td>8</td><td>16/61</td><td>20.65</td><td>18h31m</td></tr>
+							   <!--	<tr><th>GSE52623</th><td>Mouse<br>(leukemia)</td><td>21</td><td>40/131</td><td>93.58</td><td>9d23h15m</td></tr> -->
+							</tbody>
+						</table>
+
+						<ol >
+							<li>The test machine is Dell T3500 with Xeon W3690 @ 3.47Ghz (6 cores) and 12GB memory running on Ubuntu 12.04. Five threads were used
+							in the Tophat program.</li>			
+							<li>When the number of threads increases, the memory requirement increases too. It is possible Tophat program execution 
+							cannot be finished
+							because there is not enough memory when a large number of threads was used. In such a case, users can add a '-p' option 
+							in the Tophat program of the 'Tools Options' dialog. See FAQ #2.</li>
+							<li>The coverage is computed by randomly picking one or two samples.</li>
+							<li>The relation of Tophat execution time and number of threads is not linear. For example, running Tophat on sample
+							Serum_1 from GSE30786 takes 2h35m using 5 threads and 3h51m using 1 thread. Running Tophat on sample dT_bio from GSE11209
+							takes 5m using 5 threads and 6m using 1 thread.</li>
+							<li>Total fastq size can be checked by the linux command: <code>du -ch *.fastq | tail -n 1</code> .</li>
+							<li>In GSE50491, the max fastq file size is 20GB or 40GB for the RNK4_KO_BRD4 sample (paired end).
+							All physical memory was run out. Waiting for 10 hours cannot even process one sample.
+							From 'tophat.log' file, we should adapt '--no-coverage-seach' option (this option can be entered through
+							Settings -> Tools Options dialog in BDGE)  and it works. In GSE36968 and GSE45419, I also need to turn off coverage search.</li>
+							<li>The total space after running preprocessing can be 2 to 4 times of the total fastq file size.</li>
+							<li>The fastq file created by <code>fastq-dump</code> from SRA file may have a significantly different (larger) file size 
+							than the one we directly download from ftp (17GB vs 12GB).</li>
+						</ol>
+						
+					</section>
+
 					<section id="faq">
 
 						<div class="page-header">
@@ -407,8 +458,8 @@
 		           <ol >
 		               <li><strong>How about other Linux distribution or Mac OS? </strong> Sorry, only <strong>BDGECLI</strong> is supported. 
 		                  Even though the code of BDGE can be re-built to work on other OS/Linux distributions, 
-		                  we currently have no hardware resource and time to support other OS/Linux distributions. If you are interested in building on other
-		                  operating systems, please let us know.
+		                  we currently have no hardware resource and time to support other OS/Linux distributions. If you are interested in building one for other
+		                  people, please let us know.
 		               </li>
 		               <li><strong>How about more advanced options? </strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
 		               for their need. A screenshot of the dialog (default options are shown) is 
