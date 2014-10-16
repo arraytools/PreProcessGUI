@@ -87,7 +87,7 @@
 							run RNA-Seq preprocessing based on well-known RNA-Seq tools (<a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a>,
                      <a href="http://samtools.sourceforge.net/">Samtools</a> and 
                      <a href="http://www-huber.embl.de/users/anders/HTSeq/">HTSeq</a>). Therefore
-							rather than inventing a new preprocessing or analysis tool, we design BDGE as an easy-to-use software in mind and 
+							rather than inventing a new preprocessing tool, we design BDGE as an easy-to-use software in mind and 
 							hope BDGE can make RNA-Seq preprocessing more accessible to general scientists. 
 						</p>
 					
@@ -100,7 +100,7 @@
 					<section id="requirement">
 
 						<div class="page-header">
-							<h1>OS/Hardware Requirement</h1>
+							<h1>OS & Hardware Requirement</h1>
 						</div>
 
 						<p>
@@ -108,8 +108,8 @@
            			The Ubuntu ISO file can be downloaded from 
             		<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a> page.</p>
             		
-            		<p>The hardware requirement obviously depends on the data you have.
-            		It is recommended that the machine has at least 8GB of RAM and 500GB hard disk space. Ubuntu OS needs about 4.5 GB to install it.
+            		<p>The recommended hardware requirement may vary depending on the size of data. 
+            		It is recommended that the machine has at least 8GB of RAM and 500GB hard disk space. Ubuntu OS needs about 4.5 GB of space to install it.
             		<strong>BDGE</strong> and other required
             		software (Tophat, Bowtie, ...) take less than 400 MB space in total.</p>
             
@@ -123,13 +123,13 @@
             		have been answered, Ubuntu will start to install it to your computer. 
             		The whole process of installation takes about 10-20 minutes depending on your hardware. </li>
             		
-            		<li><strong>Machine with Ubuntu already: </strong>
+            		<li><strong>Machine with Ubuntu already installed: </strong>
                   If your Ubuntu OS version is at least 12.04, you are fine. There is nothing has to be changed. If your Ubuntu version
                   is below 12.04, you can follow <a href="http://www.ubuntu.com/download/desktop/upgrade">the instruction</a> on Ubuntu website
                   to upgrade the OS to the latest version.</li>            		
             		
-            		<li><strong>Machine with non-Ubuntu: </strong>
-            		If you want to install Ubuntu on a machine with an operation system (such as Windows OS) already on it, you have two
+            		<li><strong>Machine with a non-Ubuntu OS: </strong>
+            		If you want to install Ubuntu on a machine with an operation system (such as Windows OS) other than Ubuntu on it, you have two
             		choices to install Ubuntu. 
                      <ul>
                      <li><strong>Virtual Machine: </strong></li>
@@ -184,9 +184,10 @@
 
             <p><a href="http://example.com/bdge-dl.tar.gz"><button type="button" class="btn btn-success">Download BDGE</button></a>  (not published, placeholder for now) </p>
             <p>The downloaded file is saved under $HOME/Downloads directory by default. 
-            The file name has a format &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
-            <p>After downloading, extract it to the desktop (or any place under your $HOME directory) by using the file manager (called <strong>Nautilus</strong> in Ubuntu) 
-               OR opening a terminal (keyboard shortcut is 'Ctrl+Alt+t') and extract the tarball by</p>
+            The file name is coded as &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
+            <p>The tarball can be extracted to the desktop or any place under your $HOME directory by using either
+            the file manager (called <strong>Nautilus</strong> in Ubuntu) 
+               OR by using a terminal (use keyboard shortcut 'Ctrl+Alt+t' to open it) command </p>
             <pre><code>tar -xzvf bdge-dl-XXXXXXXX.tar.gz</code></pre>
             <p>This will create a new directory called <strong>bdge-dl</strong>. This new directory contains the following files</p>
             <ul>
@@ -257,8 +258,9 @@
             </ol>
             <p>The output of the program is a zip file "counts.zip" which contains as many files as the number of samples (the file name is 
             determined by the sample name with an extension 'count').
-            Each file is a table with counts for each gene. There are two columns in the table; the first one is the Ensembl ID and the second one is count values.             
-            These count table files can be opened by any text editor.
+            Each file is a table with counts for each gene. There are two columns in the table. 
+            The first column contains gene identifiers such as Ensembl IDs or gene symbols and the second column has count values.             
+            These count table files can be imported into BRB-ArrayTools for gene expression analyses.
             Users can use <code>DESeqDataSetFromHTSeqCount()</code> function from <code>DESeq2</code> package 
             in <a href="http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html">Bioconductor</a> or
             <code>readDGE()</code> function from <code>edgeR</code> package to load COUNT files data in an 
@@ -277,7 +279,7 @@
             <h4><a id="automatic">Automatic method</a></h4> 
             <p >Automatic setup method provides an easy way to install required software. 
             When users click the <strong>Automatic setup</strong> button, a new terminal window will be opened immediately. 
-            After the <strong>sudo</strong> password was entered the application will start to download an installation script 
+            After the <strong>sudo</strong> password was entered, the application will start to download an installation script 
             from internet (which is kept updated) and install required software. 
             All the required software is installed under <code>/opt/RNA-Seq/bin</code> directory. Note that if you do not have sudo password, you need to ask your
             system administrator for help. Check out <a href="#installErr">here</a> in FAQ on how to allow an existing user to have root privileges.</p>
@@ -295,7 +297,7 @@
 						<div class="page-header">
 							<h1>Tutorial</h1>
 						</div>
-            <p>To help first time users to quickly test BDGE program, we provide a <a href="#tutdata">testing data</a> to try. 
+            <p>To help first time users to quickly test BDGE program, we provide a <a href="#tutdata">testing data which includes all necessary input files.</a>. 
             When you are ready to run the program on your own data, check out <a href="#preparefiles">Prepare Files</a> section to make sure all
             required input files are ready.</p>
             <h4><a id="tutdata">Testing Data</a></h4>
@@ -339,7 +341,7 @@
 			you can download the reference genome and annotation files individually from /fdb/igenomes/ directory; 
 			see <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
 			
-         <p>samples.txt file defines a table of metadata of experimental design. More detail about how to prepare samples.txt is given in the next section.</p>			
+         <p>samples.txt file contains a table of metadata of experimental design. More detail about how to prepare samples.txt is given in the next section.</p>			
 			
 			<h4><a id="samples">samples.txt</a></h4>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a <font color="red"><strong>tab-delimited</strong></font> 
@@ -369,7 +371,7 @@
          As of this writing, the LibreOffice version is 4.3. If you have an earlier version of LibreOffice (3.X), you can install the latest version by checking out 
          <a href="http://www.libreoffice.org/">LibreOffice</a> website.</p>
 						
-			<p>When the necessary files are prepared and the <a href="#setuprequire">required software</a>  have been installed, your are ready to run processing 
+			<p>When the necessary files are prepared and the <a href="#setuprequire">required software</a>  have been installed, you are ready to run processing 
 			by clicking the big 'Run Preprocessing' button. When the preprocessing is done, you will get a dialog showing a message the preprocessing is finished.
 			You can transfer the output files to Windows OS machines and use BRB-ArrayTools for further gene expression analysis. See FAQ #11 for further help about
 			transferring files. </p>
@@ -393,7 +395,7 @@
 			<p >This program was built using GCC. The executable file should be able to run on most x64 Linux distributions.</p>
 			<p >If you only want to generate shell scripts without running them immediately, you can use the
 			<strong>--createScriptOnly</strong> parameter in <strong>BDGECLI</strong>. This can be useful in a situation
-			that the scripts should be treaked before being used; e.g. users want to run scripts through the
+			that the scripts should be tweaked before being used; e.g. users want to run scripts through the
 			<strong>qsub</strong> command in a batch system.</p>
 						
 					</section>
@@ -427,10 +429,10 @@
 		               minimum value will be skipped). The default is 0 for minimum score.
 		               </li>
 		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>? </strong> 
-		               Galaxy is a much complicated system. There may be a learning curve for general users not to mention unexpected issues
+		               Galaxy is a much complicated system. There may be a big learning curve for general users, not to mention unexpected issues
 		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
 		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who have some experience 
-		               with Unix/Linux can start to run it without the need of a 'system administrator'.</li>
+		               with Unix/Linux can start to analyze RNA-sequence data without the need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
 		               So we design <strong>BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
 		               on the system minus one. Since running Tophat with multi-thread requires a significant increase of memory, sometimes
@@ -504,7 +506,7 @@ sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user nam
 
 	<div id="footer">
 		<div class="container">
-			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@gmail.com?subject=BDGE question"><code>arraytools [at] gmail.com</code></a> using the subject heading <code>BDGE question</code>. </p>
+			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@emmes.com?subject=BDGE question"><code>arraytools [at] gmail.com</code></a> using the subject heading <code>BDGE question</code>. </p>
 		</div>
 	</div>
 
