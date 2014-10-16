@@ -187,7 +187,7 @@
             The file name is coded as &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
             <p>The tarball can be extracted to the desktop or any place under your $HOME directory by using either
             the file manager (called <strong>Nautilus</strong> in Ubuntu) 
-               or by using a terminal (use keyboard shortcut 'Ctrl+Alt+t' to open it) command </p>
+               or by using a terminal (use the keyboard shortcut 'Ctrl+Alt+t' to open it) command </p>
             <pre><code>tar -xzvf bdge-dl-XXXXXXXX.tar.gz</code></pre>
             <p>This will create a new directory called <strong>bdge-dl</strong>. This new directory contains the following files</p>
             <ul>
@@ -256,9 +256,9 @@
 				<li>Gene annotation file in gtf format</li>
 				<li>samples.txt</li>
             </ol>
-            <p>The output of the program is a zip file "counts.zip" which contains as many files as the number of samples (the file name is 
+            <p>The output of the program is a zip file "counts.zip" which has as many files as the number of samples (the file name is 
             determined by the sample name with an extension 'count').
-            Each file is a table with counts for each gene. There are two columns in the table. 
+            Each file contains a table of read counts for all genes in one sample. There are two columns in the table. 
             The first column contains gene identifiers such as Ensembl IDs or gene symbols and the second column has count values.             
             These count table files can be imported into BRB-ArrayTools for gene expression analyses.
             Users can use <code>DESeqDataSetFromHTSeqCount()</code> function from <code>DESeq2</code> package 
