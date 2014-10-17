@@ -40,7 +40,7 @@
 								 <ul  class="nav nav-list usermenu">
 								     <li><a href="#ubuntu"><i class="icon-bullhorn  icon-white"></i> Ubuntu Installation </a></li>
 								  </ul>
-								<li><a href="#download"><i class="icon-star"></i> Download</a></li>
+								<li><a href="#download"><i class="icon-star"></i> Download BRB-BDGE</a></li>
 								 <ul  class="nav nav-list usermenu">
 								     <li><a href="#launch"><i class="icon-bullhorn  icon-white"></i> Launch </a></li>
 								  </ul>
@@ -48,7 +48,7 @@
 								  <ul  class="nav nav-list usermenu">
 								     <li><a href="#inputoutput"><i class="icon-bullhorn  icon-white"></i> Input/Output </a></li>
 								  </ul>
-								<li><a href="#setuprequire"><i class="icon-th-list"></i> Setup for Req'd Software</a></li>
+								<li><a href="#setuprequire"><i class="icon-th-list"></i> Setup of Req'd Software</a></li>
 								  <ul  class="nav nav-list usermenu">
 								     <li><a href="#automatic"><i class="icon-bullhorn  icon-white"></i> Automatic </a></li>
 								     <li><a href="#manual"><i class="icon-bullhorn  icon-white"></i> Manual </a></li>
@@ -78,7 +78,7 @@
 						</div>
 								
 						<p>
-							<strong>BRB Digital Gene Expression (BDGE)</strong> is a new tool to help scientists preprocess RNA-Seq data for downstream 
+							<strong>BRB Digital Gene Expression (BRB-BDGE)</strong> is a new tool to help scientists preprocess RNA-Seq data for downstream 
 							gene expression analysis. It takes RNA sequence 
 							data files in FASTQ format as an input and outputs raw count data in a text format. 
 							The raw count data can be read into <a href="http://linus.nci.nih.gov/BRB-ArrayTools.html">BRB-ArrayTools</a> for gene expression analysis. 
@@ -87,8 +87,8 @@
 							run RNA-Seq preprocessing based on well-known RNA-Seq tools (<a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a>,
                      <a href="http://samtools.sourceforge.net/">Samtools</a> and 
                      <a href="http://www-huber.embl.de/users/anders/HTSeq/">HTSeq</a>). Therefore
-							rather than inventing a new preprocessing tool, we design BDGE as an easy-to-use software in mind and 
-							hope BDGE can make RNA-Seq preprocessing more accessible to general scientists. 
+							rather than inventing a new preprocessing tool, we design BRB-BDGE as easy-to-use software and 
+							hope it can make RNA-Seq preprocessing more accessible to general scientists. 
 						</p>
 					
 						<!-- <div class="text-center">
@@ -100,17 +100,17 @@
 					<section id="requirement">
 
 						<div class="page-header">
-							<h1>OS & Hardware Requirement</h1>
+							<h1>OS & Hardware Requirements</h1>
 						</div>
 
 						<p>
-           			<a href="http://www.ubuntu.com/">Ubuntu</a> 64-bit Desktop OS (version >= 12.04) is required in order to run <strong>BDGE</strong>. 
+           			<a href="http://www.ubuntu.com/">Ubuntu</a> 64-bit Desktop OS (version >= 12.04) is required in order to run <strong>BRB-BDGE</strong>. 
            			The Ubuntu ISO file can be downloaded from 
             		<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a> page.</p>
             		
             		<p>The recommended hardware requirement may vary depending on the size of data. 
             		It is recommended that the machine has at least 8GB of RAM and 500GB hard disk space. Ubuntu OS needs about 4.5 GB of space to install it.
-            		<strong>BDGE</strong> and other required
+            		<strong>BRB-BDGE</strong> and other required
             		software (Tophat, Bowtie, ...) take less than 400 MB space in total.</p>
             
                   <h4><a id="ubuntu">Ubuntu Installation</a></h4>
@@ -119,21 +119,20 @@
                   provides a step-by-step instruction with screenshots for first-time users.</p>
                   <ul>
             		<li><strong>New machine without any OS (recommended): </strong>
-            		After a few simple questions (installation type, select drive, where are you/region, keyboard layout and who are you) 
-            		have been answered, Ubuntu will start to install it to your computer. 
+            		After a few simple questions have been answered, Ubuntu will start to install to your computer. 
             		The whole process of installation takes about 10-20 minutes depending on your hardware. </li>
             		
             		<li><strong>Machine with Ubuntu already installed: </strong>
-                  If your Ubuntu OS version is at least 12.04, you are fine. There is nothing has to be changed. If your Ubuntu version
-                  is below 12.04, you can follow <a href="http://www.ubuntu.com/download/desktop/upgrade">the instruction</a> on Ubuntu website
+                  If your Ubuntu OS version is at least 12.04, you are fine. There is nothing that has to be changed. If your Ubuntu version
+                  is below 12.04, you can follow <a href="http://www.ubuntu.com/download/desktop/upgrade">the instruction</a> on the Ubuntu website
                   to upgrade the OS to the latest version.</li>            		
             		
             		<li><strong>Machine with a non-Ubuntu OS: </strong>
-            		If you want to install Ubuntu on a machine with an operation system (such as Windows OS) other than Ubuntu on it, you have two
+            		If you want to install Ubuntu on a machine with an operating system (such as Windows OS) other than Ubuntu on it, you have two
             		choices to install Ubuntu. 
                      <ul>
                      <li><strong>Virtual Machine: </strong></li>
-                     Using virtual machine is a great way to try/use a new OS without worrying messing up the current OS.
+                     Using a virtual machine is a great way to try/use a new OS without worrying about messing up the current OS.
                      The new OS (Ubuntu) will be running at the same time as the current OS.
                      Users can create a virtual machine using software called <a href="https://www.virtualbox.org/">Oracle VirtualBox</a> (open-source) or 
             		   <a href="http://www.vmware.com/">VMWARE</a> (commercial) under the current OS. More detailed instruction including
@@ -143,8 +142,8 @@
                      <li><strong>Dual Boot (for advanced users): </strong>
                      </li>
                      Ubuntu OS can be installed in a way so the current OS will be left untouched. It is similar to the virtual machine method 
-                     but only one operating system is running. This approach has
-                     an advantage of keeping the current OS but it requires more attention. If you plan to do it, please back up your data
+                     but only one operating system is running at a time. This approach has
+                     an advantage of keeping the current OS but it requires more attention at installation. If you plan to do it, please back up your data
                      and/or OS license information before the installation. The steps to install Ubuntu for dual-boot is almost the same as to
                      install Ubuntu for single boot except you have to choose 'Install Ubuntu alongside Windows 7'
                      in the 'Installation type' dialog. After Ubuntu OS is installed, you can choose which OS you want to boot.
@@ -161,17 +160,17 @@
             		<a href="http://www.howtogeek.com/163154/linux-users-have-a-choice-8-linux-desktop-environments/">desktop environments</a>
             		on your Ubuntu on top of it.</li>
             		
-            		<li>If you like to install BDGE on Amazon cloud to take advantage of clustering power, please consider the command line interface 
+            		<li>If you wish to install BRB-BDGE on Amazon cloud to take advantage of the clustering power, please use the command line interface 
             		program <a href="#cli">BDGECLI</a>. See FAQ #5 and #6 below for more information. </li>
             		
-            		<li>If you already installed <strong>BDGE</strong> and want to use it remotely from another machine running on Windows OS, the Windows OS
-            		needs to have an X11 display server program in order to use <strong>BDGE</strong>. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a>
+            		<li>If you already installed <strong>BRB-BDGE</strong> and want to use it remotely from another machine running on Windows OS, the Windows OS
+            		needs to have an X11 display server program in order to use <strong>BRB-BDGE</strong>. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a>
             		and <a href="http://sourceforge.net/projects/xming/">Xming X server</a> are 
             		two standard programs for Windows OS user to remotely run GUI programs located on Linux machines. If you are not familiar with these two programs, google
             		with keywords PuTTy and Xming to find more information. </li> 	
             		
-                  <li>If host machine is running on Windows OS, you may want to check the power option (Windows > Control Panel > Power Options)
-                  to make sure it won't go to sleep or hibernate automatically when the Windows OS is idle for a long time (even Ubuntu VM is still working).</li>
+                  <li>If the host machine is also running Windows OS, you may want to check the power option (Windows > Control Panel > Power Options)
+                  to make sure it won't go to sleep or hibernate automatically when the Windows OS is idle for a long time (with Ubuntu VM still working).</li>
             		</ul>		
             					
 					</section>
@@ -179,10 +178,10 @@
 					<section id="download">
 
 						<div class="page-header">
-							<h1>Download</h1>
+							<h1>Download BRB-BDGE</h1>
 						</div>
 
-            <p><a href="http://example.com/bdge-dl.tar.gz"><button type="button" class="btn btn-success">Download BDGE</button></a>  (not published, placeholder for now) </p>
+            <p><a href="http://example.com/bdge-dl.tar.gz"><button type="button" class="btn btn-success">Download BRB-BDGE</button></a>  (not published, placeholder for now) </p>
             <p>The downloaded file is saved under $HOME/Downloads directory by default. 
             The file name is coded as &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
             <p>The tarball can be extracted to the desktop or any place under your $HOME directory by using either
@@ -202,10 +201,10 @@
             <a href="#installErr">here</a> in FAQ.
             </p> 
             <h4><a id="launch">Launch</a></h4>
-            <p>To launch the GUI application, you can do one of the followings
+            <p>To launch the GUI application, you can do one of the following
             <ul>
                <li>Open the File Manager and go to the directory <strong>bdge-dl</strong>. 
-               Double clicking <code>BDGE</code> file to launch.</li>
+               Double click <code>BDGE</code> file to launch.</li>
                <li>
                   Open a terminal and go to the directory containing <strong>BDGE</strong>. 
                   Type 
@@ -215,8 +214,8 @@
 <!--                <div class="thumbnail">
 							<a href="images/RSPPdesk.png"><img src="images/RSPPdesk.png"></a>
 						</div> -->
-               <li>Double click the BDGE icon <a href="images/RSPP_icon.png"><img src="images/RSPP_iconSmall.png"></a>
-               on the Ubuntu desktop (assume ./install.sh has be run once). 
+               <li>Double click the BRB-BDGE icon <a href="images/RSPP_icon.png"><img src="images/RSPP_iconSmall.png"></a>
+               on the Ubuntu desktop (assume ./install.sh has been run once). 
                </li>
             </ul>
             </p>
@@ -228,11 +227,15 @@
 							<h1>Preprocessing 101</h1>
 						</div>
 
-            <p>The workflow can be explained by the following plot</p>
+            <p>The workflow can be represented by the following plot</p>
             <a href="images/PreprocessFlow.png"><img src="images/PreprocessFlow.png" width="600px"></a>
             <p></p>
-            <p>For the first-time users, they have to set up the required software (Tophat, Samtools, ...) first. 
-            BDGE provides a simple way for them to do it. Please see the instruction <a href="#setuprequire">here</a>.</p>
+            <p>The first-time BRB-BDGE is used, you have to set up the required software (such as Tophat, Samtools, ...) first. 
+            BRB-BDGE provides a simple way to do it. Please see the instruction <a href="#setuprequire">here</a>.</p>
+            
+            <p>Before launching BRB-BDGE, the user needs to create a tab-delimited file called <strong>samples.txt</strong> to provide
+            sample information required by the software.</p>            
+            
             <p>The application will automatically run the following programs one by one</p>
             <ol>
             <li><a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a></li>
@@ -240,7 +243,7 @@
             <li><a href="http://www-huber.embl.de/users/anders/HTSeq/">HTSeq-count</a></li>
             </ol>
             <p>
-            based on the experiment design defined in a <strong>tab-delimited</strong> text file <strong>samples.txt</strong>. 
+            based on <strong>samples.txt</strong> file. 
             More information about <strong>samples.txt</strong> can be found in the <a href="#tutorial">Tutorial</a> section.
             </p>       
             <p>Before running the alignment, users are welcomed to run quality control and trimming by using the 
@@ -251,7 +254,7 @@
             <p >The following files are required as an input (see also <a href="#tutorial">Tutorial</a> section)</p>
             <ol>
 				<li>Fastq - sequence data</li>
-				<li>Reference genome file in bt2 format</li>
+				<li>Reference genome files in bt2 format</li>
 				<li>Reference genome file in fa format (optional but recommended)</li>
 				<li>Gene annotation file in gtf format</li>
 				<li>samples.txt</li>
@@ -261,35 +264,35 @@
             Each file contains a table of read counts for all genes in one sample. There are two columns in the table. 
             The first column contains gene identifiers such as Ensembl IDs or gene symbols and the second column has count values.             
             These count table files can be imported into BRB-ArrayTools for gene expression analyses.
-            Users can use <code>DESeqDataSetFromHTSeqCount()</code> function from <code>DESeq2</code> package 
+            Alternatively users can use the <code>DESeqDataSetFromHTSeqCount()</code> function from the <code>DESeq2</code> package 
             in <a href="http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html">Bioconductor</a> or
-            <code>readDGE()</code> function from <code>edgeR</code> package to load COUNT files data in an 
+            the <code>readDGE()</code> function from the <code>edgeR</code> package to load COUNT files data into an 
             <a href="http://cran.r-project.org">R</a> environment.</p>
             </section>
 
 					<section id="setuprequire">
 
 						<div class="page-header">
-							<h1>Setup for Requirement Software</h1>
+							<h1>Setup of Required Software</h1>
 						</div>
-           <p >There are two ways to set up for required software (such as Bowtie, Tophat, SAMTools, et al): 
+           <p >There are two ways to set up the required software (such as Bowtie, Tophat, SAMTools, ...): 
             automatic and manual. For novice users, it is recommended to use the automatic setup method.
-            For either way, users first open a dialog by clicking Settings > Tools Manager.</p>
+            Either way, users first open a dialog by clicking Settings > Tools Manager.</p>
             <a href="images/automaticSetup.png"><img src="images/automaticSetup.png" width="600"></a>            
             <h4><a id="automatic">Automatic method</a></h4> 
-            <p >Automatic setup method provides an easy way to install required software. 
-            When users click the <strong>Automatic setup</strong> button, a new terminal window will be opened immediately. 
-            After the <strong>sudo</strong> password was entered, the application will start to download an installation script 
-            from internet (which is kept updated) and install required software. 
-            All the required software is installed under <code>/opt/RNA-Seq/bin</code> directory. Note that if you do not have sudo password, you need to ask your
+            <p >The automatic setup method provides an easy way to install the required software. 
+            When users click the <strong>Automatic setup</strong> button, a new terminal window will be opened. 
+            After the <strong>sudo</strong> password is entered, the application will start to download an installation script 
+            from the internet (which is kept updated) and install the required software. 
+            All the required software is installed under <code>/opt/RNA-Seq/bin</code> directory. Note that if you do not have the sudo password, you need to ask your
             system administrator for help. Check out <a href="#installErr">here</a> in FAQ on how to allow an existing user to have root privileges.</p>
-            <p >After the installation is finished, users will be asked to hit ENTER key to close the terminal. Now they can go to the main dialog to 
+            <p >After the installation is finished, users will be asked to hit the ENTER key to close the terminal. Now they can go to the main dialog to 
             continue to preprocess their data.</p>
             <h4><a id="manual">Manual method</a></h4>
-            <p >If users have required software installed before, they can click <strong>Browse</strong> button to select the 
+            <p >If the required software have been previously installed, you can click the <strong>Browse</strong> button to select the 
             directory for each software (It is assumed HTSeq is available under a global environment so there is no entry for it).
             After the path of each software has been specified, users can click 'OK' button to proceed processing.</p>            
-            <p >Note that the setup is only needed to be run once. The path of each required software will be remembered by <strong>BDGE</strong>.</p>             
+            <p >Note that the setup needs only to be run once. The path of each required software will be remembered by <strong>BRB-BDGE</strong>.</p>             
  					</section>
 
 					<section id="tutorial">
@@ -297,23 +300,24 @@
 						<div class="page-header">
 							<h1>Tutorial</h1>
 						</div>
-            <p>To help first time users to quickly test BDGE program, we provide a <a href="#tutdata">testing data which includes all necessary input files.</a>. 
-            When you are ready to run the program on your own data, check out <a href="#preparefiles">Prepare Files</a> section to make sure all
+            <p>To help first time users gain experience to use the BRB-BDGE program, we provide  
+            <a href="#tutdata">test data which include all necessary input files.</a>. 
+            When you are ready to run the program on your own data, check out the <a href="#preparefiles">Prepare Files</a> section to make sure all
             required input files are ready.</p>
-            <h4><a id="tutdata">Testing Data</a></h4>
+            <h4><a id="tutdata">Test Data</a></h4>
             <p >A subset of RNA sequence data files including genome reference, gene annotation and samples.txt files from GSE11209 
             can be downloaded from <a href="https://github.com/arraytools/GSE11209/archive/master.zip">here</a>. After downloading the zip file,
             user needs to extract it to some place (e.g. $HOME). User can access the data folder at <i>$HOME/GSE11209-master/</i>. Fastq files are 
             located under <i>$HOME/GSE11209-master</i> directory and the annotation files are under <i>$HOME/GSE11209-master/annotation</i>.
             It should take less than 5 minutes to run preprocessing on this testing data. Note: be sure to click 'Browse' button for the Annotation Dir and
-            select 'annotation' directory on BDGE program; see the screenshot <a href="images/TestingData.png">here</a>.</p>
+            select 'annotation' directory on BRB-BDGE program; see the screenshot <a href="images/TestingData.png">here</a>.</p>
             
             <h4><a id="preparefiles">Prepare Files</a></h4> 
             <p >To run RNA-Seq data preprocessing, it is assumed the working directory contains the following files</p>
             <ol > 
 				<li>Fastq file (*.fastq)</li>
-				<li>Reference genome sequence (*.bt2)</li>
-				<li>Reference genome sequence (*.fa) - optional but recommended</li>
+				<li>Reference genome sequence files (*.bt2)</li>
+				<li>Reference genome sequence file (*.fa) - optional but recommended</li>
 				<li>Genome transcript annotation file (*.gtf)</li>
 				<li>samples.txt </li>
 			</ol>
@@ -334,14 +338,14 @@
 			After downloading the file <strong>Homo_sapiens_Ensembl_GRCh37.tar.gz</strong> (17GB), the reference genome files (<strong>genome.*.bt2</strong>) are 
 			located under <code>Homo_sapiens/Ensembl/GrCh37/Sequence/Bowtie2Index</code> directory and gene annotation file (<strong>genes.gtf</strong>) is located under
 			<code>Home_sapiens/Ensembl/GrCh37/Annotation/Archives/</code> directory. 
-			Please copy these bt2 and gtf file to some directory such as ProjectDir/annotation/ and select this directory for the 'Annotation Dir' on BDGE program. 
+			Please copy these bt2 and gtf files to some directory such as ProjectDir/annotation/ and select this directory for the 'Annotation Dir' on the BRB-BDGE program. 
 			</p>
 			
 			<p>If you have an <a href="http://biowulf.nih.gov/">NIH helix/biowulf</a> acccount, 
 			you can download the reference genome and annotation files individually from /fdb/igenomes/ directory; 
 			see <a href="http://helix.nih.gov/Applications/tophat.html">Tophat on Helix.</a></p>
 			
-         <p>samples.txt file contains a table of metadata of experimental design. More detail about how to prepare samples.txt is given in the next section.</p>			
+         <p>The samples.txt file contains a table of metadata of sequencing design. More detail about how to prepare samples.txt is given in the next section.</p>			
 			
 			<h4><a id="samples">samples.txt</a></h4>
 			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a <font color="red"><strong>tab-delimited</strong></font> 
@@ -407,10 +411,10 @@
 						</div>
 						
 		           <ol >
-		               <li><strong>How about other Linux distribution or Mac OS? </strong> Sorry, only <strong>BDGECLI</strong> is supported. 
-		                  Even though the code of BDGE can be re-built to work on other OS/Linux distributions, 
-		                  we currently have no hardware resource and time to support other OS/Linux distributions. If you are interested in building on other
-		                  operating systems, please let us know.
+		               <li><strong>How about other Linux distribution or Mac OS? </strong> Sorry, no other OS is supported.
+		                  For other OS, please use <strong>BDGECLI</strong> program. 
+		                  Even though the code of BRB-BDGE can be re-built to work on other OS/Linux distributions, 
+		                  we currently have no hardware resource and time to support other OS/Linux distributions.
 		               </li>
 		               <li><strong>How about more advanced options? </strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
 		               for their need. A screenshot of the dialog (default options are shown) is 
@@ -429,26 +433,26 @@
 		               minimum value will be skipped). The default is 0 for minimum score.
 		               </li>
 		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>? </strong> 
-		               Galaxy is a much complicated system. There may be a big learning curve for general users, not to mention unexpected issues
-		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
+		               Galaxy is a much more complicated system. There may be a big learning curve for general users, not to mention unexpected issues
+		               (tools availability/installation/management, upload data, quota limit, crash, ...) when it is used. 
 		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who have some experience 
 		               with Unix/Linux can start to analyze RNA-sequence data without the need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
-		               So we design <strong>BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
-		               on the system minus one. Since running Tophat with multi-thread requires a significant increase of memory, sometimes
-		               the execution may be very slow or running into the problem of out of memory. In such a case, users can specify '-p' 
+		               So we designed <strong>BRB-BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
+		               on the system minus one. Since running Tophat with multi-threads requires a significant increase of memory, sometimes
+		               the execution may be very slow because lack of memory. In such a case, users can specify '-p' 
 		               parameter in Tophat program to decrease the number of threads.</li>
 							<li><strong>Can the program run on amazon cloud? </strong> You bet. Make sure the amazon machine image (AMI) used to 
 							create machines is based on 64-bit Ubuntu 12.04 and up.</li>               
-		               <li><strong>Can the program run in clustering environment? </strong> Yes. We have tested the program to run the program in 
-		               <a href="http://biowulf.nih.gov/">NIH Biowulf clustering</a> and 
+		               <li><strong>Can the program run in a cluster environment? </strong> Yes. We have tested the program in the 
+		               <a href="http://biowulf.nih.gov/">NIH Biowulf cluster</a> and 
 		               also <a href="http://aws.amazon.com/ec2/">Amazon Elastic Computing Cloud (EC2)</a>. With basic knowledge of batching system (NIH Biowulf) or
 		               Sun Grid Engine queuing system (Amazon Cloud), users can submit multiple jobs to run in parallel on clusters. 
 		               See <a href="cluster.html">Running BDGECLI in Clusters of Computers</a> for more information.</li>
-		               <li><strong>Can we use fasta as the reference genome file instead of bt2 format? </strong> It is possible, of course. But we have not implemented
+<!--                <li><strong>Can we use fasta as the reference genome file instead of bt2 format? </strong> It is possible, of course. But we have not implemented
 		               that. There is a price to pay when we use fasta format since it requires running bowtie2-build program to generate bowtie2 index files (bt2) that
 		               Tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
-		               the index files directly.</li>
+		               the index files directly.</li> -->
 		               <li><strong>How to find the Tophat (and other) software version? </strong> Assume required software is installed under the default directory
 		               <code>/opt/RNA-Seq/bin</code>, we can use command line to find out each software version
 		               <pre>
@@ -461,11 +465,11 @@ cat /opt/RNA-Seq/bin/HTSeq-0.6.1/VERSION # 0.6.1
 /opt/RNA-Seq/bin/fastx/bin/fastx_trimmer -h # 0.0.13
 </pre>
 		               </li>
-		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used? </strong> BDGE works on virtual machine but
-		               it does not work under Ubuntu live mode (default option when booting from CD). Live session differs from a regular operation system. It has a very limited file system space and 
+		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used? </strong> BRB-BDGE works on virtual machine but
+		               it does not work under Ubuntu live mode (default option when booting from CD). Live session differs from a regular operating system. It has a very limited file system space and 
 		               you will get an error when software (Tophat et al) are being installed. So please use 'Install Ubuntu' instead of 'Try Ubuntu'.</li>
                      <li><A NAME="installErr"><strong>I got an error when I ran install.sh</strong></A>. Running the bash script install.sh requires <strong>root</strong> privileges. 
-                     If you don't have root privileges, you will get the following error when you ran <strong>install.sh</strong> script. 
+                     If you don't have root privileges, you will get the following error when you run <strong>install.sh</strong> script. 
 <pre>
 $ ./install.sh
 [sudo] password for brb:
@@ -475,9 +479,9 @@ is to run the following terminal command from an account with root privileges,
 <pre>
 sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user name which does not have sudo privileges yet. 
 2. The user needs to log out and log in again to see the effect.</li>		               
-		               <li><strong>OK, I got the count table successfully from BDGE. How do I transfer the count table files to Windows OS for BRB-ArrayTools? </strong>
+		               <li><strong>OK, I got the count table successfully from BRB-BDGE. How do I transfer the count table files to Windows OS for BRB-ArrayTools? </strong>
 		               One simple solution is to use a flash drive to copy the zip file from working directory in Ubuntu to a Windows machine. 
-		               If you like a more elegant way to transfer the file, you can download a program called <a href="http://winscp.net/eng/index.php">WinSCP</a> 
+		               If you would like a more elegant way to transfer the file, you can download a program called <a href="http://winscp.net/eng/index.php">WinSCP</a> 
 		               on Windows machines and use it to transfer files between Ubuntu and Windows machines. Before you use WinSCP, you need to know the IP for the
 		               Ubuntu machine. You can easily find out the information by using the <strong>ifconfig</strong> command on a terminal
 		               <pre>ifconfig eth0</pre>
@@ -487,10 +491,10 @@ sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user nam
 		               <li><strong>I got an error when running the Tophat program. What could be the cause of the error? </strong>
                      Take a look at the tophat output directories. Look for the file <strong>tophat.log</strong>. The log file should give you a hint about the problem.
                      For example, if the log file shows an error for fastq record SRRXXXXXX.YYYYYY, check the fastq file SRRXXXXXX.fastq. If the file
-                     was copied from another machine or downloaded from internet, use some tools like 
+                     was copied from another machine or downloaded from the internet, use some tools like 
                      <a href="http://en.wikipedia.org/wiki/Md5sum">md5sum</a> to find out if there is any discrepancy in md5sum values.</li>  
 		               <li><strong>It is the first time for me to use Ubuntu OS. Is there a guide for me to get familiar with Ubuntu OS? </strong>One excellent website is 
-		               <a href="http://ubuntuguide.org/wiki/"> Ubuntuguide.org</a> although there are many other useful resources on internet.</li>        
+		               <a href="http://ubuntuguide.org/wiki/"> Ubuntuguide.org</a> although there are many other useful resources on the internet.</li>        
 		               <li><strong>I still need HELP: </strong> Email me.</li>
 		            </ol>
             						
@@ -506,7 +510,7 @@ sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user nam
 
 	<div id="footer">
 		<div class="container">
-			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@emmes.com?subject=BDGE question"><code>arraytools [at] emmes.com</code></a> using the subject heading <code>BDGE question</code>. </p>
+			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@emmes.com?subject=BRB-BDGE question"><code>arraytools [at] emmes.com</code></a> using the subject heading <code>BRB-BDGE question</code>. </p>
 		</div>
 	</div>
 
