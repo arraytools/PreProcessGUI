@@ -440,7 +440,7 @@
 		               with Unix/Linux can start to analyze RNA-sequence data without the need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
 		               So we designed <strong>BRB-BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
-		               on the system minus one. Since running Tophat with multi-threads requires a significant increase of memory, sometimes
+		               on the system minus one. Since running Tophat with multithreads requires a significant increase of memory, sometimes
 		               the execution may be very slow because lack of memory. In such a case, users can specify '-p' 
 		               parameter in Tophat program to decrease the number of threads.</li>
 							<li><strong>Can the program run on amazon cloud? </strong> You bet. Make sure the amazon machine image (AMI) used to 
