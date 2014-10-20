@@ -160,7 +160,7 @@
             		<a href="http://www.howtogeek.com/163154/linux-users-have-a-choice-8-linux-desktop-environments/">desktop environments</a>
             		on your Ubuntu on top of it.</li>
             		
-            		<li>If you wish to install BRB-BDGE on Amazon cloud to take advantage of the clustering power, please use the command line interface 
+            		<li>If you wish to install BRB-BDGE on Amazon cloud to take the advantage of the clustering power, please use the command line interface 
             		program <a href="#cli">BDGECLI</a>. See FAQ #5 and #6 below for more information. </li>
             		
             		<li>If you already installed <strong>BRB-BDGE</strong> and want to use it remotely from another machine running on Windows OS, the Windows OS
@@ -230,7 +230,7 @@
             <p>The workflow can be represented by the following plot</p>
             <a href="images/PreprocessFlow.png"><img src="images/PreprocessFlow.png" width="600px"></a>
             <p></p>
-            <p>The first-time BRB-BDGE is used, you have to set up the required software (such as Tophat, Samtools, ...) first. 
+            <p>The first-time BRB-BDGE is used, you have to download the required software (such as Tophat, Samtools, ...) first. 
             BRB-BDGE provides a simple way to do it. Please see the instruction <a href="#setuprequire">here</a>.</p>
             
             <p>Before launching BRB-BDGE, the user needs to create a tab-delimited file called <strong>samples.txt</strong> to provide
@@ -301,12 +301,13 @@
 							<h1>Tutorial</h1>
 						</div>
             <p>To help first time users gain experience to use the BRB-BDGE program, we provide  
-            <a href="#tutdata">test data which include all necessary input files.</a>. 
+            <a href="#tutdata">test data which includes all necessary input files.</a>. 
             When you are ready to run the program on your own data, check out the <a href="#preparefiles">Prepare Files</a> section to make sure all
             required input files are ready.</p>
             <h4><a id="tutdata">Test Data</a></h4>
             <p >A subset of RNA sequence data files including genome reference, gene annotation and samples.txt files from GSE11209 
-            can be downloaded from <a href="https://github.com/arraytools/GSE11209/archive/master.zip">here</a>. After downloading the zip file,
+            can be downloaded from <a href="https://github.com/arraytools/GSE11209/archive/master.zip">here</a> 
+            (right click the link and select 'Save Link As...' from the right-click menu). After downloading the zip file,
             user needs to extract it to some place (e.g. $HOME). User can access the data folder at <i>$HOME/GSE11209-master/</i>. Fastq files are 
             located under <i>$HOME/GSE11209-master</i> directory and the annotation files are under <i>$HOME/GSE11209-master/annotation</i>.
             It should take less than 5 minutes to run preprocessing on this testing data. Note: be sure to click 'Browse' button for the Annotation Dir and
@@ -348,7 +349,7 @@
          <p>The samples.txt file contains a table of metadata of sequencing design. More detail about how to prepare samples.txt is given in the next section.</p>			
 			
 			<h4><a id="samples">samples.txt</a></h4>
-			<p >Before starting to run preprocessing, users need to construct a table of experiment design in a <font color="red"><strong>tab-delimited</strong></font> 
+			<p >Before starting to run preprocessing, users need to construct a table of sequencing design in a <font color="red"><strong>tab-delimited</strong></font> 
 			file <strong>samples.txt</strong>. This file has the following requirement. </p>
 			
 			<p>The header of <strong>samples.txt</strong> consists of <strong>LibraryName, LibraryLayout, fastq1</strong> and <strong>fastq2</strong>. Each row represents one sample. The column 'LibraryName' contains a name to uniquely represent the sample. 'LibraryLayout' should be PAIRED or SINGLE.
@@ -434,7 +435,7 @@
 		               </li>
 		               <li><strong>How is this program different from <a href="http://galaxyproject.org/">Galaxy</a>? </strong> 
 		               Galaxy is a much more complicated system. There may be a big learning curve for general users, not to mention unexpected issues
-		               (tools availability/installation/management, upload data, quota limit, crash, ...) when it is used. 
+		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
 		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who have some experience 
 		               with Unix/Linux can start to analyze RNA-sequence data without the need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
@@ -444,7 +445,7 @@
 		               parameter in Tophat program to decrease the number of threads.</li>
 							<li><strong>Can the program run on amazon cloud? </strong> You bet. Make sure the amazon machine image (AMI) used to 
 							create machines is based on 64-bit Ubuntu 12.04 and up.</li>               
-		               <li><strong>Can the program run in a cluster environment? </strong> Yes. We have tested the program in the 
+		               <li><strong>Can the program run in a cluster environment? </strong> Yes. We have tested BDGECLI in the 
 		               <a href="http://biowulf.nih.gov/">NIH Biowulf cluster</a> and 
 		               also <a href="http://aws.amazon.com/ec2/">Amazon Elastic Computing Cloud (EC2)</a>. With basic knowledge of batching system (NIH Biowulf) or
 		               Sun Grid Engine queuing system (Amazon Cloud), users can submit multiple jobs to run in parallel on clusters. 
