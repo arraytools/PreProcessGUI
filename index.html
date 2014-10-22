@@ -43,20 +43,16 @@
 								<li><a href="#download"><i class="icon-star"></i> Download BRB-BDGE</a></li>
 								 <ul  class="nav nav-list usermenu">
 								     <li><a href="#launch"><i class="icon-bullhorn  icon-white"></i> Launch </a></li>
+								     <li><a href="#setuprequire"><i class="icon-bullhorn icon-white"></i> Setup of Req'd Software</a></li>
 								  </ul>
 								<li><a href="#pp101"><i class="icon-calendar"></i> Preprocessing 101</a></li>
 								  <ul  class="nav nav-list usermenu">
 								     <li><a href="#inputoutput"><i class="icon-bullhorn  icon-white"></i> Input/Output </a></li>
 								  </ul>
-								<li><a href="#setuprequire"><i class="icon-th-list"></i> Setup of Req'd Software</a></li>
-								  <ul  class="nav nav-list usermenu">
-								     <li><a href="#automatic"><i class="icon-bullhorn  icon-white"></i> Automatic </a></li>
-								     <li><a href="#manual"><i class="icon-bullhorn  icon-white"></i> Manual </a></li>
-								  </ul>
 								<li><a href="#tutorial"><i class="icon-th-list"></i> Tutorial</a></li>
 								  <ul  class="nav nav-list usermenu">
-								     <li><a href="#tutdata"><i class="icon-bullhorn  icon-white"></i> Testing Data </a></li>
-								     <li><a href="#preparefiles"><i class="icon-bullhorn  icon-white"></i> Prepare Files </a></li>
+								     <li><a href="#tutdata"><i class="icon-bullhorn  icon-white"></i> Test Data </a></li>
+								     <li><a href="#preparingfiles"><i class="icon-bullhorn  icon-white"></i> Preparing Files </a></li>
 								     <li><a href="#samples"><i class="icon-bullhorn  icon-white"></i> samples.txt </a></li>
 								  </ul>								
 								<li><a href="#cli"><i class="icon-th-list"></i> Command Line Interface</a></li>
@@ -219,6 +215,27 @@
                </li>
             </ul>
             </p>
+            <h4><a id="setuprequire">Setup of Required Software</a></h4>
+            <p>
+            There are two ways to set up the required software (such as Bowtie, Tophat, SAMTools, ...): 
+            automatic and manual. For novice users, it is recommended to use the automatic setup method.
+            Either way, users first open a dialog by clicking Settings > Tools Manager.</p>
+            <a href="images/automaticSetup.png"><img src="images/automaticSetup.png" width="600"></a>            
+            <h5><a id="automatic">Automatic method</a></h5> 
+            <p >The automatic setup method provides an easy way to install the required software. 
+            When users click the <strong>Automatic setup</strong> button, a new terminal window will be opened. 
+            After the <strong>sudo</strong> password is entered, the application will start to download an installation script 
+            from the internet (which is kept updated) and install the required software. 
+            All the required software is installed under <code>/opt/RNA-Seq/bin</code> directory. Note that if you do not have the sudo password, you need to ask your
+            system administrator for help. Check out <a href="#installErr">here</a> in FAQ on how to allow an existing user to have root privileges.</p>
+            <p >After the installation is finished, users will be asked to hit the ENTER key to close the terminal. Now they can go to the main dialog to 
+            continue to preprocess their data.</p>
+            <h5><a id="manual">Manual method</a></h5>
+            <p >If the required software have been previously installed, you can click the <strong>Browse</strong> button to select the 
+            directory for each software (It is assumed HTSeq is available under a global environment so there is no entry for it).
+            After the path of each software has been specified, users can click 'OK' button to proceed processing.</p>            
+            <p >Note that the setup needs only to be run once. The path of each required software will be remembered by <strong>BRB-BDGE</strong>.
+            </p>
 					</section>
 
 					<section id="pp101">
@@ -266,56 +283,31 @@
             These count table files can be imported into BRB-ArrayTools for gene expression analyses.
             Alternatively users can use the <code>DESeqDataSetFromHTSeqCount()</code> function from the <code>DESeq2</code> package 
             in <a href="http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html">Bioconductor</a> or
-            the <code>readDGE()</code> function from the <code>edgeR</code> package to load COUNT files data into an 
+            the <code>readDGE()</code> function from the <code>edgeR</code> package to load COUNT data into an 
             <a href="http://cran.r-project.org">R</a> environment.</p>
             </section>
-
-					<section id="setuprequire">
-
-						<div class="page-header">
-							<h1>Setup of Required Software</h1>
-						</div>
-           <p >There are two ways to set up the required software (such as Bowtie, Tophat, SAMTools, ...): 
-            automatic and manual. For novice users, it is recommended to use the automatic setup method.
-            Either way, users first open a dialog by clicking Settings > Tools Manager.</p>
-            <a href="images/automaticSetup.png"><img src="images/automaticSetup.png" width="600"></a>            
-            <h4><a id="automatic">Automatic method</a></h4> 
-            <p >The automatic setup method provides an easy way to install the required software. 
-            When users click the <strong>Automatic setup</strong> button, a new terminal window will be opened. 
-            After the <strong>sudo</strong> password is entered, the application will start to download an installation script 
-            from the internet (which is kept updated) and install the required software. 
-            All the required software is installed under <code>/opt/RNA-Seq/bin</code> directory. Note that if you do not have the sudo password, you need to ask your
-            system administrator for help. Check out <a href="#installErr">here</a> in FAQ on how to allow an existing user to have root privileges.</p>
-            <p >After the installation is finished, users will be asked to hit the ENTER key to close the terminal. Now they can go to the main dialog to 
-            continue to preprocess their data.</p>
-            <h4><a id="manual">Manual method</a></h4>
-            <p >If the required software have been previously installed, you can click the <strong>Browse</strong> button to select the 
-            directory for each software (It is assumed HTSeq is available under a global environment so there is no entry for it).
-            After the path of each software has been specified, users can click 'OK' button to proceed processing.</p>            
-            <p >Note that the setup needs only to be run once. The path of each required software will be remembered by <strong>BRB-BDGE</strong>.</p>             
- 					</section>
-
-					<section id="tutorial">
-
-						<div class="page-header">
-							<h1>Tutorial</h1>
-						</div>
-            <p>To help first time users gain experience to use the BRB-BDGE program, we provide  
-            <a href="#tutdata">test data which includes all necessary input files.</a>. 
-            When you are ready to run the program on your own data, check out the <a href="#preparefiles">Prepare Files</a> section to make sure all
-            required input files are ready.</p>
-            <h4><a id="tutdata">Test Data</a></h4>
-            <p >A subset of RNA sequence data files including genome reference, gene annotation and samples.txt files from GSE11209 
-            can be downloaded from <a href="https://github.com/arraytools/GSE11209/archive/master.zip">here</a> 
-            (right click the link and select 'Save Link As...' from the right-click menu). After downloading the zip file,
-            user needs to extract it to some place (e.g. $HOME). User can access the data folder at <i>$HOME/GSE11209-master/</i>. Fastq files are 
-            located under <i>$HOME/GSE11209-master</i> directory and the annotation files are under <i>$HOME/GSE11209-master/annotation</i>.
-            It should take less than 5 minutes to run preprocessing on this testing data. Note: be sure to click 'Browse' button for the Annotation Dir and
-            select 'annotation' directory on BRB-BDGE program; see the screenshot <a href="images/TestingData.png">here</a>.</p>
             
-            <h4><a id="preparefiles">Prepare Files</a></h4> 
-            <p >To run RNA-Seq data preprocessing, it is assumed the working directory contains the following files</p>
-            <ol > 
+			<section id="tutorial">
+
+			<div class="page-header">
+					<h1>Tutorial</h1>
+			</div>
+         <p>To help first time users gain experience to use the BRB-BDGE program, we provide  
+            <a href="#tutdata">test data which includes all necessary input files.</a>. 
+            When you are ready to run the program on your own data, check out the <a href="#preparingfiles">Preparing Files</a> section to make sure all
+            required input files are ready.</p>
+         <h4><a id="tutdata">Test Data</a></h4>
+         <p >A subset of RNA sequence data files including genome reference, gene annotation and samples.txt files from GSE11209 
+          can be downloaded from <a href="https://github.com/arraytools/GSE11209/archive/master.zip">here</a> 
+          (right click the link and select 'Save Link As...' from the right-click menu). After downloading the zip file,
+          user needs to extract it to some place (e.g. $HOME). User can access the data folder at <i>$HOME/GSE11209-master/</i>. Fastq files are 
+          located under <i>$HOME/GSE11209-master</i> directory and the annotation files are under <i>$HOME/GSE11209-master/annotation</i>.
+          It should take less than 5 minutes to run preprocessing on this testing data. Note: be sure to click 'Browse' button for the Annotation Dir and
+          select 'annotation' directory on BRB-BDGE program; see the screenshot <a href="images/TestingData.png">here</a>.</p>
+            
+         <h4><a id="preparingfiles">Preparing Files</a></h4> 
+         <p >To run RNA-Seq data preprocessing, it is assumed the working directory contains the following files</p>
+         <ol > 
 				<li>Fastq file (*.fastq)</li>
 				<li>Reference genome sequence files (*.bt2)</li>
 				<li>Reference genome sequence file (*.fa) - optional but recommended</li>
@@ -381,7 +373,7 @@
 			You can transfer the output files to Windows OS machines and use BRB-ArrayTools for further gene expression analysis. See FAQ #11 for further help about
 			transferring files. </p>
 			</section>
-
+            
 					<section id="cli">
 
 						<div class="page-header">
@@ -437,7 +429,7 @@
 		               Galaxy is a much more complicated system. There may be a big learning curve for general users, not to mention unexpected issues
 		               (tools availability/installation/management, upload data, quota limit, ...) when it is used. 
 		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who have some experience 
-		               with Unix/Linux can start to analyze RNA-sequence data without the need of a 'system administrator'.</li>
+		               with Unix/Linux to analyze RNA-Seq data without the need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
 		               So we designed <strong>BRB-BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
 		               on the system minus one. Since running Tophat with multithreads requires a significant increase of memory, sometimes
@@ -454,7 +446,7 @@
 		               that. There is a price to pay when we use fasta format since it requires running bowtie2-build program to generate bowtie2 index files (bt2) that
 		               Tophat2 program needs. Experience shows that it takes about the same time to create bowtie2 index files from fasta file as we download
 		               the index files directly.</li> -->
-		               <li><strong>How to find the Tophat (and other) software version? </strong> Assume required software is installed under the default directory
+		               <li><strong>How to find the Tophat (and other) software version? </strong> Assuming required software is installed under the default directory
 		               <code>/opt/RNA-Seq/bin</code>, we can use command line to find out each software version
 		               <pre>
 /opt/RNA-Seq/bin/bowtie2-2.2.1/bowtie2 --version  # 2.2.1
