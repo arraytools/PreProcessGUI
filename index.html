@@ -40,7 +40,7 @@
 								 <ul  class="nav nav-list usermenu">
 								     <li><a href="#ubuntu"><i class="icon-bullhorn  icon-white"></i> Ubuntu Installation </a></li>
 								  </ul>
-								<li><a href="#download"><i class="icon-star"></i> Download BRB-BDGE</a></li>
+								<li><a href="#download"><i class="icon-star"></i> Download BRB-DGE</a></li>
 								 <ul  class="nav nav-list usermenu">
 								     <li><a href="#launch"><i class="icon-bullhorn  icon-white"></i> Launch </a></li>
 								     <li><a href="#setuprequire"><i class="icon-bullhorn icon-white"></i> Setup of Req'd Software</a></li>
@@ -74,7 +74,7 @@
 						</div>
 								
 						<p>
-							<strong>BRB Digital Gene Expression (BRB-BDGE)</strong> is a new tool to help scientists preprocess RNA-Seq data for downstream 
+							<strong>BRB Digital Gene Expression (BRB-DGE)</strong> is a new tool to help scientists preprocess RNA-Seq data for downstream 
 							gene expression analysis. It takes RNA sequence 
 							data files in FASTQ format as an input and outputs raw count data in a text format. 
 							The raw count data can be read into <a href="http://linus.nci.nih.gov/BRB-ArrayTools.html">BRB-ArrayTools</a> for gene expression analysis. 
@@ -83,7 +83,7 @@
 							run RNA-Seq preprocessing based on well-known RNA-Seq tools (<a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a>,
                      <a href="http://samtools.sourceforge.net/">Samtools</a> and 
                      <a href="http://www-huber.embl.de/users/anders/HTSeq/">HTSeq</a>). Therefore
-							rather than inventing a new preprocessing tool, we design BRB-BDGE as easy-to-use software and 
+							rather than inventing a new preprocessing tool, we design BRB-DGE as easy-to-use software and 
 							hope it can make RNA-Seq preprocessing more accessible to general scientists. 
 						</p>
 					
@@ -100,13 +100,13 @@
 						</div>
 
 						<p>
-           			<a href="http://www.ubuntu.com/">Ubuntu</a> 64-bit Desktop OS (version >= 12.04) is required in order to run <strong>BRB-BDGE</strong>. 
+           			<a href="http://www.ubuntu.com/">Ubuntu</a> 64-bit Desktop OS (version >= 12.04) is required in order to run <strong>BRB-DGE</strong>. 
            			The Ubuntu ISO file can be downloaded from 
             		<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a> page.</p>
             		
             		<p>The recommended hardware requirement may vary depending on the size of data. 
             		It is recommended that the machine has at least 8GB of RAM and 500GB hard disk space. Ubuntu OS needs about 4.5 GB of space to install it.
-            		<strong>BRB-BDGE</strong> and other required
+            		<strong>BRB-DGE</strong> and other required
             		software (Tophat, Bowtie, ...) take less than 400 MB space in total.</p>
             
                   <h4><a id="ubuntu">Ubuntu Installation</a></h4>
@@ -156,11 +156,11 @@
             		<a href="http://www.howtogeek.com/163154/linux-users-have-a-choice-8-linux-desktop-environments/">desktop environments</a>
             		on your Ubuntu on top of it.</li>
             		
-            		<li>If you wish to install BRB-BDGE on Amazon cloud to take the advantage of the clustering power, please use the command line interface 
+            		<li>If you wish to install BRB-DGE on Amazon cloud to take the advantage of the clustering power, please use the command line interface 
             		program <a href="#cli">BDGECLI</a>. See FAQ #5 and #6 below for more information. </li>
             		
-            		<li>If you already installed <strong>BRB-BDGE</strong> and want to use it remotely from another machine running on Windows OS, the Windows OS
-            		needs to have an X11 display server program in order to use <strong>BRB-BDGE</strong>. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a>
+            		<li>If you already installed <strong>BRB-DGE</strong> and want to use it remotely from another machine running on Windows OS, the Windows OS
+            		needs to have an X11 display server program in order to use <strong>BRB-DGE</strong>. <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a>
             		and <a href="http://sourceforge.net/projects/xming/">Xming X server</a> are 
             		two standard programs for Windows OS user to remotely run GUI programs located on Linux machines. If you are not familiar with these two programs, google
             		with keywords PuTTy and Xming to find more information. </li> 	
@@ -174,10 +174,10 @@
 					<section id="download">
 
 						<div class="page-header">
-							<h1>Download BRB-BDGE</h1>
+							<h1>Download BRB-DGE</h1>
 						</div>
 
-            <p><a href="http://example.com/bdge-dl.tar.gz"><button type="button" class="btn btn-success">Download BRB-BDGE</button></a>  (not published, placeholder for now) </p>
+            <p><a href="http://example.com/bdge-dl.tar.gz"><button type="button" class="btn btn-success">Download BRB-DGE</button></a>  (not published, placeholder for now) </p>
             <p>The downloaded file is saved under $HOME/Downloads directory by default. 
             The file name is coded as &lt;bdge-dl-XXXXXXXX.tar.gz&gt; where 'XXXXXXXX' represents the release date; for example, 20141225.</p>
             <p>The tarball can be extracted to the desktop or any place under your $HOME directory by using either
@@ -210,7 +210,7 @@
 <!--                <div class="thumbnail">
 							<a href="images/RSPPdesk.png"><img src="images/RSPPdesk.png"></a>
 						</div> -->
-               <li>Double click the BRB-BDGE icon <a href="images/RSPP_icon.png"><img src="images/RSPP_iconSmall.png"></a>
+               <li>Double click the BRB-DGE icon <a href="images/RSPP_icon.png"><img src="images/RSPP_iconSmall.png"></a>
                on the Ubuntu desktop (assume ./install.sh has been run once). 
                </li>
             </ul>
@@ -234,7 +234,7 @@
             <p >If the required software have been previously installed, you can click the <strong>Browse</strong> button to select the 
             directory for each software (It is assumed HTSeq is available under a global environment so there is no entry for it).
             After the path of each software has been specified, users can click 'OK' button to proceed processing.</p>            
-            <p >Note that the setup needs only to be run once. The path of each required software will be remembered by <strong>BRB-BDGE</strong>.
+            <p >Note that the setup needs only to be run once. The path of each required software will be remembered by <strong>BRB-DGE</strong>.
             </p>
 					</section>
 
@@ -247,10 +247,10 @@
             <p>The workflow can be represented by the following plot (a dashed line means the step is optional).</p>
             <a href="images/PreprocessFlow.png"><img src="images/PreprocessFlow.png" width="800px"></a>
             <p></p>
-            <p>The first-time BRB-BDGE is used, you have to download the required software (such as Tophat, Samtools, ...) first. 
-            BRB-BDGE provides a simple way to do it. Please see the instruction <a href="#setuprequire">here</a>.</p>
+            <p>The first-time BRB-DGE is used, you have to download the required software (such as Tophat, Samtools, ...) first. 
+            BRB-DGE provides a simple way to do it. Please see the instruction <a href="#setuprequire">here</a>.</p>
             
-            <p>Before launching BRB-BDGE, the user needs to create a tab-delimited file called <strong>samples.txt</strong> to provide
+            <p>Before launching BRB-DGE, the user needs to create a tab-delimited file called <strong>samples.txt</strong> to provide
             sample information required by the software.</p>            
             
             <p>The application will automatically run the following programs one by one</p>
@@ -292,7 +292,7 @@
 			<div class="page-header">
 					<h1>Tutorial</h1>
 			</div>
-         <p>To help first time users gain experience to use the BRB-BDGE program, we provide  
+         <p>To help first time users gain experience to use the BRB-DGE program, we provide  
             <a href="#tutdata">test data which includes all necessary input files.</a>. 
             When you are ready to run the program on your own data, check out the <a href="#preparingfiles">Preparing Files</a> section to make sure all
             required input files are ready.</p>
@@ -303,7 +303,7 @@
           user needs to extract it to some place (e.g. $HOME). User can access the data folder at <i>$HOME/GSE11209-master/</i>. Fastq files are 
           located under <i>$HOME/GSE11209-master</i> directory and the annotation files are under <i>$HOME/GSE11209-master/annotation</i>.
           It should take less than 5 minutes to run preprocessing on this testing data. Note: be sure to click 'Browse' button for the Annotation Dir and
-          select 'annotation' directory on BRB-BDGE program; see the screenshot <a href="images/TestingData.png">here</a>.</p>
+          select 'annotation' directory on BRB-DGE program; see the screenshot <a href="images/TestingData.png">here</a>.</p>
             
          <h4><a id="preparingfiles">Preparing Files</a></h4> 
          <p >To run RNA-Seq data preprocessing, it is assumed the working directory contains the following files</p>
@@ -331,7 +331,7 @@
 			After downloading the file <strong>Homo_sapiens_Ensembl_GRCh37.tar.gz</strong> (17GB), the reference genome files (<strong>genome.*.bt2</strong>) are 
 			located under <code>Homo_sapiens/Ensembl/GrCh37/Sequence/Bowtie2Index</code> directory and gene annotation file (<strong>genes.gtf</strong>) is located under
 			<code>Home_sapiens/Ensembl/GrCh37/Annotation/Archives/</code> directory. 
-			Please copy these bt2 and gtf files to some directory such as ProjectDir/annotation/ and select this directory for the 'Annotation Dir' on the BRB-BDGE program. 
+			Please copy these bt2 and gtf files to some directory such as ProjectDir/annotation/ and select this directory for the 'Annotation Dir' on the BRB-DGE program. 
 			</p>
 			
 			<p>If you have an <a href="http://biowulf.nih.gov/">NIH helix/biowulf</a> acccount, 
@@ -406,7 +406,7 @@
 		           <ol >
 		               <li><strong>How about other Linux distribution or Mac OS? </strong> Sorry, no other OS is supported.
 		                  For other OS, please use <strong>BDGECLI</strong> program. 
-		                  Even though the code of BRB-BDGE can be re-built to work on other OS/Linux distributions, 
+		                  Even though the code of BRB-DGE can be re-built to work on other OS/Linux distributions, 
 		                  we currently have no hardware resource and time to support other OS/Linux distributions.
 		               </li>
 		               <li><strong>How about more advanced options? </strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
@@ -431,7 +431,7 @@
 		               <strong><em>BRB Digital Gene Expression</em></strong> is a simple application to allow people who have some experience 
 		               with Unix/Linux to analyze RNA-Seq data without the need of a 'system administrator'.</li>
 		               <li><strong>Is the program running in parallel? </strong> The sequence alignment part in Tophat is most time consuming. 
-		               So we designed <strong>BRB-BDGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
+		               So we designed <strong>BRB-DGE</strong> to run Tophat program in parallel to reduce the run time. By default the number of threads is the total number of CPU cores 
 		               on the system minus one. Since running Tophat with multithreads requires a significant increase of memory, sometimes
 		               the execution may be very slow because lack of memory. In such a case, users can specify '-p' 
 		               parameter in Tophat program to decrease the number of threads.</li>
@@ -458,7 +458,7 @@ cat /opt/RNA-Seq/bin/HTSeq-0.6.1/VERSION # 0.6.1
 /opt/RNA-Seq/bin/fastx/bin/fastx_trimmer -h # 0.0.13
 </pre>
 		               </li>
-		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used? </strong> BRB-BDGE works on virtual machine but
+		               <li><strong>How come it does not work when I run it on a virtual machine when 'Try Ubuntu' option is used? </strong> BRB-DGE works on virtual machine but
 		               it does not work under Ubuntu live mode (default option when booting from CD). Live session differs from a regular operating system. It has a very limited file system space and 
 		               you will get an error when software (Tophat et al) are being installed. So please use 'Install Ubuntu' instead of 'Try Ubuntu'.</li>
                      <li><A NAME="installErr"><strong>I got an error when I ran install.sh</strong></A>. Running the bash script install.sh requires <strong>root</strong> privileges. 
@@ -472,7 +472,7 @@ is to run the following terminal command from an account with root privileges,
 <pre>
 sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user name which does not have sudo privileges yet. 
 2. The user needs to log out and log in again to see the effect.</li>		               
-		               <li><strong>OK, I got the count table successfully from BRB-BDGE. How do I transfer the count table files to Windows OS for BRB-ArrayTools? </strong>
+		               <li><strong>OK, I got the count table successfully from BRB-DGE. How do I transfer the count table files to Windows OS for BRB-ArrayTools? </strong>
 		               One simple solution is to use a flash drive to copy the zip file from working directory in Ubuntu to a Windows machine. 
 		               If you would like a more elegant way to transfer the file, you can download a program called <a href="http://winscp.net/eng/index.php">WinSCP</a> 
 		               on Windows machines and use it to transfer files between Ubuntu and Windows machines. Before you use WinSCP, you need to know the IP for the
@@ -503,7 +503,7 @@ sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user nam
 
 	<div id="footer">
 		<div class="container">
-			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@emmes.com?subject=BRB-BDGE question"><code>arraytools [at] emmes.com</code></a> using the subject heading <code>BRB-BDGE question</code>. </p>
+			<p class="muted credit">Questions? Kindly contact <a href="mailto:arraytools@emmes.com?subject=BRB-DGE question"><code>arraytools [at] emmes.com</code></a> using the subject heading <code>BRB-DGE question</code>. </p>
 		</div>
 	</div>
 
