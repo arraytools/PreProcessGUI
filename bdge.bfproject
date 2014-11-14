@@ -46,9 +46,11 @@ files: /home/brb/github/bdge/cluster.html
 files: /home/brb/github/bdge/index.html
 files: /home/brb/github/bdge/installUbuntu.html
 snr_replacetype: 0
+recent_files: file:///home/brb/github/bdge/index.html
 recent_files: file:///home/brb/github/bdge/installUbuntu.html
 recent_files: file:///home/brb/github/bdge/cluster.html
-recent_files: file:///home/brb/github/bdge/index.html
+recent_files: file:///home/brb/bitbucket/bdgecli/main.cpp
+recent_files: file:///home/brb/bitbucket/bdgecli/journal.txt
 charmap_block: 1
 e2c.convert_iso: 0
 enable_syntax_scan: 1
@@ -57,7 +59,7 @@ leftpanel_active_tab: 0
 c2e.IE_apos_workaround: 0
 display_right_margin: 0
 replacelist: Tophat
-editor_tab_width: 3
+editor_tab_width: 6
 view_statusbar: 1
 fb_show_hidden_f: 0
 name: bdge
@@ -66,7 +68,7 @@ snr_casesens: 0
 c2e.convert_iso: 0
 bookmarks_filename_mode: 0
 wrap_text_default: 0
-opendir: file:///home/brb/github/bdge
+opendir: file:///home/brb/bitbucket/bdgecli
 e2c.convert_xml: 1
 default_mime_type: text/plain
 view_left_panel: 1
