@@ -78,7 +78,7 @@
 							gene expression analysis. It takes RNA sequence 
 							data files in FASTQ format as an input and outputs raw count data in a text format. 
 							The raw count data can be read into <a href="http://linus.nci.nih.gov/BRB-ArrayTools.html">BRB-ArrayTools</a> for gene expression analysis. 
-							The tool is designed to run in a Linux (we currently only support Ubuntu) environment 
+							The tool is designed to run in a Linux (we currently only support Ubuntu Linux) environment 
 							which includes local physical/virtual machines or remote servers like Amazon cloud. The tool is developed to
 							run RNA-Seq preprocessing based on well-known RNA-Seq tools (<a href="http://ccb.jhu.edu/software/tophat/index.shtml">Tophat</a>,
                      <a href="http://samtools.sourceforge.net/">Samtools</a> and 
@@ -105,7 +105,7 @@
             		<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a> page.</p>
             		
             		<p>The recommended hardware requirement may vary depending on the size of data. 
-            		It is recommended that the machine has at least 8GB of RAM and 500GB hard disk space. Ubuntu OS needs about 4.5 GB of space to install it.
+            		It is recommended that the machine has at least 8GB of RAM and 500GB hard disk space. Ubuntu OS itself takes about 4.5 GB of hard disk space.
             		<strong>BRB-DGE</strong> and other required
             		software (Tophat, Bowtie, ...) take less than 400 MB space in total.</p>
             
@@ -207,10 +207,7 @@
                   <pre><code></code>./BDGE</code></pre>
                   <p>to launch. Don't forget the dot and the forward slash!</p>
                </li>
-<!--                <div class="thumbnail">
-							<a href="images/RSPPdesk.png"><img src="images/RSPPdesk.png"></a>
-						</div> -->
-               <li>Double click the BRB-DGE icon <a href="images/RSPP_icon.png"><img src="images/RSPP_iconSmall.png"></a>
+               <li>Double click the BRB-DGE icon <a href="images/BDGE_icon.png"><img src="images/BDGE_iconSmall.png"></a>
                on the Ubuntu desktop (assume ./install.sh has been run once). 
                </li>
             </ul>
@@ -380,12 +377,35 @@
 							<h1>Command Line Interface</h1>
 						</div>
 						
-			<p >If you need to run the program in a 'headless' way (without a graphical interface), 
-			you can run the command line interface (CLI) version of the program from the terminal</p>
-			<pre><code>./BDGECLI DIRECTORY-NAME</code></pre>
+			<p >If you need to run the <strong>BDGE</strong> program in a 'headless' way (without a graphical interface), 
+			you can run the command line interface (CLI) version of the program <strong>BDGECLI</strong> from a terminal.
+			First open a terminal (keyboard binding is Ctrl+Alt+t) and <strong>cd</strong> to the directory containing BRB-DGE.
+			Executing the following line will start to preprocess the RNA-Seq data. </p>
+			<pre><code>$ ./BDGECLI DIRECTORY-NAME</code></pre>
 			<p >where <code>DIRECTORY-NAME</code> is the directory name that contains all of your data and related files. 
 			A full list of arguments can be found by adding '-h' argument after the command:  
-			<pre><code>./BDGECLI -h</code></pre>
+			<pre><code>$ ./BDGECLI -h
+Name: 
+	BDGECLI - command line interface for RNA-Seq data preprocessing (companion to BDGE program)
+
+Usage:	BDGECLI DIRECTORY-NAME [Options]
+
+Options:
+	-h,--help	Show this help message
+	--annotDir <string>	Annotation directory
+	--outputDir <string>	Output directory
+	--tophatDir <string>	Tophat directory
+	--bowtieDir <string>	Bowtie directory
+	--samtoolsDir <string>	Samtools directory
+	--createScriptOnly	Only create the shell script without running it
+
+Example:
+	./BDGECLI ~/GSE11209-master --annotDir ~/GSE11209-master/annotation \
+	                            --outputDir ~/GSE11209-master/output \
+	                            --tophatDir /opt/RNA-Seq/bin/tophat-2.0.11.Linux_x86_64 \
+	                            --bowtieDir /opt/RNA-Seq/bin/bowtie2-2.2.1 \
+	                            --samtoolsDir /opt/RNA-Seq/bin/samtools-0.1.19 
+</code></pre>
 			</p>
 			<p >Like the GUI version,
 			the output of the program is a zip file containing the count table for each sample (just like the GUI version).</p>
@@ -412,7 +432,7 @@
 		               <li><strong>How about more advanced options? </strong> Advanced users can open the Settings > Tools Options dialog to specify parameters
 		               for their need. A screenshot of the dialog (default options are shown) is 
 		               <p>
-		               <a href="images/ToolsOption.png"><img src="images/ToolsOption.png" height="200px"></a>
+		               <a href="images/ToolsOption.png"><img src="images/ToolsOption.png"></a>
 		               </p>
 		               Options you may want to use include <a href="http://ccb.jhu.edu/software/tophat/manual.shtml">--no-coverage-search</a> or 
 		               <a href="http://ccb.jhu.edu/software/tophat/manual.shtml">-G</a> in tophat where --no-coverage-search can be 
@@ -488,7 +508,7 @@ sudo adduser brb sudo</pre> PS. 1. 'brb' has to be replaced with a real user nam
                      <a href="http://en.wikipedia.org/wiki/Md5sum">md5sum</a> to find out if there is any discrepancy in md5sum values.</li>  
 		               <li><strong>It is the first time for me to use Ubuntu OS. Is there a guide for me to get familiar with Ubuntu OS? </strong>One excellent website is 
 		               <a href="http://ubuntuguide.org/wiki/"> Ubuntuguide.org</a> although there are many other useful resources on the internet.</li>        
-		               <li><strong>I still need HELP: </strong> Email me.</li>
+		               <li><strong>I still need HELP: </strong> Email to arraytools@emmes.com.</li>
 		            </ol>
             						
 					</section>
