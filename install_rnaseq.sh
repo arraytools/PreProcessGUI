@@ -27,7 +27,7 @@ apt-get -y install libncurses5-dev
 # download packages for htseq-count
 apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
 # download package for FastQC
-apt-get -y install openjdk-6-jdk
+apt-get -y install openjdk-7-jdk
 
 # create a new directory
 if [ ! -d /opt/RNA-Seq/bin ]; then
