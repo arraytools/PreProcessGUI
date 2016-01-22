@@ -9,6 +9,7 @@ SRATOOLKIT_URL=http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.3.5-2/sratoolkit.2.3.
 BWA_URL=https://github.com/lh3/bwa/archive/0.7.12.tar.gz
 BOWTIE2_URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.6/bowtie2-2.2.6-linux-x86_64.zip/download
 TOPHAT_URL=https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.Linux_x86_64.tar.gz
+STAR_URL=https://github.com/alexdobin/STAR/archive/2.5.1a.tar.gz
 SAMTOOLS_URL=https://github.com/samtools/samtools/releases/download/1.3/samtools-1.3.tar.bz2
 # SNPEFF_URL=http://skylineservers.dl.sourceforge.net/project/snpeff/snpEff_latest_core.zip
 BCFTOOLS_URL=https://github.com/samtools/bcftools/releases/download/1.3/bcftools-1.3.tar.bz2
@@ -37,14 +38,24 @@ if [ ! -d /opt/SeqTools/bin ]; then
 fi
 cd /opt/SeqTools/bin
 
+# bookmark the directory name for SeqTools
+if [ -f .DirName ]; then
+  rm .DirName
+fi
+touch .DirName
+
 # sratoolkit
 wget -N $SRATOOLKIT_URL -O sratoolkit.tar.gz
+dn=`tar -tf sratoolkit.tar.gz | grep -o '^[^/]\+' | sort -u`
+echo -e "sratoolkit=$dn" >> .DirName
 tar xzvf sratoolkit.tar.gz
 
 # BWA (needs to compile)
 wget -N $BWA_URL -O BWA.tar.gz
+dn=`tar -tf BWA.tar.gz | grep -o '^[^/]\+' | sort -u`
+echo -e "bwa=$dn" >> .DirName
 tar xzvf BWA.tar.gz
-cd bwa-*
+cd $dn
 make
 cd ..
 
@@ -53,32 +64,52 @@ if [ -f bowtie2.zip ]; then
   rm bowtie2.zip
 fi
 wget $BOWTIE2_URL -O bowtie2.zip
+dn=`unzip -vl bowtie2.zip | sed -n '4p' | awk '{print $8}'`
+echo -e "bowtie2=$(basename $dn)" >> .DirName
 unzip -o bowtie2.zip
 
 # tophat
 wget -N $TOPHAT_URL -O tophat.tar.gz
+dn=`tar -tf tophat.tar.gz | grep -o '^[^/]\+' | sort -u`
+echo -e "tophat=$dn" >> .DirName
 tar xzvf tophat.tar.gz
+
+# star
+wget $STAR_URL -O star.tar.gz
+dn=`tar -tf star.tar.gz | grep -o '^[^/]\+' | sort -u`
+echo -e "star=$dn" >> .DirName
+tar xzvf star.tar.gz
 
 # samtools (needs to compile)
 wget -N $SAMTOOLS_URL -O samtools.tar.bz2
+dn=`tar -tf samtools.tar.bz2 | grep -o '^[^/]\+' | sort -u`
+echo -e "samtools=$dn" >> .DirName
 tar xjvf samtools.tar.bz2
-cd samtools-*
+cd $dn
+./configure
 make
 
+dn=$(basename `find -maxdepth 1 -name 'htslib*'`)
+echo -e "htslib=$dn" >> ../.DirName
 # add htslib from samtools
-cd htslib-*
+cd $dn
+./configure
 make
 cd ../..
 
 # bcftools (needs to compile)
 wget -N $BCFTOOLS_URL -O bcftools.tar.bz2
+dn=`tar -tf bcftools.tar.bz2 | grep -o '^[^/]\+' | sort -u`
+echo -e "bcftools=$dn" >> .DirName
 tar xjvf bcftools.tar.bz2
-cd bcftools-*
+cd $dn
 make
 cd ..
 
 # Picard tool
 wget -N $PICARD_URL -O picard.zip
+dn=`unzip -vl picard.zip | sed -n '4p' | awk '{print $8}'`
+echo -e "picard=$(basename $dn)" >> .DirName
 unzip -o picard.zip
 
 # htseq-count (needs to compile)
@@ -94,12 +125,14 @@ if [ -f fastqc.zip ]; then
   rm fastqc.zip
 fi
 wget -N $FASTQC_URL -O fastqc.zip
+echo -e "fastqc=FastQC" >> .DirName
 unzip -o fastqc.zip
 
 # fastx
 wget $FASTX_URL -O fastx.tar.bz2
+echo -e "fastx=fastx" >> .DirName
 if [ ! -d fastx ]; then
-mkdir fastx
+  mkdir fastx
 fi
 tar -xjvf fastx.tar.bz2 -C fastx
 

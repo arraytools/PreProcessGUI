@@ -1,0 +1,34 @@
+10 files to download (htslib does not count)
+
+bowtie-2.2.6    zip 	ok
+tophat-2.1.0    tar.gz
+bwa-0.7.12      tar.gz 	ok
+STAR-2.5.0c     tar.gz	ok
+picard-tools-1.141  zip	ok
+samtools-1.3    tar.bz2	ok
+bcftools-1.3    tar.bz2	ok
+htslib-1.2.1    tar.gz
+sratoolkit.2.3.5-2-ubuntu64 tar.gz ok
+fastqc          zip	ok	FastQC is the top dir
+fastx       tar.bz2	ok	fastx is the top dir
+
+# slow by using the 'tar' command
+tar -tf sratoolkit.tar.gz | grep -o '^[^/]\+' | sort -u
+# fast by using the 'less' command which can handle tar.gz, zip and .tar.bz2
+# unfortunately it will ask 'xxx.tar.gz may be a binary file. See it anyway?' when the command was run through a bash file.
+# So we will not use the 'less' command.
+less sratoolkit.tar.gz | head -n1 | awk '{print $6}'
+less BWA.tar.gz | head -n1 | awk '{print $6}'
+less star.tar.gz | head -n1 | awk '{print $6}'
+less tophat.tar.gz | head -n1 | awk '{print $6}'
+
+# zip file
+less bowtie2.zip | sed -n '4p'| awk '{print $8}'
+# bowtie2-2.2.6/
+less picard.zip | sed -n '4p' | awk '{print $8}'
+# for fastqc case, it does not have a top-level
+less fastqc.zip | sed -n '4p'| awk '{print $8}'
+# FastQC/Contaminants/
+
+less samtools.tar.bz2 | head -n1 | awk '{print $6}'
+less bcftools.tar.bz2 | head -n1 | awk '{print $6}'
