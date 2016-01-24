@@ -151,6 +151,9 @@ apt-get install -y texlive-fonts-recommended # ecrm1000 error
 apt-get install -y texlive-latex-extra # .sty files
 apt-get install -y lmodern # lmodern.sty
 
+# install r-base
+apt-get install -y r-base
+
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
 
