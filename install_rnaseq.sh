@@ -11,13 +11,13 @@ BOWTIE2_URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.6/bowti
 TOPHAT_URL=https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.Linux_x86_64.tar.gz
 STAR_URL=https://github.com/alexdobin/STAR/archive/2.5.1a.tar.gz
 SAMTOOLS_URL=https://github.com/samtools/samtools/releases/download/1.3/samtools-1.3.tar.bz2
-# SNPEFF_URL=http://skylineservers.dl.sourceforge.net/project/snpeff/snpEff_latest_core.zip
 BCFTOOLS_URL=https://github.com/samtools/bcftools/releases/download/1.3/bcftools-1.3.tar.bz2
 HTSEQ_URL=https://pypi.python.org/packages/source/H/HTSeq/
 PICARD_URL=https://github.com/broadinstitute/picard/releases/download/1.141/picard-tools-1.141.zip
 HTSEQ_URL=https://pypi.python.org/packages/source/H/HTSeq/HTSeq-0.6.1.tar.gz#md5=b7f4f38a9f4278b9b7f948d1efbc1f05
 FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
+SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_latest_core.zip/download
 
 set -e
 
@@ -127,6 +127,14 @@ fi
 wget -N $FASTQC_URL -O fastqc.zip
 echo -e "fastqc=FastQC" >> .DirName
 unzip -o fastqc.zip
+
+# snpeff
+if [ -f snpEff*.zip ]; then
+  rm snpEff*.zip
+fi
+wget $SNPEFF_URL -O snpEff.zip
+echo -e "snpeff=snpEff" >> .DirName
+unzip -o snpEff.zip
 
 # fastx
 wget $FASTX_URL -O fastx.tar.bz2
