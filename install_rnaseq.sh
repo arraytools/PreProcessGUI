@@ -169,7 +169,7 @@ wget $PANDOC_URL -O pandoc-amd64.deb
 dpkg -i pandoc-amd64.deb
 
 # clean up
-rm *.zip *.tar.gz *.tar.bz2
+rm *.zip *.tar.gz *.tar.bz2 *.deb
 
 chown root:root -R /opt/SeqTools/*
 #chmod +xr /opt/SeqTools/bin/samtools-0.1.19
