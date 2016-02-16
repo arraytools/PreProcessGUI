@@ -18,6 +18,7 @@ HTSEQ_URL=https://pypi.python.org/packages/source/H/HTSeq/HTSeq-0.6.1.tar.gz#md5
 FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_v4_2_core.zip/download
+PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
 
 set -e
 
@@ -151,16 +152,17 @@ tar -xjvf fastx.tar.bz2 -C fastx
 # install python-pip for variant annotation
 # note python 2.7.3 on ubuntu 12.04
 #      python 2.7.6 on ubuntu 14.04
-apt-get -y install python-pip
-pip install pylatex
+# apt-get -y install python-pip
+# pip install pylatex
 apt-get install -y texlive-latex-base
 # apt-get install -y texlive-binaries
 apt-get install -y texlive-fonts-recommended # ecrm1000 error
 apt-get install -y texlive-latex-extra # .sty files
 apt-get install -y lmodern # lmodern.sty
 
-# install r-base
+# install r-base & rmarkdown
 apt-get install -y r-base
+R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com')"
 
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
