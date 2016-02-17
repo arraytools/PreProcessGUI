@@ -22,6 +22,10 @@ PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.
 
 set -e
 
+sudo add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -s -c)/"
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+
 # update repository
 apt-get update
 
