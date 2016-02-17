@@ -22,7 +22,12 @@ PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.
 
 set -e
 
-sudo add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -s -c)/"
+codename=$(lsb_release -s -c)
+if [ $codename == "rafaela" ] || [ $codename == "rosa" ]; then
+  codename="trusty"
+fi
+
+add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $codename/"
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 
