@@ -145,6 +145,8 @@ fi
 wget $SNPEFF_URL -O snpEff.zip
 echo -e "snpeff=snpEff" >> .DirName
 unzip -o snpEff.zip
+if [ ! -d snpEff/data ]; then mkdir snpEff/data; fi
+sudo chmod a+w snpEff/data
 
 # fastx
 wget $FASTX_URL -O fastx.tar.bz2
@@ -153,10 +155,6 @@ if [ ! -d fastx ]; then
   mkdir fastx
 fi
 tar -xjvf fastx.tar.bz2 -C fastx
-
-# add snpeff
-# wget -N $SNPEFF_URL -O snpEff.zip
-# unzip snpEff.zip
 
 # install python-pip for variant annotation
 # note python 2.7.3 on ubuntu 12.04
