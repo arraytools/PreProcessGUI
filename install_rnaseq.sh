@@ -7,7 +7,8 @@
 
 SRATOOLKIT_URL=http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.3.5-2/sratoolkit.2.3.5-2-ubuntu64.tar.gz
 BWA_URL=https://github.com/lh3/bwa/archive/0.7.12.tar.gz
-BOWTIE2_URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.6/bowtie2-2.2.6-linux-x86_64.zip/download
+# BOWTIE2_URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.6/bowtie2-2.2.6-linux-x86_64.zip/download
+BOWTIE2_URL=https://github.com/BenLangmead/bowtie2/releases/download/v2.2.6/bowtie2-2.2.6-linux-x86_64.zip
 TOPHAT_URL=https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.Linux_x86_64.tar.gz
 STAR_URL=https://github.com/alexdobin/STAR/archive/2.5.1b.tar.gz
 SAMTOOLS_URL=https://github.com/samtools/samtools/releases/download/1.3/samtools-1.3.tar.bz2
@@ -17,7 +18,8 @@ PICARD_URL=https://github.com/broadinstitute/picard/releases/download/1.141/pica
 HTSEQ_URL=https://pypi.python.org/packages/source/H/HTSeq/HTSeq-0.6.1.tar.gz#md5=b7f4f38a9f4278b9b7f948d1efbc1f05
 FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
-SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_v4_2_core.zip/download
+# SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_v4_2_core.zip/download
+SNPEFF_URL=https://github.com/pcingola/SnpEff/archive/v4.2.zip
 PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
 
 set -e
@@ -143,10 +145,11 @@ if [ -f snpEff*.zip ]; then
   rm snpEff*.zip
 fi
 wget $SNPEFF_URL -O snpEff.zip
-echo -e "snpeff=snpEff" >> .DirName
+dn=`unzip -vl snpEff.zip | sed -n '5p' | awk '{print $8}'`
+echo -e "snpeff=$(basename $dn)" >> .DirName
 unzip -o snpEff.zip
-if [ ! -d snpEff/data ]; then mkdir snpEff/data; fi
-sudo chmod a+w snpEff/data
+if [ ! -d $snpEff/data ]; then mkdir $snpEff/data; fi
+sudo chmod a+w $snpEff/data
 
 # fastx
 wget $FASTX_URL -O fastx.tar.bz2
@@ -179,10 +182,6 @@ dpkg -i pandoc-amd64.deb
 rm *.zip *.tar.gz *.tar.bz2 *.deb
 
 chown root:root -R /opt/SeqTools/*
-#chmod +xr /opt/SeqTools/bin/samtools-0.1.19
-#chmod +xr /opt/SeqTools/bin/samtools-0.1.19/bcftools
-#chmod +xr /opt/SeqTools/bin/samtools-0.1.19/misc
-#chmod +x /opt/SeqTools/bin/FastQC/fastqc
 
 echo
 read -p "Press [Enter] key to quit."
