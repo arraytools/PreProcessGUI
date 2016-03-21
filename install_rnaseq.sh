@@ -76,7 +76,9 @@ if [ -f bowtie2.zip ]; then
   rm bowtie2.zip
 fi
 wget $BOWTIE2_URL -O bowtie2.zip
-dn=`unzip -vl bowtie2.zip | sed -n '4p' | awk '{print $8}'`
+nline=$(unzip -vl bowtie2.zip | head | grep -n 'CRC-32' | sed 's/^\([0-9]\+\):.*$/\1/')
+((nline+=2))
+dn=`unzip -vl bowtie2.zip | sed -n "${nline}p" | awk '{print $8}'`
 echo -e "bowtie2=$(basename $dn)" >> .DirName
 unzip -o bowtie2.zip
 
@@ -120,7 +122,9 @@ cd ..
 
 # Picard tool
 wget -N $PICARD_URL -O picard.zip
-dn=`unzip -vl picard.zip | sed -n '4p' | awk '{print $8}'`
+nline=$(unzip -vl picard.zip | head | grep -n 'CRC-32' | sed 's/^\([0-9]\+\):.*$/\1/')
+((nline+=2))
+dn=`unzip -vl picard.zip | sed -n "${nline}p" | awk '{print $8}'`
 echo -e "picard=$(basename $dn)" >> .DirName
 unzip -o picard.zip
 
@@ -145,7 +149,9 @@ if [ -f snpEff*.zip ]; then
   rm snpEff*.zip
 fi
 wget $SNPEFF_URL -O snpEff.zip
-dn=`unzip -vl snpEff.zip | sed -n '5p' | awk '{print $8}'`
+nline=$(unzip -vl snpEff.zip | head | grep -n 'CRC-32' | sed 's/^\([0-9]\+\):.*$/\1/')
+((nline+=2))
+dn=`unzip -vl snpEff.zip | sed -n "${nline}p" | awk '{print $8}'`
 echo -e "snpeff=$(basename $dn)" >> .DirName
 unzip -o snpEff.zip
 if [ ! -d $snpEff/data ]; then mkdir $snpEff/data; fi
