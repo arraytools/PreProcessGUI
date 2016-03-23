@@ -43,6 +43,8 @@ apt-get -y install libncurses5-dev
 apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
 # download package for FastQC
 apt-get -y install openjdk-7-jdk
+# goodies for vc annotation
+apt-get -y install parallel
 
 # create a new directory
 if [ ! -d /opt/SeqTools/bin ]; then
