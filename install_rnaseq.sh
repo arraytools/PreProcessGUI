@@ -59,13 +59,13 @@ fi
 touch .DirName
 
 # sratoolkit
-wget -N $SRATOOLKIT_URL -O sratoolkit.tar.gz
+wget $SRATOOLKIT_URL -O sratoolkit.tar.gz
 dn=`tar -tf sratoolkit.tar.gz | grep -o '^[^/]\+' | sort -u`
 echo -e "sratoolkit=$dn" >> .DirName
 tar xzvf sratoolkit.tar.gz
 
 # BWA (needs to compile)
-wget -N $BWA_URL -O BWA.tar.gz
+wget $BWA_URL -O BWA.tar.gz
 dn=`tar -tf BWA.tar.gz | grep -o '^[^/]\+' | sort -u`
 echo -e "bwa=$dn" >> .DirName
 tar xzvf BWA.tar.gz
@@ -85,7 +85,7 @@ echo -e "bowtie2=$(basename $dn)" >> .DirName
 unzip -o bowtie2.zip
 
 # tophat
-wget -N $TOPHAT_URL -O tophat.tar.gz
+wget $TOPHAT_URL -O tophat.tar.gz
 dn=`tar -tf tophat.tar.gz | grep -o '^[^/]\+' | sort -u`
 echo -e "tophat=$dn" >> .DirName
 tar xzvf tophat.tar.gz
@@ -97,7 +97,7 @@ echo -e "star=$dn" >> .DirName
 tar xzvf star.tar.gz
 
 # samtools (needs to compile)
-wget -N $SAMTOOLS_URL -O samtools.tar.bz2
+wget $SAMTOOLS_URL -O samtools.tar.bz2
 dn=`tar -tf samtools.tar.bz2 | grep -o '^[^/]\+' | sort -u`
 echo -e "samtools=$dn" >> .DirName
 tar xjvf samtools.tar.bz2
@@ -114,7 +114,7 @@ make
 cd ../..
 
 # bcftools (needs to compile)
-wget -N $BCFTOOLS_URL -O bcftools.tar.bz2
+wget $BCFTOOLS_URL -O bcftools.tar.bz2
 dn=`tar -tf bcftools.tar.bz2 | grep -o '^[^/]\+' | sort -u`
 echo -e "bcftools=$dn" >> .DirName
 tar xjvf bcftools.tar.bz2
@@ -123,7 +123,7 @@ make
 cd ..
 
 # Picard tool
-wget -N $PICARD_URL -O picard.zip
+wget $PICARD_URL -O picard.zip
 nline=$(unzip -vl picard.zip | head | grep -n 'CRC-32' | sed 's/^\([0-9]\+\):.*$/\1/')
 ((nline+=2))
 dn=`unzip -vl picard.zip | sed -n "${nline}p" | awk '{print $8}'`
@@ -131,7 +131,7 @@ echo -e "picard=$(basename $dn)" >> .DirName
 unzip -o picard.zip
 
 # htseq-count (needs to compile)
-wget -N $HTSEQ_URL -O HTSeq.tar.gz
+wget $HTSEQ_URL -O HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
 cd HTSeq-*
 python setup.py build
@@ -142,7 +142,7 @@ cd ..
 if [ -f fastqc.zip ]; then
   rm fastqc.zip
 fi
-wget -N $FASTQC_URL -O fastqc.zip
+wget $FASTQC_URL -O fastqc.zip
 echo -e "fastqc=FastQC" >> .DirName
 unzip -o fastqc.zip
 
