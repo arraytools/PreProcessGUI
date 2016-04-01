@@ -156,7 +156,7 @@ nline=$(unzip -vl snpEff.zip | head | grep -n 'CRC-32' | sed 's/^\([0-9]\+\):.*$
 dn=`unzip -vl snpEff.zip | sed -n "${nline}p" | awk '{print $8}'`
 echo -e "snpeff=$(basename $dn)" >> .DirName
 unzip -o snpEff.zip
-snpeff=`basename $dn`
+snpEff=`basename $dn`
 if [ ! -d $snpEff/data ]; then mkdir $snpEff/data; fi
 sudo chmod a+w $snpEff/data
 
