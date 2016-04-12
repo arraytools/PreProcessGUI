@@ -16,7 +16,7 @@ BCFTOOLS_URL=https://github.com/samtools/bcftools/releases/download/1.3/bcftools
 HTSEQ_URL=https://pypi.python.org/packages/source/H/HTSeq/
 PICARD_URL=https://github.com/broadinstitute/picard/releases/download/1.141/picard-tools-1.141.zip
 HTSEQ_URL=https://pypi.python.org/packages/source/H/HTSeq/HTSeq-0.6.1.tar.gz#md5=b7f4f38a9f4278b9b7f948d1efbc1f05
-FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.10.1.zip
+FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_v4_2_core.zip/download
 # SNPEFF_URL=https://github.com/pcingola/SnpEff/archive/v4.2.zip
@@ -191,6 +191,7 @@ dpkg -i pandoc-amd64.deb
 rm *.zip *.tar.gz *.tar.bz2 *.deb
 
 chown root:root -R /opt/SeqTools/*
+chmod +x /opt/SeqTools/bin/FastQC/fastqc
 
 echo
 read -p "Press [Enter] key to quit."
