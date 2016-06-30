@@ -186,6 +186,9 @@ R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com')"
 wget $PANDOC_URL -O pandoc-amd64.deb
 dpkg -i pandoc-amd64.deb
 
+# instal lftp for accessing cosmic
+apt-get install -y lftp
+
 # clean up
 rm *.zip *.tar.gz *.tar.bz2 *.deb
 
