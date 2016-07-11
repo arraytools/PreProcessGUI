@@ -135,6 +135,7 @@ tar xzvf HTSeq.tar.gz
 cd HTSeq-*
 python setup.py build
 sudo python setup.py install
+pip install pysam
 cd ..
 
 # fastqc
