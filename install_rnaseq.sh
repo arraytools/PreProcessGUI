@@ -14,7 +14,7 @@ STAR_URL=https://github.com/alexdobin/STAR/archive/2.5.1b.tar.gz
 SAMTOOLS_URL=https://github.com/samtools/samtools/releases/download/1.3/samtools-1.3.tar.bz2
 BCFTOOLS_URL=https://github.com/samtools/bcftools/releases/download/1.3/bcftools-1.3.tar.bz2
 PICARD_URL=https://github.com/broadinstitute/picard/releases/download/1.141/picard-tools-1.141.zip
-HTSEQ_URL=https://pypi.python.org/packages/source/H/HTSeq/HTSeq-0.6.1.tar.gz#md5=b7f4f38a9f4278b9b7f948d1efbc1f05
+HTSEQ_URL=https://pypi.python.org/packages/3c/6e/f8dc3500933e036993645c3f854c4351c9028b180c6dcececde944022992/HTSeq-0.6.1p1.tar.gz#md5=c44d7b256281a8a53b6fe5beaeddd31c
 FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_v4_2_core.zip/download
@@ -40,6 +40,7 @@ apt-get -y install zlib1g-dev
 apt-get -y install libncurses5-dev
 # download packages for htseq-count
 apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
+pip install pysam
 # download package for FastQC
 apt-get -y install openjdk-7-jdk
 # goodies for vc annotation
@@ -132,10 +133,10 @@ unzip -o picard.zip
 # htseq-count (needs to compile)
 wget $HTSEQ_URL -O HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
-cd HTSeq-*
+dn=`tar -tf HTSeq.tar.gz | grep -o '^[^/]\+' | sort -u`
+cd $dn
 python setup.py build
 sudo python setup.py install
-pip install pysam
 cd ..
 
 # fastqc
