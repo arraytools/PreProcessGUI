@@ -43,7 +43,13 @@ apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
 apt-get -y install python-pip
 pip install pysam
 # download package for FastQC
-apt-get -y install openjdk-7-jdk
+if [ $codename == "trusty" ]; then
+  apt-get -y install openjdk-7-jdk
+fi
+if [ $codename == "xenial" ]; then
+  apt-get -y install openjdk-9-jdk
+fi
+
 # goodies for vc annotation
 apt-get -y install parallel
 
