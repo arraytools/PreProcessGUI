@@ -40,6 +40,7 @@ apt-get -y install zlib1g-dev
 apt-get -y install libncurses5-dev
 # download packages for htseq-count
 apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
+apt-get -y install python-pip
 pip install pysam
 # download package for FastQC
 apt-get -y install openjdk-7-jdk
