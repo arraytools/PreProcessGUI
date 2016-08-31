@@ -28,9 +28,15 @@ if [ $codename == "rafaela" ] || [ $codename == "rosa" ]; then
   codename="trusty"
 fi
 
+# For R
 add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $codename/"
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
+
+# For Java 8 on Ubuntu 14.04
+if [ $codename == "trusty" ]; then
+  add-apt-repository ppa:webupd8team/java
+fi
 
 # update repository
 apt-get update
@@ -44,10 +50,10 @@ apt-get -y install python-pip
 pip install pysam
 # download package for FastQC
 if [ $codename == "trusty" ]; then
-  apt-get -y install openjdk-7-jdk
+  apt-get -y install oracle-java8-installer
 fi
 if [ $codename == "xenial" ]; then
-  apt-get -y install openjdk-9-jdk
+  apt-get -y install openjdk-8-jdk
 fi
 
 # goodies for vc annotation
