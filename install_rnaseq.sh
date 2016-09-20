@@ -206,7 +206,6 @@ apt-get install -y lftp
 
 # install avfs for mounting compressed files
 apt-get install avfs
-mountavfs
 
 # clean up
 rm *.zip *.tar.gz *.tar.bz2 *.deb
