@@ -34,7 +34,7 @@ if [ -d ~/.gnupg ]; then
 fi
 add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $codename/"
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-gpg -a --export E084DAB9 | sudo apt-key add -
+gpg -a --export E084DAB9 | apt-key add -
 
 # For Java 8 on Ubuntu 14.04
 if [ $codename == "trusty" ]; then
@@ -73,6 +73,7 @@ if [ -f .DirName ]; then
   rm .DirName
 fi
 touch .DirName
+chmod a+w .DirName
 
 # sratoolkit
 wget $SRATOOLKIT_URL -O sratoolkit.tar.gz
@@ -152,7 +153,7 @@ tar xzvf HTSeq.tar.gz
 dn=`tar -tf HTSeq.tar.gz | grep -o '^[^/]\+' | sort -u`
 cd $dn
 python setup.py build
-sudo python setup.py install
+python setup.py install
 cd ..
 
 # fastqc
@@ -175,7 +176,7 @@ echo -e "snpeff=$(basename $dn)" >> .DirName
 unzip -o snpEff.zip
 snpEff=`basename $dn`
 if [ ! -d $snpEff/data ]; then mkdir $snpEff/data; fi
-sudo chmod a+w $snpEff/data
+chmod a+w $snpEff/data
 
 # fastx
 wget $FASTX_URL -O fastx.tar.bz2
