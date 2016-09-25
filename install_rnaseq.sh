@@ -32,12 +32,17 @@ fi
 if [ -d ~/.gnupg ]; then
   chown -R root:root ~/.gnupg
 fi
-add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $codename/"
-gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-gpg -a --export E084DAB9 | apt-key add -
+if grep -q "deb http://cran.rstudio.com/bin/linux/ubuntu" /etc/apt/sources.list; then
+  echo http://cran.studio.com/bin/linux/ubuntu was found
+else
+  add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $codename/"
+  gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+  gpg -a --export E084DAB9 | apt-key add -
+fi
 
 # For Java 8 on Ubuntu 14.04
-if [ $codename == "trusty" ]; then
+# jdk 8 is available on Ubuntu 16.04
+if [ $codename == "trusty" && ! find /etc/apt/sources.list.d/* -iname *.list | xargs cat | grep webupd8team ]; then
   add-apt-repository ppa:webupd8team/java
 fi
 
