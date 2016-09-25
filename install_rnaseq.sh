@@ -73,7 +73,6 @@ if [ -f .DirName ]; then
   rm .DirName
 fi
 touch .DirName
-chmod a+w .DirName
 
 # sratoolkit
 wget $SRATOOLKIT_URL -O sratoolkit.tar.gz
@@ -98,7 +97,7 @@ wget $BOWTIE2_URL -O bowtie2.zip
 nline=$(unzip -vl bowtie2.zip | head | grep -n 'CRC-32' | sed 's/^\([0-9]\+\):.*$/\1/')
 ((nline+=2))
 dn=`unzip -vl bowtie2.zip | sed -n "${nline}p" | awk '{print $8}'`
-echo -e "bowtie2=$(basename $dn)" >> .DirName
+echo -e "bowtie=$(basename $dn)" >> .DirName
 unzip -o bowtie2.zip
 
 # tophat
@@ -180,7 +179,7 @@ chmod a+w $snpEff/data
 
 # fastx
 wget $FASTX_URL -O fastx.tar.bz2
-echo -e "fastx=fastx" >> .DirName
+echo -e "trimmer=fastx" >> .DirName
 if [ ! -d fastx ]; then
   mkdir fastx
 fi
