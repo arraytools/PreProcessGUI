@@ -42,8 +42,12 @@ fi
 
 # For Java 8 on Ubuntu 14.04
 # jdk 8 is available on Ubuntu 16.04
-if [ $codename == "trusty" && ! find /etc/apt/sources.list.d/* -iname *.list | xargs cat | grep webupd8team ]; then
-  add-apt-repository ppa:webupd8team/java
+if [ $codename == "trusty" ]; then
+  if find /etc/apt/sources.list.d/* -iname *.list | xargs cat | grep webupd8team; then
+    echo ppa:webupd8team was found
+  else
+    add-apt-repository ppa:webupd8team/java
+  fi
 fi
 
 # update repository
