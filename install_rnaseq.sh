@@ -33,7 +33,7 @@ if [ -d ~/.gnupg ]; then
   chown -R root:root ~/.gnupg
 fi
 if grep -q "deb https://cran.rstudio.com/bin/linux/ubuntu" /etc/apt/sources.list; then
-  echo http://cran.studio.com/bin/linux/ubuntu was found
+  echo https://cran.rstudio.com/bin/linux/ubuntu was found
 else
   add-apt-repository "deb https://cran.rstudio.com/bin/linux/ubuntu $codename/"
   gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
