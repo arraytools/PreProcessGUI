@@ -207,7 +207,7 @@ apt-get install -y lmodern # lmodern.sty
 
 # install r-base & rmarkdown
 apt-get install -y r-base
-R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com')"
+R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
 
 # install pandoc
 wget $PANDOC_URL -O pandoc-amd64.deb
