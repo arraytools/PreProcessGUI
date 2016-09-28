@@ -32,13 +32,9 @@ fi
 if [ -d ~/.gnupg ]; then
   chown -R root:root ~/.gnupg
 fi
-if grep -q "deb https://cran.rstudio.com/bin/linux/ubuntu" /etc/apt/sources.list; then
-  echo https://cran.rstudio.com/bin/linux/ubuntu was found
-else
-  add-apt-repository "deb https://cran.rstudio.com/bin/linux/ubuntu $codename/"
-  gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-  gpg -a --export E084DAB9 | apt-key add -
-fi
+add-apt-repository "deb https://cran.rstudio.com/bin/linux/ubuntu $codename/"
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | apt-key add -
 
 # For Java 8 on Ubuntu 14.04
 # jdk 8 is available on Ubuntu 16.04
