@@ -5,7 +5,7 @@
 # Note that there is a dependency issue. So getting the latest version may not work.
 # For example, tophat v2.0.11 only supports bowtie2 v2.2.1 but not v2.2.2.
 
-SRATOOLKIT_URL=http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.7.0/sratoolkit.2.7.0-ubuntu64.tar.gz
+SRATOOLKIT_URL=https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.7.0/sratoolkit.2.7.0-ubuntu64.tar.gz
 BWA_URL=https://github.com/lh3/bwa/archive/0.7.12.tar.gz
 # BOWTIE2_URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.6/bowtie2-2.2.6-linux-x86_64.zip/download
 BOWTIE2_URL=https://github.com/BenLangmead/bowtie2/releases/download/v2.2.6/bowtie2-2.2.6-linux-x86_64.zip
