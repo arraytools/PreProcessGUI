@@ -1,4 +1,4 @@
-install_rnaseq.sh - install several useful bioinformatics tools for BRB-SeqTools
+install_rnaseq.sh - install several useful bioinformatics tools for [BRB-SeqTools](https://brb.nci.nih.gov/seqtools).
 
 * Bcftools
 * Bowtie2
