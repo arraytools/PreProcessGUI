@@ -33,8 +33,9 @@ if [ -d ~/.gnupg ]; then
   chown -R root:root ~/.gnupg
 fi
 add-apt-repository "deb https://cran.rstudio.com/bin/linux/ubuntu $codename/"
-gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-gpg -a --export E084DAB9 | apt-key add -
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+# gpg --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+# gpg -a --export E084DAB9 | apt-key add -
 
 # For Java 8 on Ubuntu 14.04
 # jdk 8 is available on Ubuntu 16.04
