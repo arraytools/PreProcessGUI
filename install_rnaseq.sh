@@ -29,9 +29,9 @@ if [ $codename == "rafaela" ] || [ $codename == "rosa" ]; then
 fi
 
 # For R
-if [ -d ~/.gnupg ]; then
-  chown -R root:root ~/.gnupg
-fi
+# if [ -d ~/.gnupg ]; then
+#   chown -R root:root ~/.gnupg
+# fi
 add-apt-repository "deb https://cran.rstudio.com/bin/linux/ubuntu $codename/"
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 # gpg --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
