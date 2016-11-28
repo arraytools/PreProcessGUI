@@ -19,6 +19,7 @@ FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_v4_2_core.zip/download
 # SNPEFF_URL=https://github.com/pcingola/SnpEff/archive/v4.2.zip
+JDK_URL=http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz
 PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
 
 set -e
@@ -37,13 +38,23 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 # gpg --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 # gpg -a --export E084DAB9 | apt-key add -
 
+# For Windows 10 and Java 8
+if grep -q -F 'Microsoft' /proc/version || \
+   grep -q -F 'Microsoft' /proc/sys/kernel/osrelease; then
+   wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL
+   mkdir /opt/jdk
+   tar -zxv jdk-8u112-linux-x64.tar.gz -C /opt/jdk
+   update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_112/bin/java 100
+   update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_112/bin/javac 100
+else
 # For Java 8 on Ubuntu 14.04
 # jdk 8 is available on Ubuntu 16.04
-if [ $codename == "trusty" ]; then
-  if find /etc/apt/sources.list.d/* -iname *.list | xargs cat | grep webupd8team; then
-    echo ppa:webupd8team was found
-  else
-    add-apt-repository ppa:webupd8team/java
+  if [ $codename == "trusty" ]; then
+    if find /etc/apt/sources.list.d/* -iname *.list | xargs cat | grep webupd8team; then
+      echo ppa:webupd8team was found
+    else
+      add-apt-repository ppa:webupd8team/java
+    fi
   fi
 fi
 
