@@ -24,6 +24,7 @@ PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.
 
 set -e
 
+# Support Mint Linux
 codename=$(lsb_release -s -c)
 if [ $codename == "rafaela" ] || [ $codename == "rosa" ]; then
   codename="trusty"
@@ -38,17 +39,24 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 # gpg --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 # gpg -a --export E084DAB9 | apt-key add -
 
-# For Windows 10 and Java 8
+# check if WSL is used
 if grep -q -F 'Microsoft' /proc/version || \
    grep -q -F 'Microsoft' /proc/sys/kernel/osrelease; then
-   wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL
-   mkdir /opt/jdk
-   tar -zxv jdk-8u112-linux-x64.tar.gz -C /opt/jdk
-   update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_112/bin/java 100
-   update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_112/bin/javac 100
+   os="Windows"
 else
-# For Java 8 on Ubuntu 14.04
-# jdk 8 is available on Ubuntu 16.04
+   os="Linux"
+fi
+
+if [[ "$os" == "Windows" ]]; then
+  # For Windows 10 and Java 8
+  wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL
+  mkdir /opt/jdk
+  tar -zxv jdk-8u112-linux-x64.tar.gz -C /opt/jdk
+  update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_112/bin/java 100
+  update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_112/bin/javac 100
+else
+  # For Java 8 on Ubuntu 14.04
+  # jdk 8 is available on Ubuntu 16.04
   if [ $codename == "trusty" ]; then
     if find /etc/apt/sources.list.d/* -iname *.list | xargs cat | grep webupd8team; then
       echo ppa:webupd8team was found
@@ -218,8 +226,10 @@ apt-get install -y r-base
 R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
 
 # install pandoc
-wget $PANDOC_URL -O pandoc-amd64.deb
-dpkg -i pandoc-amd64.deb
+if [[ "$os" == "Linux" ]]; then
+  wget $PANDOC_URL -O pandoc-amd64.deb
+  dpkg -i pandoc-amd64.deb
+fi
 
 # instal lftp for accessing cosmic
 apt-get install -y lftp
