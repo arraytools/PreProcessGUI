@@ -47,16 +47,7 @@ else
    os="Linux"
 fi
 
-if [[ "$os" == "Windows" ]]; then
-  # For Windows 10 and Java 8
-  wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL
-  if [ ! -d /opt/jdk ]; then
-    mkdir /opt/jdk
-  fi
-  tar -zxv jdk-8u112-linux-x64.tar.gz -C /opt/jdk
-  update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_112/bin/java 100
-  update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_112/bin/javac 100
-else
+if [[ "$os" == "Linux" ]]; then
   # For Java 8 on Ubuntu 14.04
   # jdk 8 is available on Ubuntu 16.04
   if [ $codename == "trusty" ]; then
@@ -95,6 +86,18 @@ if [ ! -d /opt/SeqTools/bin ]; then
 fi
 cd /opt/SeqTools/bin
 
+if [[ "$os" == "Windows" ]]; then
+  # For Windows 10 and Java 8
+  wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL -O jdk-linux-x64.tar.gz
+  if [ ! -d /opt/jdk ]; then
+    mkdir /opt/jdk
+  fi
+  tar -zxv jdk-linux-x64.tar.gz -C /opt/jdk
+  dn=`tar -tf jdk-linux-x64.tar.gz | head -1 | cut -f1 -d"/"`
+  update-alternatives --install /usr/bin/java java /opt/jdk/$dn/bin/java 100
+  update-alternatives --install /usr/bin/javac javac /opt/jdk/$dn/bin/javac 100
+fi
+
 # bookmark the directory name for SeqTools
 if [ -f .DirName ]; then
   rm .DirName
@@ -103,13 +106,13 @@ touch .DirName
 
 # sratoolkit
 wget $SRATOOLKIT_URL -O sratoolkit.tar.gz
-dn=`tar -tf sratoolkit.tar.gz | grep -o '^[^/]\+' | sort -u`
+dn=`tar -tf sratoolkit.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "sratoolkit=$dn" >> .DirName
 tar xzvf sratoolkit.tar.gz
 
 # BWA (needs to compile)
 wget $BWA_URL -O BWA.tar.gz
-dn=`tar -tf BWA.tar.gz | grep -o '^[^/]\+' | sort -u`
+dn=`tar -tf BWA.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "bwa=$dn" >> .DirName
 tar xzvf BWA.tar.gz
 cd $dn
@@ -129,19 +132,19 @@ unzip -o bowtie2.zip
 
 # tophat
 wget $TOPHAT_URL -O tophat.tar.gz
-dn=`tar -tf tophat.tar.gz | grep -o '^[^/]\+' | sort -u`
+dn=`tar -tf tophat.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "tophat=$dn" >> .DirName
 tar xzvf tophat.tar.gz
 
 # star
 wget $STAR_URL -O star.tar.gz
-dn=`tar -tf star.tar.gz | grep -o '^[^/]\+' | sort -u`
+dn=`tar -tf star.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "star=$dn" >> .DirName
 tar xzvf star.tar.gz
 
 # samtools (needs to compile)
 wget $SAMTOOLS_URL -O samtools.tar.bz2
-dn=`tar -tf samtools.tar.bz2 | grep -o '^[^/]\+' | sort -u`
+dn=`tar -tf samtools.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo -e "samtools=$dn" >> .DirName
 tar xjvf samtools.tar.bz2
 cd $dn
@@ -158,7 +161,7 @@ cd ../..
 
 # bcftools (needs to compile)
 wget $BCFTOOLS_URL -O bcftools.tar.bz2
-dn=`tar -tf bcftools.tar.bz2 | grep -o '^[^/]\+' | sort -u`
+dn=`tar -tf bcftools.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo -e "bcftools=$dn" >> .DirName
 tar xjvf bcftools.tar.bz2
 cd $dn
@@ -176,7 +179,7 @@ unzip -o picard.zip
 # htseq-count (needs to compile)
 wget $HTSEQ_URL -O HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
-dn=`tar -tf HTSeq.tar.gz | grep -o '^[^/]\+' | sort -u`
+dn=`tar -tf HTSeq.tar.gz | head -1 | cut -f1 -d"/"`
 cd $dn
 python setup.py build
 python setup.py install
