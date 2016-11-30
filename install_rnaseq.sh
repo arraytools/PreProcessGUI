@@ -236,6 +236,7 @@ R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
 if [[ "$os" == "Linux" ]]; then
   wget $PANDOC_URL -O pandoc-amd64.deb
   dpkg -i pandoc-amd64.deb
+  rm pandoc-amd64.deb
 fi
 
 # instal lftp for accessing cosmic
@@ -245,7 +246,7 @@ apt-get install -y lftp
 apt-get install avfs
 
 # clean up
-rm *.zip *.tar.gz *.tar.bz2 *.deb
+rm *.zip *.tar.gz *.tar.bz2
 
 chown root:root -R /opt/SeqTools/*
 chmod +x /opt/SeqTools/bin/FastQC/fastqc
