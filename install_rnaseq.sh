@@ -50,7 +50,9 @@ fi
 if [[ "$os" == "Windows" ]]; then
   # For Windows 10 and Java 8
   wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL
-  mkdir /opt/jdk
+  if [ ! -d /opt/jdk ]; then
+    mkdir /opt/jdk
+  fi
   tar -zxv jdk-8u112-linux-x64.tar.gz -C /opt/jdk
   update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_112/bin/java 100
   update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_112/bin/javac 100
