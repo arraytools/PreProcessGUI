@@ -94,7 +94,7 @@ if [[ "$os" == "Windows" ]]; then
   if [ ! -d /opt/jdk ]; then
     mkdir /opt/jdk
   fi
-  tar -zxv jdk-linux-x64.tar.gz -C /opt/jdk
+  tar -zxvf jdk-linux-x64.tar.gz -C /opt/jdk
   dn=`tar -tf jdk-linux-x64.tar.gz | head -1 | cut -f1 -d"/"`
   update-alternatives --install /usr/bin/java java /opt/jdk/$dn/bin/java 100
   update-alternatives --install /usr/bin/javac javac /opt/jdk/$dn/bin/javac 100
