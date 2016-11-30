@@ -69,12 +69,14 @@ apt-get -y install libncurses5-dev
 apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
 apt-get -y install python-pip
 pip install pysam
-# download package for FastQC
-if [ $codename == "trusty" ]; then
-  apt-get -y install oracle-java8-installer
-fi
-if [ $codename == "xenial" ]; then
-  apt-get -y install openjdk-8-jdk
+# download Java for fastQC, gatk, picard and snpeff
+if [[ "$os" == "Linux" ]]; then
+  if [ $codename == "trusty" ]; then
+    apt-get -y install oracle-java8-installer
+  fi
+  if [ $codename == "xenial" ]; then
+    apt-get -y install openjdk-8-jdk
+  fi
 fi
 
 # goodies for vc annotation
