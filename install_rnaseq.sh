@@ -72,6 +72,9 @@ pip install pysam
 # download Java for fastQC, gatk, picard and snpeff
 if [[ "$os" == "Linux" ]]; then
   if [ $codename == "trusty" ]; then
+    apt-get -y install debconf-utils
+    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+    echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
     apt-get -y install oracle-java8-installer
   fi
   if [ $codename == "xenial" ]; then
