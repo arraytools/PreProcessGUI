@@ -54,7 +54,7 @@ if [[ "$os" == "Linux" ]]; then
     if find /etc/apt/sources.list.d/* -iname *.list | xargs cat | grep webupd8team; then
       echo ppa:webupd8team was found
     else
-      add-apt-repository ppa:webupd8team/java
+      add-apt-repository -y ppa:webupd8team/java
     fi
   fi
 fi
