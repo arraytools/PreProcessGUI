@@ -68,7 +68,7 @@ apt-get -y install libncurses5-dev
 # download packages for htseq-count
 apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
 apt-get -y install python-pip
-pip install pysam
+sudo -H pip install pysam
 # download Java for fastQC, gatk, picard and snpeff
 if [[ "$os" == "Linux" ]]; then
   if [ $codename == "trusty" ]; then
