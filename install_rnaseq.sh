@@ -91,15 +91,21 @@ fi
 cd /opt/SeqTools/bin
 
 if [[ "$os" == "Windows" ]]; then
-  # For Windows 10 and Java 8
-  wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL -O jdk-linux-x64.tar.gz
-  if [ ! -d /opt/jdk ]; then
-    mkdir /opt/jdk
+  # Windows 10 Anniversary update
+  if [ $codename == "trusty" ]; then
+    wget --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL -O jdk-linux-x64.tar.gz
+    if [ ! -d /opt/jdk ]; then
+      mkdir /opt/jdk
+    fi
+    tar -zxvf jdk-linux-x64.tar.gz -C /opt/jdk
+    dn=`tar -tf jdk-linux-x64.tar.gz | head -1 | cut -f1 -d"/"`
+    update-alternatives --install /usr/bin/java java /opt/jdk/$dn/bin/java 100
+    update-alternatives --install /usr/bin/javac javac /opt/jdk/$dn/bin/javac 100
   fi
-  tar -zxvf jdk-linux-x64.tar.gz -C /opt/jdk
-  dn=`tar -tf jdk-linux-x64.tar.gz | head -1 | cut -f1 -d"/"`
-  update-alternatives --install /usr/bin/java java /opt/jdk/$dn/bin/java 100
-  update-alternatives --install /usr/bin/javac javac /opt/jdk/$dn/bin/javac 100
+  # Windows 10 Creators update
+  if [ $codename == "xenial" ]; then
+    apt-get -y install openjdk-8-jdk
+  fi
 fi
 
 # bookmark the directory name for SeqTools
