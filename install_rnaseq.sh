@@ -23,6 +23,7 @@ JDK_URL=http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x6
 PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
 
 set -e
+export DEBIAN_FRONTEND=noninteractive
 
 # Support Mint Linux
 codename=$(lsb_release -s -c)
@@ -31,6 +32,7 @@ if [ $codename == "rafaela" ] || [ $codename == "rosa" ]; then
 fi
 
 # For R
+echo step 1
 # if [ -d ~/.gnupg ]; then
 #   chown -R root:root ~/.gnupg
 # fi
@@ -47,6 +49,7 @@ else
    os="Linux"
 fi
 
+echo step 2
 if [[ "$os" == "Linux" ]]; then
   # For Java 8 on Ubuntu 14.04
   # jdk 8 is available on Ubuntu 16.04
@@ -60,16 +63,24 @@ if [[ "$os" == "Linux" ]]; then
 fi
 
 # update repository
+echo step 3
 apt-get update
 
 # download packages for samtools
+echo step 4
 apt-get -y install zlib1g-dev
+echo step 5
 apt-get -y install libncurses5-dev
 # download packages for htseq-count
+echo step 6
 apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
+echo step 7
 apt-get -y install python-pip
+echo step 8
 sudo -H pip install pysam
+
 # download Java for fastQC, gatk, picard and snpeff
+echo step 9
 if [[ "$os" == "Linux" ]]; then
   if [ $codename == "trusty" ]; then
     echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
@@ -82,9 +93,11 @@ if [[ "$os" == "Linux" ]]; then
 fi
 
 # goodies for vc annotation
+echo step 10
 apt-get -y install parallel
 
 # create a new directory
+echo step 11
 if [ ! -d /opt/SeqTools/bin ]; then
   mkdir -p /opt/SeqTools/bin
 fi
@@ -109,18 +122,21 @@ if [[ "$os" == "Windows" ]]; then
 fi
 
 # bookmark the directory name for SeqTools
+echo step 12
 if [ -f .DirName ]; then
   rm .DirName
 fi
 touch .DirName
 
 # sratoolkit
+echo step 13
 wget $SRATOOLKIT_URL -O sratoolkit.tar.gz
 dn=`tar -tf sratoolkit.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "sratoolkit=$dn" >> .DirName
 tar xzvf sratoolkit.tar.gz
 
 # BWA (needs to compile)
+echo step 14
 wget $BWA_URL -O BWA.tar.gz
 dn=`tar -tf BWA.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "bwa=$dn" >> .DirName
@@ -130,6 +146,7 @@ make
 cd ..
 
 # bowtie
+echo step 15
 if [ -f bowtie2.zip ]; then
   rm bowtie2.zip
 fi
@@ -141,18 +158,21 @@ echo -e "bowtie=$(basename $dn)" >> .DirName
 unzip -o bowtie2.zip
 
 # tophat
+echo step 16
 wget $TOPHAT_URL -O tophat.tar.gz
 dn=`tar -tf tophat.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "tophat=$dn" >> .DirName
 tar xzvf tophat.tar.gz
 
 # star
+echo step 17
 wget $STAR_URL -O star.tar.gz
 dn=`tar -tf star.tar.gz | head -1 | cut -f1 -d"/"`
 echo -e "star=$dn" >> .DirName
 tar xzvf star.tar.gz
 
 # samtools (needs to compile)
+echo step 18
 wget $SAMTOOLS_URL -O samtools.tar.bz2
 dn=`tar -tf samtools.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo -e "samtools=$dn" >> .DirName
@@ -161,6 +181,7 @@ cd $dn
 ./configure
 make
 
+echo step 19
 dn=$(basename `find -maxdepth 1 -name 'htslib*'`)
 echo -e "htslib=$dn" >> ../.DirName
 # add htslib from samtools
@@ -170,6 +191,7 @@ make
 cd ../..
 
 # bcftools (needs to compile)
+echo step 20
 wget $BCFTOOLS_URL -O bcftools.tar.bz2
 dn=`tar -tf bcftools.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo -e "bcftools=$dn" >> .DirName
@@ -179,6 +201,7 @@ make
 cd ..
 
 # Picard tool
+echo step 21
 wget $PICARD_URL -O picard.zip
 nline=$(unzip -vl picard.zip | head | grep -n 'CRC-32' | sed 's/^\([0-9]\+\):.*$/\1/')
 ((nline+=2))
@@ -187,6 +210,7 @@ echo -e "picard=$(basename $dn)" >> .DirName
 unzip -o picard.zip
 
 # htseq-count (needs to compile)
+echo step 22
 wget $HTSEQ_URL -O HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
 dn=`tar -tf HTSeq.tar.gz | head -1 | cut -f1 -d"/"`
@@ -196,6 +220,7 @@ python setup.py install
 cd ..
 
 # fastqc
+echo step 23
 if [ -f fastqc.zip ]; then
   rm fastqc.zip
 fi
@@ -204,6 +229,7 @@ echo -e "fastqc=FastQC" >> .DirName
 unzip -o fastqc.zip
 
 # snpeff
+echo step 24
 if [ -f snpEff*.zip ]; then
   rm snpEff*.zip
 fi
@@ -218,6 +244,7 @@ if [ ! -d $snpEff/data ]; then mkdir $snpEff/data; fi
 chmod a+w $snpEff/data
 
 # fastx
+echo step 25
 wget $FASTX_URL -O fastx.tar.bz2
 echo -e "trimmer=fastx" >> .DirName
 if [ ! -d fastx ]; then
@@ -230,17 +257,23 @@ tar -xjvf fastx.tar.bz2 -C fastx
 #      python 2.7.6 on ubuntu 14.04
 # apt-get -y install python-pip
 # pip install pylatex
+echo step 26
 apt-get install -y texlive-latex-base
 # apt-get install -y texlive-binaries
+echo step 27
 apt-get install -y texlive-fonts-recommended # ecrm1000 error
+echo step 28
 apt-get install -y texlive-latex-extra # .sty files
+echo step 29
 apt-get install -y lmodern # lmodern.sty
 
 # install r-base & rmarkdown
+echo step 30
 apt-get install -y r-base
 R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
 
 # install pandoc
+echo step 31
 if [[ "$os" == "Linux" ]]; then
   wget $PANDOC_URL -O pandoc-amd64.deb
   dpkg -i pandoc-amd64.deb
@@ -248,10 +281,12 @@ if [[ "$os" == "Linux" ]]; then
 fi
 
 # instal lftp for accessing cosmic
+echo step 32
 apt-get install -y lftp
 
 # install avfs for mounting compressed files
-apt-get install avfs
+echo step 33
+apt-get install -y avfs
 
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
@@ -259,5 +294,4 @@ rm *.zip *.tar.gz *.tar.bz2
 chown root:root -R /opt/SeqTools/*
 chmod +x /opt/SeqTools/bin/FastQC/fastqc
 
-echo
-read -p "Press [Enter] key to quit."
+# read -p "Press [Enter] key to quit."
