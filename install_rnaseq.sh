@@ -22,6 +22,7 @@ SNPEFF_URL=http://sourceforge.net/projects/snpeff/files/snpEff_v4_2_core.zip/dow
 # SNPEFF_URL=https://github.com/pcingola/SnpEff/archive/v4.2.zip
 JDK_URL=http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz
 PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
+SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread-1.5.2-source.tar.gz
 
 set -e
 export DEBIAN_FRONTEND=noninteractive
@@ -182,7 +183,6 @@ cd $dn
 ./configure
 make
 
-echo step 19
 dn=$(basename `find -maxdepth 1 -name 'htslib*'`)
 echo -e "htslib=$dn" >> ../.DirName
 # add htslib from samtools
@@ -190,6 +190,16 @@ cd $dn
 ./configure
 make
 cd ../..
+
+# subread
+echo step 19
+wget $SUBREAD_URL -O subread.tar.gz
+dn=`tar -tf subread.tar.gz | head -1 | cut -f1 -d"/"`
+echo -e "subread=$dn" >> .DirName
+tar xzvf subread.tar.gz
+cd $dn/src
+make -f Makefile.Linux
+cd -
 
 # bcftools (needs to compile)
 echo step 20
