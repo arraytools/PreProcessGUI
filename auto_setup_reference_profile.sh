@@ -156,6 +156,4 @@ case $1 in
 		;;
 esac
 
-echo "Press [Enter] key to quit."
-read 
 echo "OK" >> /tmp/profile_auto_error.log
