@@ -157,4 +157,5 @@ case $1 in
 		;;
 esac
 fi
+sleep 10
 echo "OK"
