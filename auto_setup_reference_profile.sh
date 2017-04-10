@@ -105,6 +105,7 @@ if [ -f "$2/BRB_SeqTools_autosetup_reference_genome_files/wget_log.txt" ]; then 
 #Create a folder
 mkdir -p ./BRB_SeqTools_autosetup_reference_genome_files
 mkdir -p ./BRB_SeqTools_autosetup_reference_genome_files/dbSNP_VCF
+if ( 0>1 ); then
 case $1 in
 	"Ensembl_GRCh37") 
 		cd ./BRB_SeqTools_autosetup_reference_genome_files
@@ -155,5 +156,5 @@ case $1 in
 		rm ${2}/BRB_SeqTools_autosetup_reference_genome_files/Homo_sapiens_UCSC_hg19.tar.gz
 		;;
 esac
-
-echo "OK" >> /tmp/profile_auto_error.log
+fi
+echo "OK"
