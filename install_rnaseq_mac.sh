@@ -27,6 +27,8 @@ SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread
 
 set -e
 
+xcode-select --install
+
 # download packages for htseq-count
 echo step 6
 # easy_install pip
