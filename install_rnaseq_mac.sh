@@ -27,8 +27,6 @@ SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread
 
 set -e
 
-xcode-select --install
-
 # download packages for htseq-count
 echo step 6
 # easy_install pip
@@ -237,4 +235,4 @@ rm *.zip *.tar.gz *.tar.bz2
 chown -R root:wheel /opt/SeqTools/bin
 chmod +x /opt/SeqTools/bin/FastQC/fastqc
 
-# read -p "Press [Enter] key to quit."
+read -p "Press [Enter] key to quit."
