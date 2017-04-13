@@ -27,37 +27,29 @@ SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread
 
 set -e
 
-# download packages for htseq-count
-echo step 6
-# easy_install pip
-echo step 7
-# sudo -H pip install numpy matplotlib
-echo step 8
-# sudo -H pip install pysam
-
 # create a new directory
-echo step 11
+echo step 1
 if [ ! -d /opt/SeqTools/bin ]; then
   mkdir -p /opt/SeqTools/bin
 fi
 cd /opt/SeqTools/bin
 
 # bookmark the directory name for SeqTools
-echo step 12
+echo step 2
 if [ -f .DirName ]; then
   rm .DirName
 fi
 touch .DirName
 
 # sratoolkit
-echo step 13
+echo step 3
 curl $SRATOOLKIT_URL -o sratoolkit.tar.gz
 dn=`tar -tf sratoolkit.tar.gz | head -1 | cut -f1 -d"/"`
 echo "sratoolkit=$dn" >> .DirName
 tar xzvf sratoolkit.tar.gz
 
 # BWA (needs to compile)
-echo step 14
+echo step 4
 curl -L $BWA_URL -o BWA.tar.gz
 dn=`tar -tf BWA.tar.gz | head -1 | cut -f1 -d"/"`
 echo "bwa=$dn" >> .DirName
@@ -67,7 +59,7 @@ make
 cd ..
 
 # bowtie
-echo step 15
+echo step 5
 if [ -f bowtie2.zip ]; then
   rm bowtie2.zip
 fi
@@ -79,21 +71,21 @@ echo "bowtie=$(basename $dn)" >> .DirName
 unzip -o bowtie2.zip
 
 # tophat
-echo step 16
+echo step 6
 curl -L $TOPHAT_URL -o tophat.tar.gz
 dn=`tar -tf tophat.tar.gz | head -1 | cut -f1 -d"/"`
 echo "tophat=$dn" >> .DirName
 tar xzvf tophat.tar.gz
 
 # star
-echo step 17
+echo step 7
 curl -L $STAR_URL -o star.tar.gz
 dn=`tar -tf star.tar.gz | head -1 | cut -f1 -d"/"`
 echo "star=$dn" >> .DirName
 tar xzvf star.tar.gz
 
 # samtools (needs to compile)
-echo step 18
+echo step 8
 curl -L $SAMTOOLS_URL -o samtools.tar.bz2
 dn=`tar -tf samtools.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo "samtools=$dn" >> .DirName
@@ -111,7 +103,7 @@ make
 cd ../..
 
 # subread
-echo step 19
+echo step 9
 curl -L $SUBREAD_URL -o subread.tar.gz
 dn=`tar -tf subread.tar.gz | head -1 | cut -f1 -d"/"`
 echo "subread=$dn" >> .DirName
@@ -121,7 +113,7 @@ make -f Makefile.MacOS
 cd -
 
 # bcftools (needs to compile)
-echo step 20
+echo step 10
 curl -L $BCFTOOLS_URL -o bcftools.tar.bz2
 dn=`tar -tf bcftools.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo "bcftools=$dn" >> .DirName
@@ -131,7 +123,7 @@ make
 cd ..
 
 # Picard tool
-echo step 21
+echo step 11
 curl -L $PICARD_URL -o picard.zip
 nline=$(unzip -vl picard.zip | head | grep -n 'CRC-32' | awk -F: '{print $1}')
 ((nline+=2))
@@ -140,7 +132,7 @@ echo "picard=$(basename $dn)" >> .DirName
 unzip -o picard.zip
 
 # htseq-count (needs to compile)
-echo step 22
+echo step 12
 curl -L $HTSEQ_URL -o HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
 dn=`tar -tf HTSeq.tar.gz | head -1 | cut -f1 -d"/"`
@@ -150,7 +142,7 @@ python setup.py install
 cd ..
 
 # fastqc
-echo step 23
+echo step 13
 if [ -f fastqc.zip ]; then
   rm fastqc.zip
 fi
@@ -159,7 +151,7 @@ echo "fastqc=FastQC" >> .DirName
 unzip -o fastqc.zip
 
 # snpeff
-echo step 24
+echo step 14
 if [ -f snpEff*.zip ]; then
   rm snpEff*.zip
 fi
@@ -174,7 +166,7 @@ if [ ! -d $snpEff/data ]; then mkdir $snpEff/data; fi
 chmod a+w $snpEff/data
 
 # fastx
-echo step 25
+echo step 15
 curl -L $FASTX_URL -o fastx.tar.bz2
 echo "trimmer=fastx" >> .DirName
 if [ ! -d fastx ]; then
@@ -182,35 +174,19 @@ if [ ! -d fastx ]; then
 fi
 tar -xjvf fastx.tar.bz2 -C fastx
 
-echo step 26
-# apt-get install -y texlive-latex-base
-# MacTex
-# BasicLatex is 110MB while the full TexLive is 3GB
-# See http://www.tug.org/mactex/morepackages.html
-# http://ftp.math.purdue.edu/mirrors/ctan.org/systems/mac/mactex/mactex-basictex-20161009.pkg
-# It takes a few minutes to get a reasonable connection (500KB/s)
-# After installation, latex is located at 
-#   /usr/local/texlive/2016basic/bin/x86_64-darwin/
-echo step 27
-# apt-get install -y texlive-fonts-recommended # ecrm1000 error
-echo step 28
-# apt-get install -y texlive-latex-extra # .sty files
-echo step 29
-# apt-get install -y lmodern # lmodern.sty
-
 # install r-base & rmarkdown
-echo step 30
+echo step 17
 curl -L $RCRAN_URL -o rcran.pkg
 installer -pkg rcran.pkg -target /
 R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
 
 # install pandoc (pkg)
-echo step 31
+echo step 18
 curl -L $PANDOC_URL -o pandoc.pkg
 installer -pkg pandoc.pkg -target /
 
 # instal lftp for accessing cosmic, wget for dbSNFP
-echo step 32
+echo step 19
 curl -O https://raw.githubusercontent.com/rudix-mac/rpm/2016.12.13/rudix.py
 python rudix.py install rudix
 rudix install lftp
@@ -218,7 +194,7 @@ rudix install wget
 
 # install avfs for mounting compressed files
 # also consider archivemount https://www.macports.org/ports.php?by=category&substr=fuse
-echo step 33
+echo step 20
 curl -L $AVFS_URL -o avfs.tar.bz2
 tar -xjvf avfs.tar.bz2
 
