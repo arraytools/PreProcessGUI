@@ -178,7 +178,7 @@ tar -xjvf fastx.tar.bz2 -C fastx
 echo step 16
 curl -L $RCRAN_URL -o rcran.pkg
 installer -pkg rcran.pkg -target /
-R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
+/usr/local/bin/R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
 
 # install pandoc (pkg)
 echo step 17
