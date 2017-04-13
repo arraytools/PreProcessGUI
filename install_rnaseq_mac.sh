@@ -175,21 +175,22 @@ fi
 tar -xjvf fastx.tar.bz2 -C fastx
 
 # install r-base & rmarkdown
-echo step 17
+echo step 16
 curl -L $RCRAN_URL -o rcran.pkg
 installer -pkg rcran.pkg -target /
 R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com')"
 
 # install pandoc (pkg)
-echo step 18
+echo step 17
 curl -L $PANDOC_URL -o pandoc.pkg
 installer -pkg pandoc.pkg -target /
 
 # instal lftp for accessing cosmic, wget for dbSNFP
-echo step 19
+echo step 18
 curl -O https://raw.githubusercontent.com/rudix-mac/rpm/2016.12.13/rudix.py
 python rudix.py install rudix
 rudix install lftp
+echo step 19
 rudix install wget
 
 # install avfs for mounting compressed files
