@@ -191,7 +191,8 @@ curl -O https://raw.githubusercontent.com/rudix-mac/rpm/2016.12.13/rudix.py
 python rudix.py install rudix
 rudix install lftp
 echo step 19
-rudix install wget
+# gdown.pl needs wget
+# rudix install wget
 
 # install avfs for mounting compressed files
 # also consider archivemount https://www.macports.org/ports.php?by=category&substr=fuse
