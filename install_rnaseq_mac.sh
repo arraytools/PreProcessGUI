@@ -189,7 +189,7 @@ installer -pkg pandoc.pkg -target /
 echo step 18
 curl -O https://raw.githubusercontent.com/rudix-mac/rpm/2016.12.13/rudix.py
 python rudix.py install rudix
-rudix install lftp
+/usr/local/bin/rudix install lftp
 echo step 19
 # gdown.pl needs wget
 # rudix install wget
