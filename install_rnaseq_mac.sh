@@ -3,7 +3,7 @@
 # Software automatic setup script for BRB-SeqTools on Mac OS.
 #
 # Note:
-# Xcode command line developer tools, JDK and R need to be installed manually in order to agree their licenses.
+# Xcode command line developer tools and JDK need to be installed manually in order to agree their licenses.
 #
 SRATOOLKIT_URL=https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.7.0/sratoolkit.2.7.0-ubuntu64.tar.gz
 BWA_URL=https://github.com/lh3/bwa/archive/0.7.12.tar.gz
@@ -26,6 +26,11 @@ AVFS_URL=https://downloads.sourceforge.net/project/avf/avfs/1.0.4/avfs-1.0.4.tar
 SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread-1.5.2-source.tar.gz
 
 set -e
+
+if [ -n "$(xcode-select -p 2>&1 | grep error)" ]
+then
+   echo "Xcode has not been installed";
+fi
 
 # create a new directory
 echo step 1
