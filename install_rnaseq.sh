@@ -6,7 +6,7 @@
 # For example, tophat v2.0.11 only supports bowtie2 v2.2.1 but not v2.2.2.
 
 SRATOOLKIT_URL=https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.7.0/sratoolkit.2.7.0-ubuntu64.tar.gz
-BWA_URL=https://github.com/lh3/bwa/archive/0.7.12.tar.gz
+BWA_URL=https://github.com/lh3/bwa/releases/download/v0.7.15/bwa-0.7.15.tar.bz2
 # BOWTIE2_URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.6/bowtie2-2.2.6-linux-x86_64.zip/download
 BOWTIE2_URL=https://github.com/BenLangmead/bowtie2/releases/download/v2.2.6/bowtie2-2.2.6-linux-x86_64.zip
 TOPHAT_URL=https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.Linux_x86_64.tar.gz
@@ -139,10 +139,10 @@ tar xzvf sratoolkit.tar.gz
 
 # BWA (needs to compile)
 echo step 14
-wget $BWA_URL -O BWA.tar.gz
-dn=`tar -tf BWA.tar.gz | head -1 | cut -f1 -d"/"`
+wget $BWA_URL -O BWA.tar.bz2
+dn=`tar -tf BWA.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo -e "bwa=$dn" >> .DirName
-tar xzvf BWA.tar.gz
+tar xvf BWA.tar.bz2
 cd $dn
 make
 cd ..

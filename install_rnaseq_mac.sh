@@ -6,7 +6,7 @@
 # Xcode command line developer tools and JDK need to be installed manually in order to agree their licenses.
 #
 SRATOOLKIT_URL=https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.7.0/sratoolkit.2.7.0-ubuntu64.tar.gz
-BWA_URL=https://github.com/lh3/bwa/archive/0.7.12.tar.gz
+BWA_URL=https://github.com/lh3/bwa/releases/download/v0.7.15/bwa-0.7.15.tar.bz2
 # BOWTIE2_URL=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.6/bowtie2-2.2.6-linux-x86_64.zip/download
 BOWTIE2_URL=https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.9/bowtie2-2.2.9-macos-x86_64.zip/download
 TOPHAT_URL=http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.0.OSX_x86_64.tar.gz
@@ -55,10 +55,10 @@ tar xzvf sratoolkit.tar.gz
 
 # BWA (needs to compile)
 echo step 4
-curl -L $BWA_URL -o BWA.tar.gz
-dn=`tar -tf BWA.tar.gz | head -1 | cut -f1 -d"/"`
+curl -L $BWA_URL -o BWA.tar.bz2
+dn=`tar -tf BWA.tar.bz2 | head -1 | cut -f1 -d"/"`
 echo "bwa=$dn" >> .DirName
-tar xzvf BWA.tar.gz
+tar xvf BWA.tar.bz2
 cd $dn
 make
 cd ..
