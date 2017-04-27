@@ -12,7 +12,7 @@ TOPHAT_URL=http://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.OSX_x86_64.
 STAR_URL=https://github.com/alexdobin/STAR/archive/2.5.2b.tar.gz
 SAMTOOLS_URL=https://github.com/samtools/samtools/releases/download/1.4/samtools-1.4.tar.bz2
 BCFTOOLS_URL=https://github.com/samtools/bcftools/releases/download/1.4/bcftools-1.4.tar.bz2
-PICARD_URL=https://github.com/broadinstitute/picard/releases/download/1.141/picard-tools-1.141.zip
+PICARD_URL=https://github.com/broadinstitute/picard/releases/download/2.1.1/picard-tools-2.1.1.zip
 HTSEQ_URL=https://pypi.python.org/packages/3c/6e/f8dc3500933e036993645c3f854c4351c9028b180c6dcececde944022992/HTSeq-0.6.1p1.tar.gz#md5=c44d7b256281a8a53b6fe5beaeddd31c
 FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
