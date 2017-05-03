@@ -23,6 +23,7 @@ RCRAN_URL=https://cloud.r-project.org/bin/macosx/R-3.3.3.pkg
 PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-osx.pkg
 AVFS_URL=https://downloads.sourceforge.net/project/avf/avfs/1.0.4/avfs-1.0.4.tar.bz2
 SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread-1.5.2-source.tar.gz
+XZ_URL=https://tukaani.org/xz/xz-5.2.3.tar.gz
 
 set -e
 
@@ -98,9 +99,17 @@ cd $dn
 ./configure
 make
 
+# htslib 1.4 requires lzma
+curl -L $XZ_URL -o xz.tar.gz
+dn=`tar -tf xz.tar.gz | head -1 | cut -f1 -d"/"`
+tar xzvf xz.tar.gz
+cd $dn
+./configure
+make
+make install
+# add htslib from samtools
 dn=$(basename `find . -maxdepth 1 -name 'htslib*'`)
 echo "htslib=$dn" >> ../.DirName
-# add htslib from samtools
 cd $dn
 ./configure
 make
