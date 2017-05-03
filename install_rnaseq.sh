@@ -66,9 +66,9 @@ fi
 echo step 3
 apt-get update
 
-# download packages for samtools
+# download packages for samtools & htslib
 echo step 4
-apt-get -y install zlib1g-dev
+apt-get -y install zlib1g-dev libbz2-dev liblzma-dev
 echo step 5
 apt-get -y install libncurses5-dev
 # download packages for htseq-count
