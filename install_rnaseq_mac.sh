@@ -47,7 +47,7 @@ touch .DirName
 
 # sratoolkit
 echo step 3
-curl $SRATOOLKIT_URL -o sratoolkit.tar.gz
+curl -L $SRATOOLKIT_URL -o sratoolkit.tar.gz
 dn=`tar -tf sratoolkit.tar.gz | head -1 | cut -f1 -d"/"`
 echo "sratoolkit=$dn" >> .DirName
 tar xzvf sratoolkit.tar.gz
