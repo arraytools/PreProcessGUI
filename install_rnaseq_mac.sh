@@ -107,6 +107,7 @@ cd $dn
 ./configure
 make
 make install
+cd ..
 # add htslib from samtools
 dn=$(basename `find . -maxdepth 1 -name 'htslib*'`)
 echo "htslib=$dn" >> ../.DirName
