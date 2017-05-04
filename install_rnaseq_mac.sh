@@ -90,16 +90,8 @@ echo "star=$dn" >> .DirName
 tar xzvf star.tar.gz
 
 # samtools (needs to compile)
+# htslib 1.4 requires lzma (xz package)
 echo step 8
-curl -L $SAMTOOLS_URL -o samtools.tar.bz2
-dn=`tar -tf samtools.tar.bz2 | head -1 | cut -f1 -d"/"`
-echo "samtools=$dn" >> .DirName
-tar xjvf samtools.tar.bz2
-cd $dn
-./configure
-make
-
-# htslib 1.4 requires lzma
 curl -L $XZ_URL -o xz.tar.gz
 dn=`tar -tf xz.tar.gz | head -1 | cut -f1 -d"/"`
 tar xzvf xz.tar.gz
@@ -108,6 +100,15 @@ cd $dn
 make
 make install
 cd ..
+
+curl -L $SAMTOOLS_URL -o samtools.tar.bz2
+dn=`tar -tf samtools.tar.bz2 | head -1 | cut -f1 -d"/"`
+echo "samtools=$dn" >> .DirName
+tar xjvf samtools.tar.bz2
+cd $dn
+./configure
+make
+
 # add htslib from samtools
 dn=$(basename `find . -maxdepth 1 -name 'htslib*'`)
 echo "htslib=$dn" >> ../.DirName
