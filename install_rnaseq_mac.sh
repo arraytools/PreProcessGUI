@@ -16,7 +16,7 @@ PICARD_URL=https://github.com/broadinstitute/picard/releases/download/2.1.1/pica
 HTSEQ_URL=https://pypi.python.org/packages/3c/6e/f8dc3500933e036993645c3f854c4351c9028b180c6dcececde944022992/HTSeq-0.6.1p1.tar.gz#md5=c44d7b256281a8a53b6fe5beaeddd31c
 FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
-SNPEFF_URL=https://downloads.sourceforge.net/project/snpeff/snpEff_v4_2_core.zip
+SNPEFF_URL=https://downloads.sourceforge.net/project/snpeff/snpEff_latest_core.zip
 # SNPEFF_URL=https://github.com/pcingola/SnpEff/archive/v4.2.zip
 JDK_URL=http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-macosx-x64.dmg
 RCRAN_URL=https://cloud.r-project.org/bin/macosx/R-3.3.3.pkg
@@ -210,10 +210,9 @@ echo step 19
 # rudix install wget
 
 # install avfs for mounting compressed files
-# also consider archivemount https://www.macports.org/ports.php?by=category&substr=fuse
 echo step 20
-curl -L $AVFS_URL -o avfs.tar.bz2
-tar -xjvf avfs.tar.bz2
+# curl -L $AVFS_URL -o avfs.tar.bz2
+# tar -xjvf avfs.tar.bz2
 
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
@@ -221,4 +220,4 @@ rm *.zip *.tar.gz *.tar.bz2
 chown -R root:wheel /opt/SeqTools/bin
 chmod +x /opt/SeqTools/bin/FastQC/fastqc
 
-read -p "Press [Enter] key to quit."
+# read -p "Press [Enter] key to quit."
