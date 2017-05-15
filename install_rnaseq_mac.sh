@@ -220,4 +220,5 @@ rm *.zip *.tar.gz *.tar.bz2
 chown -R root:wheel /opt/SeqTools/bin
 chmod +x /opt/SeqTools/bin/FastQC/fastqc
 
+echo Software automatic setup has completed!
 # read -p "Press [Enter] key to quit."
