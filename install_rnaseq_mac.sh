@@ -18,12 +18,13 @@ FASTQC_URL=http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11
 FASTX_URL=http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2
 SNPEFF_URL=https://downloads.sourceforge.net/project/snpeff/snpEff_latest_core.zip
 # SNPEFF_URL=https://github.com/pcingola/SnpEff/archive/v4.2.zip
-JDK_URL=http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-macosx-x64.dmg
+# JDK_URL=http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-macosx-x64.dmg
 RCRAN_URL=https://cloud.r-project.org/bin/macosx/R-3.4.0.pkg
 PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-osx.pkg
 AVFS_URL=https://downloads.sourceforge.net/project/avf/avfs/1.0.4/avfs-1.0.4.tar.bz2
 SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread-1.5.2-source.tar.gz
 XZ_URL=https://tukaani.org/xz/xz-5.2.3.tar.gz
+MACTEX_URL=http://tug.org/cgi-bin/mactex-download/BasicTeX.pkg
 
 set -e
 
@@ -209,10 +210,12 @@ echo step 19
 # gdown.pl needs wget
 # rudix install wget
 
-# install avfs for mounting compressed files
+# install MacTex
 echo step 20
-# curl -L $AVFS_URL -o avfs.tar.bz2
-# tar -xjvf avfs.tar.bz2
+curl -L $MACTEX_URL -o BasicTex.pkg
+installer -pkg BasicTex.pkg -target /
+tlmgr update --self
+tlmgr install titling
 
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
