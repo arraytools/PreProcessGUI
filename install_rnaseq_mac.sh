@@ -214,8 +214,8 @@ echo step 19
 echo step 20
 curl -L $MACTEX_URL -o BasicTex.pkg
 installer -pkg BasicTex.pkg -target /
-tlmgr update --self
-tlmgr install titling
+/Library/TeX/texbin/tlmgr update --self
+/Library/TeX/texbin/tlmgr install titling
 
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
