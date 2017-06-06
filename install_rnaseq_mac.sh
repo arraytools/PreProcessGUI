@@ -215,7 +215,7 @@ echo step 20
 curl -L $MACTEX_URL -o BasicTex.pkg
 installer -pkg BasicTex.pkg -target /
 /Library/TeX/texbin/tlmgr update --self
-/Library/TeX/texbin/tlmgr install titling
+/Library/TeX/texbin/tlmgr install titling --repository=http://ftp.dante.de/tex-archive/systems/texlive/tlnet
 
 # clean up
 rm *.zip *.tar.gz *.tar.bz2
