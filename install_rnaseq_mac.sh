@@ -24,7 +24,8 @@ PANDOC_URL=https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.
 AVFS_URL=https://downloads.sourceforge.net/project/avf/avfs/1.0.4/avfs-1.0.4.tar.bz2
 SUBREAD_URL=https://sourceforge.net/projects/subread/files/subread-1.5.2/subread-1.5.2-source.tar.gz
 XZ_URL=https://tukaani.org/xz/xz-5.2.3.tar.gz
-MACTEX_URL=http://tug.org/cgi-bin/mactex-download/BasicTeX.pkg
+#MACTEX_URL=http://tug.org/cgi-bin/mactex-download/BasicTeX.pkg
+MACTEX_URL=http://ctan.org/tex-archive/systems/mac/mactex/BasicTeX.pkg
 
 set -e
 
