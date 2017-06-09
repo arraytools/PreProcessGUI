@@ -150,6 +150,8 @@ unzip -o picard.zip
 
 # htseq-count (needs to compile)
 echo step 12
+easy_install pip
+sudo -H pip install pysam==0.10.0
 curl -L $HTSEQ_URL -o HTSeq.tar.gz
 tar xzvf HTSeq.tar.gz
 dn=`tar -tf HTSeq.tar.gz | head -1 | cut -f1 -d"/"`

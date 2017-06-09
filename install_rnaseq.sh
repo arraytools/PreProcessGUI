@@ -77,7 +77,7 @@ apt-get -y install build-essential python2.7-dev python-numpy python-matplotlib
 echo step 7
 apt-get -y install python-pip
 echo step 8
-sudo -H pip install pysam
+sudo -H pip install pysam==0.10.0
 
 # download Java for fastQC, gatk, picard and snpeff
 echo step 9
